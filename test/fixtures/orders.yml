@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address_id: 1
+  end_user_id: 1
+  purchased_at: 2019-08-09 10:18:08
+  shipping_status: 1
+  total_price: 1
+
+two:
+  address_id: 1
+  end_user_id: 1
+  purchased_at: 2019-08-09 10:18:08
+  shipping_status: 1
+  total_price: 1
