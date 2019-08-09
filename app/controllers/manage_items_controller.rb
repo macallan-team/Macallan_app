@@ -1,0 +1,2 @@
+class ManageItemsController < ApplicationController
+end
