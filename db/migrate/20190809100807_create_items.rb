@@ -1,13 +1,13 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
-      t.integer :label_id
-      t.integer :category_id
-      t.string :album
-      t.string :image_id
-      t.integer :price
-      t.integer :stock
-      t.integer :sales_status
+      t.integer :label_id, null: false, defalut: ""
+      t.integer :category_id, null: false, defalut: ""
+      t.string :album, null: false, defalut: ""
+      t.string :image_id, null: false, defalut: ""
+      t.integer :price, null: false, defalut: ""
+      t.integer :stock, null: false, defalut: ""
+      t.integer :sales_status, null: false, defalut: ""
 
       t.timestamps
     end
