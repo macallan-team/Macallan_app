@@ -1,5 +1,7 @@
 class ManageEndUsersController < ApplicationController
 	def show
+        @end_user = EndUser.find(params[:id])
+
 	end
 
 	def update
@@ -14,3 +16,8 @@ class ManageEndUsersController < ApplicationController
 	def edit
 	end
 end
+
+
+	private
+    def end_user_params
+    	 params.require(:end_user).permit()
