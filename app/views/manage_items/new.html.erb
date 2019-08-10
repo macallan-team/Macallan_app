@@ -3,17 +3,30 @@
 <!-- sidebar  ここから -->
     <div class="col-sm-3">
     <%= render partial: "layouts/adminsidebar" %>
-        <div class="side-box">
+      <div class="side-box">
 
 <!-- ここにサイドバーの下の部分の中身 -->
 
-        </div>
       </div>
+    </div>
 <!-- sidebar  ここまで -->
-      <div class="col-sm-9">
-
-<!-- ここに中身 -->
-
+    <div class="col-sm-9">
+      <div class="sidebar">
+              <h2>商品登録</h2>
+        <%= form_for(@item) do |item| %>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>商品名</label></div>
+            <div class="col-sm-8">
+              <%= item.text_field :album %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+        <% end %>
+        
+      <div>
     </div><!-- col-sm-9 -->
   </div><!-- row -->
 </div><!-- container -->
