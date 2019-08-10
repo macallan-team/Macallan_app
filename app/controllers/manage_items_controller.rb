@@ -1,5 +1,12 @@
 class ManageItemsController < ApplicationController
 	def new
+		@item = Item.new
+		@category = Category.new
+		@label = Label.new
+		@artist = Artist.new
+		@categories = Category.all
+		@labels = Label.all
+		@artists = Artists.all
 	end
 
 	def update
