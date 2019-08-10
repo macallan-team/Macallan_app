@@ -18,6 +18,10 @@ class ManageItemsController < ApplicationController
 	def show
 	end
 
+	def create
+		@item = Item.create(item_params)
+	end
+
 	def index
 	end
 
@@ -25,5 +29,11 @@ class ManageItemsController < ApplicationController
 	end
 
 	def edit
+	end
+	private
+	def item_params
+		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:label_id,:sales_status,
+		discs_attributes: [:id,
+			songs_attributes: [:name, :artist_id, :song_order] ])
 	end
 end

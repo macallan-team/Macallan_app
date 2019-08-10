@@ -4,16 +4,14 @@
     <div class="col-sm-3">
     <%= render partial: "layouts/adminsidebar" %>
       <div class="side-box">
-
-<!-- ここにサイドバーの下の部分の中身 -->
-
+    <%= render partial: "manage_items/side" %>
       </div>
     </div>
 <!-- sidebar  ここまで -->
     <div class="col-sm-9">
+      <h2>商品登録</h2>
       <div class="sidebar">
-              <h2>商品登録</h2>
-        <%= form_for(@item) do |item| %>
+        <%= form_for(@item, url: {controller: 'manage_items', action: 'create'}) do |item| %>
         <%# フォーム項目 %>
           <div class="row">
             <div class="col-sm-1"></div>
@@ -24,6 +22,98 @@
             </div>
           </div>
         <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>ジャケット画像</label></div>
+            <div class="col-sm-8">
+              <%= item.attachment_field :image %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>価格</label></div>
+            <div class="col-sm-8">
+              <%= item.text_field :price %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+            <label>収録内容</label></div>
+            <div class="col-sm-8">
+          <%= item.fields_for :discs, Disc.new do |disc| %>
+              <div class="row sidebar">
+                <p>ディスク</p>
+                <div class="col-sm-2">
+          <%= disc.fields_for :songs, Song.new do |song| %>
+                  <ul>
+                   <li>順</li>
+                   <li><%= song.text_field :song_order, :style=>"width:30px;" %></li>
+                  </ul>
+                </div>
+                <div class="col-sm-5">
+                  <ul>
+                   <li>曲名</li>
+                   <li><%= song.text_field :name, :style=>"width:110px;" %></li>
+                  </ul>
+                </div>
+               <div class="col-sm-5">
+                 <ul>
+                    <li>アーティスト</li>
+                   <li><%= song.collection_select(:artist_id, @artists, :id, :name) %></li>
+                 </ul>
+               </div>
+          <% end %>
+              </div><!-- row -->
+          <% end %>
+            </div><!-- col-sm-8 -->
+          </div><!-- row -->
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>在庫数</label></div>
+            <div class="col-sm-8">
+              <%= item.text_field :stock %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>販売ステータス</label></div>
+            <div class="col-sm-8">
+              <%= item.select :sales_status, [["販売中",1], ["販売停止中",2]], :prompt => "選択してください" %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>ジャンル</label></div>
+            <div class="col-sm-8">
+              <%= item.collection_select(:category_id, @categories, :id, :name) %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <label>レーベル</label></div>
+            <div class="col-sm-8">
+              <%= item.collection_select(:label_id, @labels, :id, :name) %>
+            </div>
+          </div>
+        <%# フォーム項目 %>
+          <div class="row">
+            <div class="col-sm-12" style="text-align:center;">
+              <%= item.submit "登録"%>
+            </div>
+          </div>
         <% end %>
         
       <div>
