@@ -1,5 +1,6 @@
 class Like < ApplicationRecord
 
-belongs_to :end_user, :item
+belongs_to :end_user
+belongs_to :item
 
 end
