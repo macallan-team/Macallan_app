@@ -1,5 +1,5 @@
 class Label < ApplicationRecord
 
-has_many :item
+has_many :items
 
 end
