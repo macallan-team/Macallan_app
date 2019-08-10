@@ -4,6 +4,6 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :like, :review, :address, :cart_item, :order
+  has_many :likes, :reviews, :addresses, :cart_items, :orders
 
 end

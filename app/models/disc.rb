@@ -1,6 +1,6 @@
 class Disc < ApplicationRecord
 
-  has_many :song
+  has_many :songs
   belongs_to :item
 
 end
