@@ -5,7 +5,6 @@ class AddLastNameToEndUsers < ActiveRecord::Migration[5.2]
     add_column :end_users, :last_kana, :string, null: false, default: ""
     add_column :end_users, :first_kana, :string, null: false, default: ""
     add_column :end_users, :last_name, :string, null: false, default: ""
-    add_column :end_users, :password, :string, null: false, default: ""
     add_column :end_users, :address, :string, null: false, default: ""
     add_column :end_users, :postal_code, :string, null: false, default: ""
     add_column :end_users, :phone_number, :string, null: false, default: ""
