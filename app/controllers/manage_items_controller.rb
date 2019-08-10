@@ -6,7 +6,7 @@ class ManageItemsController < ApplicationController
 		@artist = Artist.new
 		@categories = Category.all
 		@labels = Label.all
-		@artists = Artists.all
+		@artists = Artist.all
 	end
 
 	def update
