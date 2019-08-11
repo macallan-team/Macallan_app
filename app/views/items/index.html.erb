@@ -1,0 +1,47 @@
+<div class="container">
+<h2>Topページ</h2>
+    <div class="row">
+    <!-- ここからジャケット写真 -->
+    <%= @items.each do|item| %>
+        <div class="col-xs-4">
+            <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:"100x100"%>
+            <p><%= item.name %></p>
+            <p><%= item.artist %></p>
+            <p>¥<%= item.price %>(税込)</p>
+        </div>
+        <div class="col-xs-4">
+            <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:"100x100"%>
+            <p><%= item.name %></p>
+            <p><%= item.artist %></p>
+            <p>¥<%= item.price %>(税込)</p>
+        </div>
+        <div class="col-xs-4">
+            <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:"100x100"%>
+            <p><%= item.name %></p>
+            <p><%= item.artist %></p>
+            <p>¥<%= item.price %>(税込)</p>
+        </div>
+        <div class="col-xs-4">
+            <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:"100x100"%>
+            <p><%= item.name %></p>
+            <p><%= item.artist %></p>
+            <p>¥<%= item.price %>(税込)</p>
+        </div>
+        <div class="col-xs-4">
+            <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:"100x100"%>
+            <p><%= item.name %></p>
+            <p><%= item.artist %></p>
+            <p>¥<%= item.price %>(税込)</p>
+        </div>
+        <div class="col-xs-4">
+            <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", fallback: "no_image.jpg", size:"100x100"%>
+            <p><%= item.name %></p>
+            <p><%= item.artist %></p>
+            <p>¥<%= item.price %>(税込)</p>
+        </div>
+    <% end %>
+    <!-- ここまでジャケット写真 -->
+    </div>
+
+
+</div>
