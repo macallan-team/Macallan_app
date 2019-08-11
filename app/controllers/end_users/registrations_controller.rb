@@ -59,4 +59,32 @@ class EndUsers::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+protected
+  def configure_sign_up_params
+  devise_parameter_savitizer.permit(
+    :sign_up,keys: [
+      :last_name,
+      :first_name,
+      :last_kana,
+      :first_kana,
+      :postal_code,
+      :adress,
+      :phone_number
+    ]
+  )
+
+  devise_parameter_sanitizer.permit(:account_update, keys: [
+      :last_name,
+      :first_name,
+      :last_kana,
+      :first_kana,
+      :postal_code,
+      :adress,
+      :phone_number
+
+    ]
+  )
+  end
+
 end
