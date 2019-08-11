@@ -9,5 +9,7 @@ has_many :discs
 
 belongs_to :label
 belongs_to :category
+attachment :image
 
+accepts_nested_attributes_for :discs, allow_destroy: true, reject_if: :all_blank
 end
