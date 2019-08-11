@@ -12,103 +12,139 @@
       <h2>商品登録</h2>
       <div class="sidebar">
         <%= form_for(@item, url: {controller: 'manage_items', action: 'create'}) do |item| %>
-        <%# フォーム項目 %>
+        <%# 商品名 %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>商品名</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.text_field :album %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# ジャケット画像 %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>ジャケット画像</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.attachment_field :image %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# 価格 %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>価格</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.text_field :price %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# 収録内容 %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
             <label>収録内容</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
+        <%# ディスク１ %>
+              <div class="disc-box" id="1">
           <%= item.fields_for :discs, Disc.new do |disc| %>
-              <div class="row sidebar">
-                <p>ディスク</p>
-                <div class="col-sm-2">
-          <%= disc.fields_for :songs, Song.new do |song| %>
-                  <ul>
-                   <li>順</li>
-                   <li><%= song.text_field :song_order, :style=>"width:30px;" %></li>
-                  </ul>
-                </div>
-                <div class="col-sm-5">
-                  <ul>
-                   <li>曲名</li>
-                   <li><%= song.text_field :name, :style=>"width:110px;" %></li>
-                  </ul>
-                </div>
-               <div class="col-sm-5">
-                 <ul>
-                    <li>アーティスト</li>
-                   <li><%= song.collection_select(:artist_id, @artists, :id, :name) %></li>
-                 </ul>
-               </div>
+              <table>
+                <tbody>
+                <p>ディスク1</p>
+                <th>順</th>
+                <th>曲名</th>
+                <th>アーティスト</th>
+                <th></th>
+          <%= disc.nested_fields_for :songs, Song.new, wrapper_tag: :tr do |song| %>
+                <td><%= song.text_field :song_order, :style=>"width:30px;" %></td>
+                <td><%= song.text_field :name, :style=>"width:110px;" %></td>
+                <td><%= song.collection_select(:artist_id, @artists, :id, :name) %></td>
+                <td><%= song.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
           <% end %>
-              </div><!-- row -->
+              </tbody>
+            </table>               
+            <%= disc.add_nested_fields_link :songs, '曲を追加', class: "btn btn-primary", role: 'button' %>
           <% end %>
+        <%# ディスク2 %>
+              <div class="disc-box" id="1">
+          <%= item.fields_for :discs, Disc.new do |disc| %>
+              <table>
+                <tbody>
+                <p>ディスク2</p>
+                <th>順</th>
+                <th>曲名</th>
+                <th>アーティスト</th>
+                <th></th>
+          <%= disc.nested_fields_for :songs, Song.new, wrapper_tag: :tr do |song| %>
+                <td><%= song.text_field :song_order, :style=>"width:30px;" %></td>
+                <td><%= song.text_field :name, :style=>"width:110px;" %></td>
+                <td><%= song.collection_select(:artist_id, @artists, :id, :name) %></td>
+                <td><%= song.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
+          <% end %>
+              </tbody>
+            </table>               
+            <%= disc.add_nested_fields_link :songs, '曲を追加', class: "btn btn-primary", role: 'button' %>
+          <% end %>
+        <%# ディスク2 %>
+              <div class="disc-box" id="1">
+          <%= item.fields_for :discs, Disc.new do |disc| %>
+              <table>
+                <tbody>
+                <p>ディスク3</p>
+                <th>順</th>
+                <th>曲名</th>
+                <th>アーティスト</th>
+                <th></th>
+          <%= disc.nested_fields_for :songs, Song.new, wrapper_tag: :tr do |song| %>
+                <td><%= song.text_field :song_order, :style=>"width:30px;" %></td>
+                <td><%= song.text_field :name, :style=>"width:110px;" %></td>
+                <td><%= song.collection_select(:artist_id, @artists, :id, :name) %></td>
+                <td><%= song.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
+          <% end %>
+              </tbody>
+            </table>               
+            <%= disc.add_nested_fields_link :songs, '曲を追加', class: "btn btn-primary", role: 'button' %>
+          <% end %>
+          </div><!-- tab-box -->
             </div><!-- col-sm-8 -->
           </div><!-- row -->
-        <%# フォーム項目 %>
+        <%# 在庫数 %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>在庫数</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.text_field :stock %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# 販売ステータス %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>販売ステータス</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.select :sales_status, [["販売中",1], ["販売停止中",2]], :prompt => "選択してください" %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# ジャンル %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>ジャンル</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.collection_select(:category_id, @categories, :id, :name) %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# レーベル %>
           <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <label>レーベル</label></div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               <%= item.collection_select(:label_id, @labels, :id, :name) %>
             </div>
           </div>
-        <%# フォーム項目 %>
+        <%# 登録ボタン %>
           <div class="row">
             <div class="col-sm-12" style="text-align:center;">
               <%= item.submit "登録"%>

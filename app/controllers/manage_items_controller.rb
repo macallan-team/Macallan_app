@@ -33,7 +33,7 @@ class ManageItemsController < ApplicationController
 	private
 	def item_params
 		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:label_id,:sales_status,
-		discs_attributes: [:id,
-			songs_attributes: [:name, :artist_id, :song_order] ])
+		discs_attributes: [:id, :_destroy,
+			songs_attributes: [:id, :disc_id, :name, :artist_id, :song_order, :_destroy] ])
 	end
 end
