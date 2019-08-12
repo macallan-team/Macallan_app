@@ -25,10 +25,10 @@ Rails.application.routes.draw do
   get "items/search" => "items#search", as:'search_items'
 
   resources :end_users, only: [:new, :edit, :create, :update, :show] do
-    resource :orders, only: [:new, :create, :update, :show]
+    resources :orders, only: [:new, :create, :update, :index]
     end
 
-  get 'end_users/:id/orders/confirm' => 'order#confirm', as:'confirm_order'
+  get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
 
 
   #カートあいてむ
