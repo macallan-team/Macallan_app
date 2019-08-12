@@ -6,12 +6,11 @@ class ItemsController < ApplicationController
 
 	def index
 		#とりあえず試しにnewメソッド入れた
-		@items = Item.all
-		@item = Item.where(['content LIKE ?', "%#{search}%"])
+		# @items = Item.all
+		@items = Item.search(params[:search])
 	end
 
 	def search
-		@items = Item.all
 	end
 
 	private
