@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'end_users/show'
   devise_for :admins,controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
