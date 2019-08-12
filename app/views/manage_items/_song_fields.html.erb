@@ -1,4 +1,7 @@
 <div class="nested-fields">
-    <td class="col-xs-5"><%= f.text_field :name, :style=>"width:100%;", class: "form-control" %></td>
-    <td class="col-xs-6"><%= f.collection_select(:artist_id, @artists, :id, :name ) %></td>
+    <div class="row" style="margin-right:0; margin-left:0; margin-bottom:5px;">
+        <div class="col-xs-5"><%= f.text_field :name, :style=>"width:100%;", class: "form-control" %></div>
+        <div class="col-xs-5"><%= f.collection_select(:artist_id, @artists, :id, :name ) %></div>
+        <div class="col-xs-2"><%= link_to_remove_association "削除", f, class: "btn btn-default" %></div>
+    </div>
 </div>

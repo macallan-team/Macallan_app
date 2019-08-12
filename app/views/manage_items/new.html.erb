@@ -42,22 +42,14 @@
             <label>収録内容</label></div>
             <div class="col-sm-10">
         <%# ディスク１ %>
-              <div class="disc-box" id="1">
-          <%= fields_for :discs, Disc.new do |disc| %>
-              <p>ディスク1</p>
-                <table class="discs">
-                <tbody><tr>
-                <th class="col-xs-5">曲名</th>
-                <th class="col-xs-6">アーティスト</th>
-                <th class="col-xs-1"></th></tr>
-                <%= render 'song_fields', f: song %>
-                <tr><td colspan="3" style="text-align:center;">
-            <%= disc.add_nested_fields_link :songs, '曲を追加', class: "btn btn-default", role: 'button' %></td></tr>
-              </tbody>
-            </table>               
+          <div class="discs">
+          <%= fields_for :discs do |disc| %>
+            <%= render 'disc_fields', f: disc %>
           <% end %>
+          <div class="links" style="text-align:center;">
+          <%= link_to_add_association 'ディスクを追加', item, :discs %>
           </div>
-            </div><!-- col-sm-8 -->
+            </div><!-- col-sm-10 -->
           </div><!-- row -->
         <%# 在庫数 %>
           <div class="row form-box">
