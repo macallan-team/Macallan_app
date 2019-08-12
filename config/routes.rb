@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   #商品管理
   resources :manage_items
-  get "manage_items/search" => "manage_items#search", as:"search_manage_items"
+  get "search/manage_items" => "manage_items#search", as:"search_manage_items"
 
   #エンドユーザー管理者
   resources :manage_end_users

@@ -1,17 +1,17 @@
-<%= form_for(@category) do |f| %>
+<%= form_for(category) do |f| %>
     <label>ジャンル</label><br>
-    <%= f.text_field :name, :style => "width:72%;" %>
-    <%= f.submit "追加", :style => "width:25%;" %>
-<% end %>
+    <%= f.text_field :name, :style => "width:67%;", class: "form-control pull-left" %>
+    <%= f.submit "追加", :style => "width:33%;", class: "btn btn-default" %>
+<% end %><br>
     
-<%= form_for(@label) do |f| %>
+<%= form_for(label) do |f| %>
     <label>レーベル</label><br>
-    <%= f.text_field :name, :style => "width:72%;" %>
-    <%= f.submit "追加", :style => "width:25%;" %>
+    <%= f.text_field :name, :style => "width:67%;", class: "form-control pull-left" %>
+    <%= f.submit "追加", :style => "width:33%;", class: "btn btn-default" %>
 <% end %>
 
-<%= form_for(@artist) do |f| %>
+<%= form_for(artist) do |f| %>
     <label>アーティスト</label><br>
-    <%= f.text_field :name, :style => "width:72%;" %>
-    <%= f.submit "追加", :style => "width:25%;" %>
+    <%= f.text_field :name, :style => "width:67%;", class: "form-control pull-left" %>
+    <%= f.submit "追加", :style => "width:33%;", class: "btn btn-default" %>
 <% end %>

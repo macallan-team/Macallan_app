@@ -16,16 +16,20 @@ class ManageItemsController < ApplicationController
 	end
 
 	def show
+		@item = Item.find(params[:id])
 	end
 
 	def create
 		@item = Item.create(item_params)
+		redirect_to manage_item_path(@item)
 	end
 
 	def index
+		@items = Item.all.reverse_order.page(params[:page]).per(20)
 	end
 
 	def search
+		@items = Item.all
 	end
 
 	def edit
