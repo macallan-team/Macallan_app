@@ -2,9 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+.side-top {
+    margin-top: 50px;
+}
+
+strong {
+    font-size: 1.3em;
+}
+
+.sidebar {
+    box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+    margin-bottom: 14px;
+    font-size: 1.1em;
+    li {
+        margin: 3px 0;
+        margin-left: 10%;
+    }
+}
+
+.side-box {
+    padding: 0 6%;
+}
+
+
 .disc-box {
     padding: 3px;
     background-color: rgba(0,0,0,.03);
     border: 1px solid rgba(0,0,0,.1);
-    transition: .3s
+}
+.touch{
+    border-top: 1px solid rgba(0,0,0,.2);
+    &:hover {
+        background-color: rgba(0,0,0,.03);
+    }
+}
+.box {
+    border: 1px solid rgba(0,0,0,.3);
+    padding: 3%;
+    box-shadow: 3px 3px 6px rgba(0,0,0,.4);
+    margin-bottom: 20px;
+}
+
+.form-box {
+    padding: 6px 0;
+}
+
+.large {
+    font-size: 1.2em;
+}
+
+
+td {
+    height: 30px;
+}
+
+.discs td {
+    height: 40px;
 }
