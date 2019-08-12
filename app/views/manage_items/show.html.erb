@@ -17,7 +17,7 @@
                 <table style="width:100%">
                     <tbody>
                         <tr><th class="col-sm-5">ジャケット画像</th>
-                        <td class="col-sm-7"><%= attachment_image_tag @item, :image %></td></tr>
+                        <td class="col-sm-7"><%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td></tr>
                         
                         <tr><th class="col-sm-5">ジャンル</th>
                         <td class="col-sm-7"><%= @item.category.name %></td></tr>
