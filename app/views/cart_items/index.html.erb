@@ -1,0 +1,49 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-xs-9 center">
+      <table class = "table">
+      <h2>カート</h2>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td>
+              <span><%= attachment_image_tag cart_item, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size: "100x100" %></span>
+            </td>
+            <td>
+              <p><%= cart_item.item_id %></p>
+              <p><%= cart_item.artist %></p>
+            </td>
+            <td>
+              <p>数量　　</p>
+              <p>税込　　<%= cart_item.price %></p>
+              <span><%= link_to " 削除 ", cart_item_path(@cart_item.id), class:'btn btn-danger', method: :delete, "data-confirm" => "本当に消しますか?" %></span>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <p>小計　</p>
+              <p>送料　500(全国一律)</p>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <p>合計</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-sm-12" style="text-align:center;">
+          <%= cart_item.submit "購入手続きに進む"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
