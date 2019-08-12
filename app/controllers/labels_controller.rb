@@ -2,6 +2,7 @@ class LabelsController < ApplicationController
 	def create
 		@label = Label.new(label_params)
 		@label.save
+		redirect_to new_manage_item_path
 	end
 
 	def destroy

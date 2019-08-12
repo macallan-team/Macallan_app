@@ -1,0 +1,4 @@
+<div class="nested-fields">
+    <td class="col-xs-5"><%= f.text_field :name, :style=>"width:100%;", class: "form-control" %></td>
+    <td class="col-xs-6"><%= f.collection_select(:artist_id, @artists, :id, :name ) %></td>
+</div>
