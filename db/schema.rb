@@ -66,20 +66,16 @@ ActiveRecord::Schema.define(version: 2019_08_11_060004) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_kana", default: "", null: false
     t.string "first_kana", default: "", null: false
-    t.string "postal_code", default: "", null: false
     t.string "address", default: "", null: false
+    t.string "postal_code", default: "", null: false
     t.string "phone_number", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "left_at"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_end_users_on_deleted_at"
     t.index ["email"], name: "index_end_users_on_email", unique: true
@@ -140,10 +136,10 @@ ActiveRecord::Schema.define(version: 2019_08_11_060004) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "disc_id"
-    t.integer "artist_id"
-    t.string "name"
-    t.integer "song_order"
+    t.integer "disc_id", null: false
+    t.integer "artist_id", null: false
+    t.string "name", null: false
+    t.integer "song_order", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
