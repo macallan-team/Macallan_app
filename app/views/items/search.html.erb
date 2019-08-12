@@ -1,0 +1,30 @@
+<h2>商品検索結果</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-9">
+            <table class="table table-hover table-inverse">
+                <!-- 商品検索結果 -->
+                <tbody>
+                    <tr>
+                        <%= @items.each do|item| %>
+                        <td>
+                        <%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", size:"20x20"%>
+                        </td>
+                        <td>
+                        <p><%= item.name %></p>
+                        <p><%= item.artist %></p>
+                        <p><%= item.label %></p>
+                        <p><%= item.album %></p>
+                        <p><%= item.stack %></p>
+                        </td>
+                        <% end %>
+                        <td>
+                        <p>価格</p>
+                        <p>¥<%= item.price %>(税込)</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

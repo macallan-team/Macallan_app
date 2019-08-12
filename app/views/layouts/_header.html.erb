@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row header">
+    <%# ECサイトタイトル %>
+    <div class="col-xs">
+        <%= link_to root_path, class: "header-link" do %><h2>MACALLAN</h2><% end %>
+    </div>
+    <%# ハンバーガーメニュー機能 %>
+    <div id="humburger-icon">
+    <a href="#" class="menu-trigger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    </div>
+    <%# ログイン機能 %>
+    <div class="login-status">
+        <% if end_user_signed_in? %>
+        <% else %>
+        <%= link_to "ログイン", new_end_user_session_path, class: "header-link" %>
+        <%= link_to "新規登録", new_end_user_registration_path, class: "header-link" %>
+        <% end %>
+    </div>
+    <%# 検索フォーム機能 %>
+    <%= form_tag(items_path, :method => 'get' ) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag 'Search', :item => nil %>
+    <% end %>
+    </div>
+</div>

@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MacallanApp</title>
+    <title>MACALLAN</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-4 center">
-
-      </div>
-    </div>
-  </div>
-
+    <%= render partial: "layouts/header" %>
     <%= yield %>
+    <%= render partial: "layouts/footer" %>
   </body>
 </html>

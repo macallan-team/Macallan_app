@@ -1,0 +1,76 @@
+// Setting
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+// h2(仮)
+h2{
+    text-align: center;
+}
+
+// header
+.header{
+    text-align: center;
+    background-color: black;
+}
+.header-link{
+    color: white;
+}
+
+
+.container{
+	width: 920px;
+	padding: 30px 0 90px 0;
+	margin: 0 auto;
+}
+.production{
+	margin: 10px 10px 0 0;
+	background-size: cover;
+	background-position: center;
+}
+
+// pagenation
+.page{
+    text-align: center;
+}
+
+.pagination{
+	text-align: center;
+}
+.pagination p{
+	width: 30px;
+	height: 30px;
+	background-color:  black;
+	margin: 0 5px;
+	color: #fff;
+	line-height: 30px;
+	display: inline-block;
+	border-radius: 3px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+// フッター
+footer{
+	width: 100%; /*横幅*/
+	height: 120px; /*高さ*/
+	text-align: center;
+	padding: 50px 0;
+	background-color: black;
+}
+
+.footer-text{
+	color:#fff;
+}
