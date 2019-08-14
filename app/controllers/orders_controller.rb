@@ -3,24 +3,24 @@ class OrdersController < ApplicationController
 		@order = Order.new
 		@orders = Order.all
 	end
-	
+
 	def confirm
-		@order = Order.new(order_params)
-		
+		# ユーザーがカートに入れた商品を条件式で表示
+		@order = Order.where(params[:id])
 	end
-	
+
 	def create
 	end
-	
-	def update 
+
+	def update
 	end
-	
+
 	def index
 		@orders = Order.page(params[:page]).per(5)
 	end
 
 	def complete
-		
+
 	end
-	
+
 end
