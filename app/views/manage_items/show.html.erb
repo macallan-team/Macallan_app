@@ -10,35 +10,6 @@
     </div>
 <!-- sidebar  ここまで -->
     <div class="col-sm-9">
-      <h2><%= @item.album %></h2>
-      <div class="box">
-        <div class="row">
-            <div class="col-sm-12">
-                <table style="width:100%">
-                    <tbody>
-                        <tr><th class="col-sm-5">ジャケット画像</th>
-                        <td class="col-sm-7"><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>
-                        
-                        <tr><th class="col-sm-5">ジャンル</th>
-                        <td class="col-sm-7"><%= @item.category.name %></td></tr>
-                        
-                        <tr><th class="col-sm-5">レーベル</th>
-                        <td class="col-sm-7"><%= @item.label.name %></td></tr>
-                        
-                        <tr><th class="col-sm-5">在庫数</th>
-                        <td class="col-sm-7"><%= @item.stock %></td></tr>
-<div class="container">
-  <div class="row">
-<!-- sidebar  ここから -->
-    <div class="col-sm-3">
-    <%= render partial: "layouts/adminsidebar" %>
-      <div class="side-box">
-      
-
-      </div>
-    </div>
-<!-- sidebar  ここまで -->
-    <div class="col-sm-9">
       <h2>商品詳細</h2>
       <div class="box">
         <div class="row">
@@ -90,33 +61,6 @@
                 <% end %>
                 </td>
                 </tbody>
-                </table>
-            </div>
-        </div>
-      </div>
-    </div><!-- col-sm-9 -->
-  </div><!-- row -->
-</div><!-- container -->
-                        <tr><th class="col-sm-5">販売ステータス</th>
-                        <td class="col-sm-7"><%= @item.sales_status %></td></tr>
-
-                        <tr><th class="col-sm-5">収録内容</th>
-                        <td class="col-sm-7">
-                <% @item.discs.each do |disc| %>
-                <table style="width:100%;">
-                    <tbody>
-                        <tr style="background-color:rgba(0,0,0,.1);">
-                        <th colspan="3">ディスク</th></tr>
-                        <tr><td class="col-sm-2"></td>
-                        <td class="col-sm-5">曲名</td>
-                        <td class="col-sm-5">アーティスト</td></tr>
-                <% disc.songs.each do |song| %>
-                        <tr class="touch"><td class="col-sm-2"><%= song.song_order %></td>
-                        <td class="col-sm-5"><%=  song.name %></td>
-                        <td class="col-sm-5"><%= song.artist.name %></td></tr>
-                <% end %>
-                <% end %>
-                    </tbody>
                 </table>
             </div>
         </div>
