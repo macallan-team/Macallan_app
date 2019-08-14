@@ -1,0 +1,50 @@
+<%# 購入確認画面 %>
+<div class="container">
+    <div class="row">
+        <p>ご注文確認</p>
+        <%# 購入商品 %>
+        <%= @orders.each do |o| %>
+        <%# 商品名 %>
+        <%= o.item.id %>
+        <%# アーティスト名 %>
+        <%= o.artist.id %>
+        <%# 数量 %>
+        <%= o.count %>
+        <%# 価格 %>
+        <%= o.price %>
+        <% end %>
+
+        <%# 購入者情報 %>
+        <%= @end_user.each do |e| %>
+        <%# 氏名 %>
+        <%= e.name %>
+        <%# 郵便番号 %>
+        <%= e.postal_code %>
+        <%# 発送先住所 %>
+        <%= e.address %>
+        <%# お支払い方法 %>
+        <p>お支払い方法</p>
+        <tbody>
+        <tr><p>代引き</p></tr>
+        <tr><p>カード</p></tr>
+        <tr><p>銀行</p></tr>
+        </tbody>
+        <% end %>
+
+        <%= @cost.each do |c| %>
+        <%# お支払い合計 %>
+        <%# 小計 %>
+        <%= c.total_price %>
+        <%# 送料 %>
+        送料　¥500
+
+        <%# 合計金額 %>
+        <%= c.total_price %>
+        <% end %>
+        <%= c.total_price to_i + 500 %>
+        <%# 購入を確定する %>
+        <%= link_to "購入を確定する", complete_order_path, method: :post, data: {confirm: "本当に購入しますか？"} %>
+        <%# 購入完了画面に遷移する %>
+
+    </div>
+</div>

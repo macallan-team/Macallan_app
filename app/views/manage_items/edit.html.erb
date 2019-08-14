@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+<!-- sidebar  ここから -->
+    <div class="col-sm-3">
+    <%= render "layouts/adminsidebar" %>
+      <div class="side-box">
+    <%= render "manage_items/side", category: @category, label: @label, artist: @artist %>
+      </div>
+    </div>
+<!-- sidebar  ここまで -->
+    <div class="col-sm-9">
+      <h2>商品編集</h2>
+      <div class="box">
+<%= render 'editform', item: @item %>
+      </div>
+    </div><!-- col-sm-9 -->
+  </div><!-- row -->
+</div><!-- container -->

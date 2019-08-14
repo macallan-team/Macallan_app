@@ -1,0 +1,55 @@
+<h2>商品詳細ページ</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+        <!-- ここからジャケット写真 -->
+            <table class="table table-hover table-inverse">
+                <tbody>
+                    <tr>
+                    <%= @items.each do|item| %>
+                    <%# ジャケット写真 %>
+                    <td><%= attachment_image_tag item, :image, :fill, 10, 10, class: "pull-left profile-thumb", size:"20x20"%></td>
+                    <% end %>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-9">
+        <!-- ここから商品詳細情報 -->
+            <table class="table table-hover table-inverse">
+            <tbody>
+            <tr>
+                <%# アーティスト名 %>
+                <td><%= item.artist %></td>
+                <%# 在庫状況 %>
+                <td><%= item.status %></td>
+                <%# いいね機能 %>
+                <td>
+                <div id="likes_buttons_<%= item.id %>"><%= render partial: 'likes/like', locals: { item: @item, likes: @likes} %></div>
+                </td>
+                <%# 価格表示 %>
+                <td>¥<%= item.price.to_i %>(税込)</td>
+                <p>通常配送:¥500</p>
+            </tr>
+            <% end %>
+            </tbody>
+            </table>
+            <%# 収録曲表示 %>
+            <p>収録曲</p>
+            <%= @songs.each do |s| %>
+            <%= s.songs_order %>
+            <%= s.name %>
+            <% end %>
+            <%# レビュー表示 %>
+            <div>
+            <%= @review.each do |r| %>
+            <p>レビュー</p>
+            <p>投稿者</p>
+            <p>投稿日時</p>
+            <%= r.create_at %>
+            <%= r.comment %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>

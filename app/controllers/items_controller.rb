@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 		#とりあえず試しにnewメソッド入れた
 		# @items = Item.all
 		@items = Item.search(params[:search])
+
 	end
 
 	def search

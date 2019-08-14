@@ -28,9 +28,10 @@ strong {
 
 
 .disc-box {
-    padding: 3px;
+    padding: 13px 5px;
     background-color: rgba(0,0,0,.03);
     border: 1px solid rgba(0,0,0,.1);
+    border-radius: 15px;
 }
 .touch{
     border-top: 1px solid rgba(0,0,0,.2);
@@ -56,8 +57,4 @@ strong {
 
 td {
     height: 30px;
-}
-
-.discs td {
-    height: 40px;
 }
