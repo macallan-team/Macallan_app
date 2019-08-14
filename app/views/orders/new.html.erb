@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-xs-9 center">
+      <table class = "table">
+      <h2>発送先・お支払い方法</h2>
+
+        <tr>
+          <td>
+            発送先
+          </td>
+          <td>
+            <%# ラジオボタンで選択 %>
+            <p>
+              <label>
+                <%= f.radio_button :address,  %>登録住所を使用する
+              </label>
+            </p>
+            <p>
+              <label>
+                <%= f.radio_button :address,  %>別の住所を使用する
+              </label>
+            </p>
+          </td>
+          <td></td>
+        </tr>
+        

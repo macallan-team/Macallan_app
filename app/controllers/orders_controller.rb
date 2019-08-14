@@ -18,5 +18,9 @@ class OrdersController < ApplicationController
 	def index
 		@orders = Order.page(params[:page]).per(5)
 	end
+
+	def complete
+		
+	end
 	
 end

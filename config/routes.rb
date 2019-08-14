@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
 
   get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
-
+  get "end_users/:id/orders/complete" => "orders#complete", as:"complete_order"
 
   #カートあいてむ
   resources :cart_items, only: [:create, :destroy, :update, :index]
