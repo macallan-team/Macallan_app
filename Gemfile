@@ -70,3 +70,5 @@ gem 'jquery-rails'
 gem 'cocoon'
 
 gem 'paranoia'
+gem 'rails-i18n'
+gem 'ransack'

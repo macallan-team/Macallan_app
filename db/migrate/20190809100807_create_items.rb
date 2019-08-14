@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price, null: false, defalut: ""
       t.integer :stock, null: false, defalut: ""
       t.integer :sales_status, null: false, defalut: ""
+      t.date :release_date, null: false, dafault: ""
 
       t.timestamps
     end
