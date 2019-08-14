@@ -4,7 +4,7 @@
     <div class="col-xs-5">アーティスト</div>
     <div class="col-xs-2"></div>
     <div id="songs">
-        <%= f.fields_for :songs, Song.new do |song| %>
+        <%= f.fields_for :songs do |song| %>
             <%= render 'song_fields', f: song %>
         <% end %>
         <div class="links" style="text-align:center;">
@@ -12,5 +12,4 @@
             <%= link_to_remove_association "ディスクを削除", f, class: "btn btn-danger", :style=>"width:120px;" %>
         </div>
     </div>
-</div>
 </div>

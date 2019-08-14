@@ -7,6 +7,7 @@ has_many :likes
 has_many :cart_items
 has_many :discs
 
+belongs_to :artist
 belongs_to :label
 belongs_to :category
 attachment :image

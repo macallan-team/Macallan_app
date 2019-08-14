@@ -1,14 +1,14 @@
 class ManageItemsController < ApplicationController
 	def new
 		@item = Item.new
-		@category = Category.new
-		@label = Label.new
-		@artist = Artist.new
+		@discs = @item.discs.build
+		@songs = @discs.songs.build
 	end
 
 	def update
-		item = Item.find(item_params)
-		item.update
+		item = Item.find(params[:id])
+		item.update(item_params)
+		redirect_to manage_item_path(item)
 	end
 
 	def destroy
@@ -20,14 +20,10 @@ class ManageItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-		if @item.discs.nil?
-			render :new
+		if @item.save
+			redirect_to manage_item_path(@item)
 		else
-			if @item.save
-				redirect_to manage_item_path(@item)
-			else
-				render :new
-			end
+			render :new
 		end
 	end
 
@@ -41,13 +37,12 @@ class ManageItemsController < ApplicationController
 	
 	def edit
 		@item = Item.find(params[:id])
-		@category = Category.new
-		@label = Label.new
-		@artist = Artist.new
+		@disc = @item.discs.build
+		@song = @disc.songs.build
 	end
 	private
 	def item_params
-		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:label_id,:sales_status,:release_date,
+		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:artist_id,:label_id,:sales_status,:release_date,
 		discs_attributes: [:id, :_destroy,
 		songs_attributes: [:id, :disc_id, :name, :artist_id, :song_order, :_destroy]])
 	end

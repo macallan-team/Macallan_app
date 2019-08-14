@@ -16,7 +16,6 @@
             <div class="col-sm-12">
                 <table style="width:100%">
                     <tbody>
-
                         <tr><th class="col-sm-4">商品名</th>
                         <td class="col-sm-8"><%= @item.album %><%= link_to "[ 編集 ]", edit_manage_item_path, class: "pull-right" %></td></tr>
 
@@ -24,10 +23,13 @@
                         <td class="col-sm-8"><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>
                         
                         <tr><th class="col-sm-4">ジャンル</th>
-                        <td class="col-sm-8"><%= @item.category.name %></td></tr>
+                        <td class="col-sm-8"><%= check_null(@item.category.name) %></td></tr>
                         
                         <tr><th class="col-sm-4">レーベル</th>
-                        <td class="col-sm-8"><%= @item.label.name %></td></tr>
+                        <td class="col-sm-8"><%= check_null(@item.label.name) %></td></tr>
+
+                        <tr><th class="col-sm-4">アーティスト</th>
+                        <td class="col-sm-8"><%= check_null(@item.artist.name) %></td></tr>
                         
                         <tr><th class="col-sm-4">在庫数</th>
                         <td class="col-sm-8"><%= @item.stock %></td></tr>
@@ -36,10 +38,10 @@
                         <td class="col-sm-8"><%= sales_status(@item) %></td></tr>
 
                         <tr><th class="col-sm-4">発売日</th>
-                        <td class="col-sm-8"><%= @item.category.name %></td></tr>
+                        <td class="col-sm-8"><%= simple_date(@item.release_date) %></td></tr>
 
                         <tr><th class="col-sm-4">登録日</th>
-                        <td class="col-sm-8"><%= @item.created_at.strftime('%Y年%m月%d日') %></td></tr>
+                        <td class="col-sm-8"><%= simple_date(@item.created_at) %></td></tr>
 
                         <tr><th class="col-sm-4">収録内容</th>
                         <td class="col-sm-8">
@@ -52,7 +54,7 @@
                         <td class="col-sm-5">曲名</td>
                         <td class="col-sm-5">アーティスト</td></tr>
                 <% disc.songs.each do |song| %>
-                        <tr class="touch"><td class="col-sm-2"><%= song.song_order %></td>
+                        <tr class="touch"><td class="col-sm-2"><%= song.position %></td>
                         <td class="col-sm-5"><%=  song.name %></td>
                         <td class="col-sm-5"><%= song.artist.name %></td></tr>
                 <% end %>
