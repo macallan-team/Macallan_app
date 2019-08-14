@@ -11,87 +11,8 @@
     <div class="col-sm-9">
       <h2>商品登録</h2>
       <div class="box">
-        <%= form_for(@item, url: {controller: 'manage_items', action: 'create'}) do |item| %>
-        <%# 商品名 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>商品名</label></div>
-            <div class="col-sm-10">
-              <%= item.text_field :album, class: "form-control" %>
-            </div>
-          </div>
-        <%# ジャケット画像 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>ジャケット画像</label></div>
-            <div class="col-sm-10">
-              <%= item.attachment_field :image %>
-            </div>
-          </div>
-        <%# 価格 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>価格</label></div>
-            <div class="col-sm-10">
-              <%= item.text_field :price, class: "form-control" %>
-            </div>
-          </div>
-        <%# 収録内容 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-            <label>収録内容</label></div>
-            <div class="col-sm-10">
-        <%# ディスク１ %>
-          <div class="discs">
-          <%= fields_for :discs do |disc| %>
-            <%= render 'disc_fields', f: disc %>
-          <% end %>
-          <div class="links" style="text-align:center;">
-          <%= link_to_add_association 'ディスクを追加', item, :discs %>
-          </div>
-            </div><!-- col-sm-10 -->
-          </div><!-- row -->
-        <%# 在庫数 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>在庫数</label></div>
-            <div class="col-sm-10">
-              <%= item.text_field :stock, class: "form-control", :style=> "width:50px;" %>
-            </div>
-          </div>
-        <%# 販売ステータス %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>販売ステータス</label></div>
-            <div class="col-sm-10">
-              <%= item.select :sales_status, [["販売中",1], ["販売停止中",2]], :prompt => "選択してください" %>
-            </div>
-          </div>
-        <%# ジャンル %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>ジャンル</label></div>
-            <div class="col-sm-10">
-              <%= item.collection_select(:category_id, @categories, :id, :name) %>
-            </div>
-          </div>
-        <%# レーベル %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>レーベル</label></div>
-            <div class="col-sm-10">
-              <%= item.collection_select(:label_id, @labels, :id, :name) %>
-            </div>
-          </div>
-        <%# 登録ボタン %>
-          <div class="row">
-            <div class="col-sm-12" style="text-align:center;">
-              <%= item.submit "登録", class: "btn btn-default"%>
-            </div>
-          </div>
-        <% end %>
-        
-      <div>
+<%= render 'form', item: @item %>
+      </div>
     </div><!-- col-sm-9 -->
   </div><!-- row -->
 </div><!-- container -->

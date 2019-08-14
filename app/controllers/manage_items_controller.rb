@@ -4,12 +4,11 @@ class ManageItemsController < ApplicationController
 		@category = Category.new
 		@label = Label.new
 		@artist = Artist.new
-		@categories = Category.all
-		@labels = Label.all
-		@artists = Artist.all
 	end
 
 	def update
+		item = Item.find(item_params)
+		item.update
 	end
 
 	def destroy
@@ -20,8 +19,16 @@ class ManageItemsController < ApplicationController
 	end
 
 	def create
-		@item = Item.create(item_params)
-		redirect_to manage_item_path(@item)
+		@item = Item.new(item_params)
+		if @item.discs.nil?
+			render :new
+		else
+			if @item.save
+				redirect_to manage_item_path(@item)
+			else
+				render :new
+			end
+		end
 	end
 
 	def index
@@ -31,13 +38,17 @@ class ManageItemsController < ApplicationController
 	def search
 		@items = Item.all
 	end
-
+	
 	def edit
+		@item = Item.find(params[:id])
+		@category = Category.new
+		@label = Label.new
+		@artist = Artist.new
 	end
 	private
 	def item_params
-		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:label_id,:sales_status,
+		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:label_id,:sales_status,:release_date,
 		discs_attributes: [:id, :_destroy,
-			songs_attributes: [:id, :disc_id, :name, :artist_id, :song_order, :_destroy] ])
+		songs_attributes: [:id, :disc_id, :name, :artist_id, :song_order, :_destroy]])
 	end
 end
