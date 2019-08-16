@@ -1,0 +1,61 @@
+   <div class="col-sm-9">
+      <h2>削除済み商品</h2>
+      <div class="box deleted">
+        <div class="row">
+            <div class="col-xs-12">
+                <table style="width:100%">
+                    <tbody>
+                        <tr><th class="col-xs-4">商品名</th>
+                        <td class="col-xs-8"><%= @item.album %><%= link_to "[ 元に戻す ]", manage_items_path, method: :patch, class:"pull-right", data: {confirm: "復元してもよろしいですか？"} %></td></tr>
+
+                        <tr><th class="col-xs-4">ジャケット画像</th>
+                        <td class="col-xs-8"><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>
+                        
+                        <tr><th class="col-xs-4">ジャンル</th>
+                        <td class="col-xs-8"><%= check_null(@item.category.name) %></td></tr>
+                        
+                        <tr><th class="col-xs-4">レーベル</th>
+                        <td class="col-xs-8"><%= check_null(@item.label.name) %></td></tr>
+
+                        <tr><th class="col-xs-4">アーティスト</th>
+                        <td class="col-xs-8"><%= check_null(@item.artist.name) %></td></tr>
+                        
+                        <tr><th class="col-xs-4">在庫数</th>
+                        <td class="col-xs-8"><%= @item.stock %></td></tr>
+
+                        <tr><th class="col-xs-4">ステータス</th>
+                        <td class="col-xs-8"><%= sales_status(@item) %></td></tr>
+
+                        <tr><th class="col-xs-4">発売日</th>
+                        <td class="col-xs-8"><%= simple_date(@item.release_date) %></td></tr>
+
+                        <tr><th class="col-xs-4">登録日</th>
+                        <td class="col-xs-8"><%= simple_date(@item.created_at) %></td></tr>
+
+                        <tr><th class="col-xs-4">収録内容</th>
+                        <td class="col-xs-8">
+                <% @item.discs.each do |disc| %>
+                <table style="width:100%;">
+                    <tbody>
+                        <tr style="background-color:rgba(0,0,0,.1);">
+                        <th colspan="3">ディスク</th></tr>
+                        <tr><td class="col-xs-2">No.</td>
+                        <td class="col-xs-5">曲名</td>
+                        <td class="col-xs-5">アーティスト</td>
+                        </tr>
+                <% disc.songs.each do |song| %>
+                        <tr class="touch"><td class="col-xs-2"><%= song.position %></td>
+                        <td class="col-xs-5"><%=  song.name %></td>
+                        <td class="col-xs-5"><%= song.artist.name %></td>
+                        </tr>
+                <% end %>
+                   </tbody>
+                </table>
+                <% end %>
+                </td>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div><!-- col-xs-9 -->

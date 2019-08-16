@@ -8,11 +8,17 @@
       </div>
     </div>
 <!-- sidebar  ここまで -->
+<% if @item.sales_status == 'deleted' %>
+<%# ステータスがdeletedなら異なるビューを表示 %>
+  <%= render 'deleted' %>
+<% else %>
     <div class="col-sm-9">
       <h2>商品編集</h2>
       <div class="box">
+      
 <%= render 'editform', item: @item %>
       </div>
     </div><!-- col-sm-9 -->
+<% end %>
   </div><!-- row -->
 </div><!-- container -->

@@ -2,15 +2,13 @@
   <div class="row">
 <!-- sidebar  ここから -->
     <div class="col-sm-3">
-    <%= render partial: "layouts/adminsidebar" %>
+    <%= render "layouts/adminsidebar" %>
       <div class="side-box">
-        <%= form_tag(search_manage_items_path, :method => 'get') do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag 'Search', :album => nil %>
-        <% end %>
+        <%= render "search" %>
       </div>
     </div>
 <!-- sidebar  ここまで -->
+
     <div class="col-sm-9">
       <h2>商品一覧</h2>
       <div class="box">
@@ -23,24 +21,32 @@
                     <th class="col-xs-3">アーティスト</th>
                     <th class="col-xs-2">ステータス</th>
                 </tr>
-        <% @items.each do |item| %>
-                <tr class="touch"><td class="col-xs-3">
-        <%= link_to  manage_item_path(item) do %>
-        <%= item.album %>
-        <% end %></td>
+
+<% if @results.any? %>
+
+ <% @results.each do |item| %>
+                <tr class="touch">
+                    <td class="col-xs-3">
+                    <%= link_to  manage_item_path(item) do %>
+                    <%= item.album %>
+                    <% end %>
+                    </td>
                     <td class="col-xs-2">¥<%= item.price %></td>
                     <td class="col-xs-2"><%= item.stock %></td>
                     <td class="col-xs-3"><%= check_null(item.artist.name) %></td>
                     <td class="col-xs-2"><%= sales_status(item) %></td>
                 </tr>
-        <% end %>
+ <% end %>
+<% end %>
+
         <tr><td colspan="5" style="text-align:center;">
-        <%= paginate @items %></td></tr>
+        <%= paginate @results %></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
       </div>
     </div><!-- col-sm-9 -->
+
   </div><!-- row -->
 </div><!-- container -->

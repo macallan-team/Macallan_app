@@ -3,14 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
 .side-top {
     margin-top: 30px;
 }
 
-strong {
-    font-size: 1.3em;
-}
 
 .sidebar {
     box-shadow: 2px 2px 4px rgba(0,0,0,.4);
@@ -24,6 +20,10 @@ strong {
 
 .side-box {
     padding: 0 6%;
+    li {
+        margin: 3px 0;
+        margin-left: 10%;
+    }
 }
 
 
@@ -44,6 +44,11 @@ strong {
     padding: 3%;
     box-shadow: 3px 3px 6px rgba(0,0,0,.4);
     margin-bottom: 20px;
+}
+
+.deleted {
+    background-color: rgba(150,0,0,.15);
+    color: grey;
 }
 
 .form-box {
