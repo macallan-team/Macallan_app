@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
 
-
+acts_as_paranoid
 has_many :order_items
 has_many :reviews
 has_many :likes
 has_many :cart_items
-has_many :discs
+has_many :discs, dependent: :destroy
 
 belongs_to :artist
 belongs_to :label

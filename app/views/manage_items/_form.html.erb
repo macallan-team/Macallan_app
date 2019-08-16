@@ -1,97 +1,108 @@
-        <%= form_for(@item, url: {controller: 'manage_items', action: 'create'}) do |f| %>
-        <%# 商品名 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>商品名</label></div>
-            <div class="col-sm-10">
-              <%= f.text_field :album, class: "form-control", placeholder: "全角15文字まで" %>
-            </div>
-          </div>
-        <%# ジャケット画像 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>ジャケット画像</label></div>
-            <div class="col-sm-10">
-              <%= f.attachment_field :image %>
-            </div>
-          </div>
-        <%# 価格 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>価格（税抜）</label></div>
-            <div class="col-sm-10">
-              <%= f.text_field :price, class: "form-control pull-left", :style=>"width:80px;" %>
+<%= form_for(@item, url: {controller: 'manage_items', action: 'create'}) do |f| %>
+  <%# 商品名 %>
+  <div class="row form-box">
+    <div class="col-sm-2">
+      <label>商品名</label></div>
+      <div class="col-sm-10">
+        <%= f.text_field :album, class: "form-control", placeholder: "全角15文字まで" %>
+      </div>
+    </div>
+    <%# ジャケット画像 %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+      <label>ジャケット画像</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.attachment_field :image %>
+      </div>
+    </div>
+    <%# 価格 %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>価格（税抜）</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.text_field :price, class: "form-control pull-left", :style=>"width:80px;" %>
               （*半角数字）
-            </div>
-          </div>
-        <%# 収録内容 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-            <label>収録内容</label></div>
-            <div class="col-sm-10">
-        <%# ディスク１ %>
-          <div id="discs">
+      </div>
+    </div>
+    <%# 収録内容 %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>収録内容</label>
+      </div>
+      <div class="col-sm-10">
+      <%# ディスク１ %>
+        <div id="discs">
           <%= f.fields_for :discs do |disc| %>
-            <%= render 'disc_fields', f: disc %>
+          <%= render 'disc_fields', f: disc %>
           <% end %>
           <div class="links" style="text-align:center;">
-          <%= link_to_add_association 'ディスクを追加', f, :discs %>
+           <%= link_to_add_association 'ディスクを追加', f, :discs %>
           </div>
-            </div><!-- col-sm-10 -->
-          </div><!-- row -->
-        <%# 在庫数 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>在庫数</label></div>
-            <div class="col-sm-10">
-              <%= f.text_field :stock, class: "form-control pull-left", :style=> "width:50px;" %>
-            （*半角数字）
-            </div>
-          </div>
-        <%# 販売ステータス %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>販売ステータス</label></div>
-            <div class="col-sm-10">
-              <%= f.select :sales_status, [["販売中",'on_sale'], ["販売停止中",'suspention']], {:prompt => "選択してください"}, {class: "form-control"} %>
-            </div>
-          </div>
-        <%# ジャンル %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>ジャンル</label></div>
-            <div class="col-sm-10">
-              <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-control"} %>
-            </div>
-          </div>
-        <%# レーベル %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>レーベル</label></div>
-            <div class="col-sm-10">
-              <%= f.collection_select :label_id, Label.order('name'), :id, :name, {}, {class: "form-control"} %>
-            </div>
-          </div>
-        <%# アーティスト %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>アーティスト</label></div>
-            <div class="col-sm-10">
-              <%= f.collection_select :artist_id, Artist.all, :id, :name, {}, {class: "form-control"} %>
-            </div>
-          </div>
-        <%# 発売日 %>
-          <div class="row form-box">
-            <div class="col-sm-2">
-              <label>発売日</label></div>
-            <div class="col-sm-10">
-              <%= f.date_select :release_date ,{}, user_month_numbers: true, class: "form-control pull-left", :style=> "width:90px" %>
-            </div>
-          </div>
-        <%# 登録ボタン %>
-          <div class="row form-box">
-            <div class="col-sm-12" style="text-align:center;">
-              <%= f.submit "登録", class: "btn btn-default", :style=>"width: 80px;"%>
-            </div>
-          </div>
-        <% end %>
+        </div>
+      </div><!-- col-sm-10 -->
+    </div><!-- row -->
+    <%# 在庫数 %>
+    <div class="row form-box">
+    <div class="col-sm-2">
+      <label>在庫数</label>
+    </div>
+        <div class="col-sm-10">
+        <%= f.text_field :stock, class: "form-control pull-left", :style=> "width:50px;" %>
+          （*半角数字）
+       </div>
+     </div>
+    <%# 販売ステータス %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>販売ステータス</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.select :sales_status, [["販売中",'on_sale'], ["販売停止中",'suspention']], {:prompt => "選択してください"}, {class: "form-control"} %>
+      </div>
+    </div>
+    <%# ジャンル %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>ジャンル</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-control"} %>
+      </div>
+    </div>
+    <%# レーベル %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>レーベル</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.collection_select :label_id, Label.order('name'), :id, :name, {}, {class: "form-control"} %>
+      </div>
+    </div>
+    <%# アーティスト %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>アーティスト</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.collection_select :artist_id, Artist.all, :id, :name, {}, {class: "form-control"} %>
+      </div>
+    </div>
+    <%# 発売日 %>
+    <div class="row form-box">
+      <div class="col-sm-2">
+        <label>発売日</label>
+      </div>
+      <div class="col-sm-10">
+        <%= f.date_select :release_date ,{}, user_month_numbers: true, class: "form-control pull-left", :style=> "width:90px" %>
+      </div>
+    </div>
+    <%# 登録ボタン %>
+    <div class="row form-box">
+      <div class="col-sm-12" style="text-align:center;">
+        <%= f.submit "登録", class: "btn btn-default", :style=>"width: 80px;"%>
+      </div>
+    </div>
+  </div>
+<% end %>

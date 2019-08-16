@@ -12,10 +12,15 @@ class ManageItemsController < ApplicationController
 	end
 
 	def destroy
+		item = Item.find(params[:id])
+		item.destroy
+		redirect_to manage_items_path
 	end
 
 	def show
 		@item = Item.find(params[:id])
+		discs = Disc.where(item_id: @item.id)
+		
 	end
 
 	def create
@@ -33,6 +38,16 @@ class ManageItemsController < ApplicationController
 
 	def search
 		@items = Item.all
+	end
+
+	def move_higher
+		Song.find(params[:id]).move_higher
+		redirect_to manage_items_path
+	end
+
+	def move_lower
+		Song.find(params[:id]).move_lower
+		redirect_to manage_items_path
 	end
 	
 	def edit

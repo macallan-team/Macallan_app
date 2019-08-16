@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :sales_status, null: false, defalut: ""
       t.date :release_date, null: false, dafault: ""
       t.integer :artist_id
+      t.datetime :deleted_at
 
       t.timestamps
     end
