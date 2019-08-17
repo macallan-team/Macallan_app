@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   # end
 
 before_action :configure_permitted_parameters, if: :devise_controller?
+before_action :set_search
+def set_search
+  @search = Item.includes(:category, :label, discs: {songs: :artist}).where.not(sales_status: "deleted").ransack(params[:q])
+end
 
    protected
 
