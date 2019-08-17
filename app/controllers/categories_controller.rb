@@ -6,6 +6,9 @@ class CategoriesController < ApplicationController
 	end
 
 	def destroy
+		category = Category.find(params)
+		category.destroy
+		redirect_back(fallback_location: root_path)
 	end
 
 	def update

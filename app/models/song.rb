@@ -1,6 +1,7 @@
 class Song < ApplicationRecord
 
+acts_as_list :scope => :disc
 belongs_to :artist
-belongs_to :disc
+belongs_to :disc, optional: true
 
 end

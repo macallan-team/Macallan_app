@@ -1,4 +1,12 @@
-<h1>EndUser#show</h1>
-<p>氏名 : <%= @end_user.last_name %><%= @end_user.first_name %></p>
-<p>氏名（カナ）: <%= @end_user.last_kana %></p>
-<p>氏名（カナ）: <%= @end_user.first_kana %></p>
+<h1><%= @end_user.last_name %> <%= @end_user.first_name %> さんのマイページ</h1>
+<p>氏名 : <%= @end_user.last_name %> <%= @end_user.first_name %></p>
+<p>氏名（カナ）: <%= @end_user.last_kana %> <%= @end_user.first_kana %></p>
+<p>郵便番号: <%= @end_user.postal_code %></p>
+<p>住所: <%= @end_user.address %></p>
+<p>電話番号: <%= @end_user.last_kana %></p>
+<p>メールアドレス: <%= @end_user.email %></p>
+<p>パスワード: <%= @end_user.encrypted_password = "●●●●" %></p>
+
+
+<%= link_to "マイページ編集", edit_end_user_path(@end_user) %><br>
+<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>

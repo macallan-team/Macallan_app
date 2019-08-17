@@ -61,12 +61,6 @@ class EndUsers::RegistrationsController < Devise::RegistrationsController
   # end
 
 
-  # アカウント編集後、マイページに移動する
-  def after_update_path_for(resource)
-      if user_signed_in?
-        redirect_to end_user_path(current_user.id)
-      end
-  end
 
 end
 
