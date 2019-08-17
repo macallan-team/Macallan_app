@@ -18,4 +18,20 @@ module ApplicationHelper
     def simple_date(date)
         return  date.strftime('%Y年%m月%d日')
     end
+
+
+
+    
+    def resource_name
+        :end_users
+     end
+     
+     def resource
+        @resource ||= EndUser.new
+     end
+     
+     def devise_mapping
+        @devise_mapping ||= Devise.mappings[:end_users]
+     end
+
 end

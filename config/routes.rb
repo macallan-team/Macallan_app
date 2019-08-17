@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get "items/search" => "items#search", as:'search_items'
 
-  resources :end_users, only: [:new, :edit, :create, :update, :show] do
+  resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
     resource :addresses
     end

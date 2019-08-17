@@ -2,48 +2,20 @@
 <div class="container clearfix">
     <div class="row production">
     <!-- ここからジャケット写真 -->
-    <%= @items.each do |items| %>
+
+
+
+    <%= @results.each do |items| %>
         <div class="col-xs-4 image1">
             <%= attachment_image_tag items, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100", class: "images"%>
             <p><%= items.album %></p>
-
-            <p>¥<%= items.price %>(税込)</p>
-        </div>
-        <div class="col-xs-4  image2">
-            <%= attachment_image_tag items, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100"%>
-            <p><%= items.album %></p>
-
-            <p>¥<%= items.price %>(税込)</p>
-        </div>
-        <div class="col-xs-4 image3">
-            <%= attachment_image_tag items, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100"%>
-            <p><%= items.album %></p>
-
-            <p>¥<%= items.price %>(税込)</p>
-        </div>
-        <div class="col-xs-4 image4">
-            <%= attachment_image_tag items, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100"%>
-            <p><%= items.album %></p>
-
-            <p>¥<%= items.price %>(税込)</p>
-        </div>
-        <div class="col-xs-4 image5">
-            <%= attachment_image_tag items, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100"%>
-            <p><%= items.album %></p>
-
-            <p>¥<%= items.price %>(税込)</p>
-        </div>
-        <div class="col-xs-4 image6">
-            <%= attachment_image_tag items, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100"%>
-            <p><%= items.album %></p>
-
-            <p>¥<%= items.price %>(税込)</p>
-        </div>
     <% end %>
+
+
+
+
     <!-- ここまでジャケット写真 -->
     </div>
 </div>
 
 <!-- ページネイション -->
-
-<%= paginate @item, class: "paginate" %>
