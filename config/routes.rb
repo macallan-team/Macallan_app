@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'end_users/show'
+  
   devise_for :admins,controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
   #ルートでアイテムインデックス記載
   root "items#index"
   #アイテムのルーティング
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :end_users, only: [:new, :edit, :create, :update, :show] do
     resources :orders, only: [:new, :create, :update, :index]
+    resource :addresses
     end
 
   get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
