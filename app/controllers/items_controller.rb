@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 		#とりあえず試しにnewメソッド入れた
 		# @items = Item.all
 		@results = @search.result(distinct: true)
+		@items = Item.all.order(release_date: "DESC")
 		# byebug
 
 	end

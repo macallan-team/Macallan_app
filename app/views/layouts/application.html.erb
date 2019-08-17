@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <%= render"layouts/header", results: @results %>
+    <%= render"layouts/header", results: @results, items: @items %>
     <%= yield %>
     <%= render partial: "layouts/footer" %>
   </body>
