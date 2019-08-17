@@ -101,6 +101,11 @@ ActiveRecord::Schema.define(version: 2019_08_14_044652) do
     t.integer "price", null: false
     t.integer "stock", null: false
     t.integer "sales_status", null: false
+model2
+
+    t.date "release_date", null: false
+    t.integer "artist_id"
+master
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
