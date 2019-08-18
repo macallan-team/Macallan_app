@@ -4,10 +4,10 @@
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, presence: true, length: { in: 2..20 }
-  validates :first_name, presence: true, length: { in: 2..20 }
-  validates :last_kana, presence: true, length: { in: 2..20 }
-  validates :first_kana, presence: true, length: { in: 2..20 }
+  validates :last_name, presence: true, length: { in: 1..20 }
+  validates :first_name, presence: true, length: { in: 1..20 }
+  validates :last_kana, presence: true, length: { in: 1..20 }
+  validates :first_kana, presence: true, length: { in: 1..20 }
   validates :postal_code, presence: true, length: { is: 7 }
   validates :address, presence: true, length: { in: 2..80 }
 

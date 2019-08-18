@@ -101,7 +101,19 @@ ActiveRecord::Schema.define(version: 2019_08_14_044652) do
     t.integer "price", null: false
     t.integer "stock", null: false
     t.integer "sales_status", null: false
+<<<<<<< HEAD
     t.date "release_date", null: false
+=======
+<<<<<<< HEAD
+    t.date "release_date", null: false
+=======
+model2
+
+    t.date "release_date", null: false
+    t.integer "artist_id"
+master
+>>>>>>> origin/master
+>>>>>>> 27c586802f603a4c631b82bcb48c30eafa44df86
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

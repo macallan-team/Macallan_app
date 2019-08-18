@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get "items/search" => "items#search", as:'search_items'
 
-  resources :end_users, only: [:new, :edit, :create, :update, :show] do
+  resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
     end
 
@@ -36,7 +36,12 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :destroy, :update, :index]
 
   #商品管理
-  resources :manage_items
+  resources :manage_items do
+    member do
+      get :move_lower
+      get :move_higher
+    end
+  end
   get "search/manage_items" => "manage_items#search", as:"search_manage_items"
 
   #エンドユーザー管理者

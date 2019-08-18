@@ -1,17 +1,24 @@
-<%= form_for(category) do |f| %>
+<h3>関連項目の編集</h3>
+<div class="form-box">
+<%= form_for(Category.new) do |f| %>
     <label>ジャンル</label><br>
     <%= f.text_field :name, :style => "width:67%;", class: "form-control pull-left", placeholder: "ジャンル名" %>
     <%= f.submit "追加", :style => "width:33%;", class: "btn btn-default" %>
-<% end %><br>
+<% end %>
+</div>
     
-<%= form_for(label) do |f| %>
+<div class="form-box">
+<%= form_for(Label.new) do |f| %>
     <label>レーベル</label><br>
     <%= f.text_field :name, :style => "width:67%;", class: "form-control pull-left", placeholder: "レーベル名" %>
     <%= f.submit "追加", :style => "width:33%;", class: "btn btn-default" %>
 <% end %>
+</div>
 
-<%= form_for(artist) do |f| %>
+<div class="form-box">
+<%= form_for(Artist.new) do |f| %>
     <label>アーティスト</label><br>
     <%= f.text_field :name, :style => "width:67%;", class: "form-control pull-left", placeholder: "アーティスト名" %>
     <%= f.submit "追加", :style => "width:33%;", class: "btn btn-default" %>
 <% end %>
+</div>

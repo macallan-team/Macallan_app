@@ -7,10 +7,14 @@ class ItemsController < ApplicationController
 	def index
 		#とりあえず試しにnewメソッド入れた
 		# @items = Item.all
-		@items = Item.search(params[:search])
+		@results = @search.result(distinct: true)
+		@items = Item.all.order(release_date: "DESC")
+		# byebug
+
 	end
 
 	def search
+
 	end
 
 	private
