@@ -1,26 +1,58 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-xs-9 center">
+    <div class = "col-xs-2"></div>
+    <div class = "col-xs-8">
       <table class = "table">
       <h2>発送先・お支払い方法</h2>
-
+        <%= form_for(@order) do |f| %>
         <tr>
-          <td>
-            発送先
-          </td>
-          <td>
-            <%# ラジオボタンで選択 %>
-            <p>
-              <label>
-                <%= f.radio_button :address,  %>登録住所を使用する
-              </label>
-            </p>
-            <p>
-              <label>
-                <%= f.radio_button :address,  %>別の住所を使用する
-              </label>
-            </p>
-          </td>
-          <td></td>
+          <div class = "row">
+            <div class = "col-xs-3">
+              発送先
+            </div>
+            <div class = "col-xs-9">
+              <%# ラジオボタンで選択 %>
+              <p>
+                <label>
+          <%= f.radio_button :address,  %>登録住所を使用する
+                </label>
+              </p>
+              <p>
+                <label>
+          <%= f.radio_button :address,  %>別の住所を使用する
+                </label>
+              </p>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-xs-3">
+              お支払い方法
+            </div>
+            <div class = "col-xs-9">
+              <p>
+                <label>
+          <%= f.radio_button :address,  %>代引き
+                </label>
+              </p>
+              <p>
+                <label>
+          <%= f.radio_button :address,  %>クレジットカード
+                </label>
+              </p>
+
+              <%# pay.jpを入れる %>
+              <p>
+                <label>
+          <%= f.radio_button :address,  %>銀行振込
+                </label>
+              </p>
+            </div>
+          </div>
         </tr>
-        
+        <%= f.submit " 確認画面に進む " %>
+        <% end %>
+      </table>
+    </div>
+    <div class = "col-xs-2"></div>
+  </div>
+</div>
