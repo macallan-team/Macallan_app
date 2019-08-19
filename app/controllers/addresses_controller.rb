@@ -16,11 +16,13 @@ class AddressesController < ApplicationController
         address.destroy
     end
     def index
-        @addresses = Address.all
+        @addresses = Address.where(end_user_id: current_end_user.id)
     end
     def create
         address = Address.new(address_params)
-        address.save
+        address.end_user_id = current_end_user.id
+        address.save!
+        redirect_to addresses_path
     end
     def show
         @address = Address.find(params[:id])

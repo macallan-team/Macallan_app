@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
-    resource :addresses
+
+    resources :addresses
     end
 
   get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
