@@ -1,23 +1,24 @@
 class LikesController < ApplicationController
 
-	before_action :set_item
+before_action :set_variables
 
-	def create
-		@like = Like.create(end_user_id: current_user.id, item_id: params[:item_id])
-		@likes = Like.where(item_id: params[:item_id])
-		@item.reload
-	end
+def create
+	like = current_end_user.likes.new(item_id: @item.id)
+	like.save
+end
 
-	def destroy
-		like = Like.find_by(end_user_id: current_user.id, item_id: params[:item_id])
-		like.destroy
-		@likes = Like.where(item_id: params[:item_id])
-		@item.reload
-	end
+def destroy
+	like = current_end_user.likes.find_by(item_id: @item.id)
+	like.destroy
+end
 
-	private
-	def set_item
-		@item = Item.find(params[:item_id])
-	end
+# ストロングパラメータ
+private
+def set_variables
+	@item = Item.find(params[:item_id])
+	@id_name = "#like-link-#{@item.id}"
+	@id_heart = "#heart-#{@item.id}"
+end
+
 
 end
