@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resource :likes, only: [:create, :destroy]
   end
 
-  resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy, :index] do
+  resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
 
     resources :addresses
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     get 'change_password'
     end
    end
+
+resources :admins, only: [:index]
 
   get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
   get "end_users/:id/orders/complete" => "orders#complete", as:"complete_order"
