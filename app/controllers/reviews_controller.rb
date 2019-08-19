@@ -7,10 +7,8 @@ class ReviewsController < ApplicationController
     def create
         @review = Review.new(review_params)
         @review.end_user_id = current_end_user.id
-        @reviews = Review.all
-        @reviews = @item.reviews
         @review.save
-
+        redirect_to item_path(@review.item)
     end
 
     def destroy
@@ -38,7 +36,7 @@ class ReviewsController < ApplicationController
 # # ストロングパラメータ
 private
 def review_params
-    params.require(:review).permit(:name, :comment)
+    params.require(:review).permit(:name, :comment, :item_id)
 end
 
 

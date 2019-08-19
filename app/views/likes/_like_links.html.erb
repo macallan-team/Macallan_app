@@ -1,0 +1,14 @@
+<%# いいね機能 %>
+<div id="like-link-<%= item.id %>">
+    <% if item.favorited_by?(current_end_user) %>
+        <%= link_to item_likes_path(item.id), method: :delete, remote: true do %>
+        <span class="btn btn-default glyphicon glyphicon-heart" id="heart-<%= item.id %>"></span>
+        <%= item.likes.count.to_s %>
+        <% end %>
+    <% else %>
+        <%= link_to item_likes_path(item.id), method: :post, remote: true do %>
+        <span class="btn btn-default glyphicon glyphicon-heart-empty" id="heart-<%= item.id %>"></span>
+        <% item.likes.count.to_s %>
+        <% end %>
+    <% end %>
+</div>
