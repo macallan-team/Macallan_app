@@ -20,7 +20,6 @@ class CartItemsController < ApplicationController
 	def index
 		@new_cart_item = CartItem.new
 		@cart_items = CartItem.all
-		@cart_item = CartItem.find(params[:id])
 	end
 
 		# 投稿データのストロングパラメーター

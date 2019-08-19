@@ -1,0 +1,15 @@
+// Place all the styles related to the Addresses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.address-box{
+    border-radius: 15px;
+    background-color: grey;
+    color: black;
+    padding: 10px;
+    *{
+        text-decoration: none;
+    }
+    &:hover{
+    }
+}

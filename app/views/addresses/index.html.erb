@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>配送先一覧</h2>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <% @addresses.each do |address| %>
+            <%= link_to edit_end_user_address_path(current_end_user,address) do %>
+            <div class="address-box text-center">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr><td>配送先名</td>
+                        <td><%= address.name %></td><tr>
+                        
+                        <tr><td>住所</td>
+                        <td><%= address.address %></td></tr>
+
+                        <tr><td>郵便番号</td>
+                        <td><%= address.postal_code %></td></tr>
+
+                        <tr><td>電話番号</td>
+                        <td><%= address.phone_number %></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
