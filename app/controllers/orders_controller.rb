@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
+	before_action :authenticate_end_user!
 	def new
 		@order = Order.new
-		@orders = Order.all
+		@addresses = Address.where(end_user_id: current_end_user.id)
 	end
 
 	def confirm
-		# ユーザーがカートに入れた商品を条件式で表示
-		@order = Order.where(params[:id])
+		@order = Order.new(order_params)
 	end
 
 	def create
@@ -22,5 +22,8 @@ class OrdersController < ApplicationController
 	def complete
 
 	end
-
+	private
+	def order_params
+		params.require(:order).permit(:payment,:use_address)
+	end
 end
