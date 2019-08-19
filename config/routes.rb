@@ -26,11 +26,14 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :update, :index]
 
     resources :addresses
+    collection do
+    get 'change_password'
     end
+   end
 
   get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
   get "end_users/:id/orders/complete" => "orders#complete", as:"complete_order"
-  get 'end_users/change_password/' => 'end_users#change_password', as:'change_password'
+  # get 'end_users/password/change' => 'end_users#change_password', as:'change_password'
 
   #カートあいてむ
   resources :cart_items, only: [:create, :destroy, :update, :index]
