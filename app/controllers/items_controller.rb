@@ -1,24 +1,23 @@
 class ItemsController < ApplicationController
 	def show
+		# require "byebug"; byebug
 		@item = Item.find(params[:id])
-		@item.user_id = current_user.id
+		@reviews = @item.reviews
+		@review = Review.new
+		@discs = @item.discs
 	end
 
 	def index
-		#とりあえず試しにnewメソッド入れた
-		# @items = Item.all
-		@results = @search.result(distinct: true)
-		# byebug
-
+		@results = @search.result(distinct: true).order(release_date: "DESC")
 	end
 
-	def search
 
+	def search
 	end
 
 	private
 	def item_params
-		params.require(:user).permit(:name, :price, :image)
+		params.require(:end_user).permit(:name, :price, :image)
 	end
 
 
