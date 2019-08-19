@@ -1,15 +1,5 @@
 class ApplicationController < ActionController::Base
 
-
-  def after_sign_in_path_for(resource)
-    end_user_path(resource) # ログイン後にマイページへ遷移するpathを設定
-  end
-
-  def after_sign_out_path_for(resource)
-    root_path(resource) # ログイン後にマイページへ遷移するpathを設定
-  end
-
-
   # def after_sign_out_path_for(resource)
   # 	root_path　#ログアウト後は商品の一覧ページに遷移
   # end

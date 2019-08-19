@@ -3,6 +3,15 @@
 class EndUsers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def after_sign_in_path_for(resource)
+    end_user_path(resource) # ログイン後にマイページへ遷移するpathを設定
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path(resource) # ログイン後にマイページへ遷移するpathを設定
+  end
+
+
   # GET /resource/sign_in
   # def new
   #   super
