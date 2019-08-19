@@ -13,19 +13,18 @@ class ManageItemsController < ApplicationController
 
 	def destroy
 		item = Item.find(params[:id])
-		item.destroy
-		redirect_to manage_items_path
+		item.update(sales_status: 'deleted')
+		redirect_to manage_item_path(params[:id])
 	end
 
 	def show
 		@item = Item.find(params[:id])
-		discs = Disc.where(item_id: @item.id)
-		
+		@search = Item.ransack(params[:q])
 	end
 
 	def create
 		@item = Item.new(item_params)
-		if @item.save
+		if @item.save!
 			redirect_to manage_item_path(@item)
 		else
 			render :new
@@ -33,11 +32,10 @@ class ManageItemsController < ApplicationController
 	end
 
 	def index
-		@items = Item.all.reverse_order.page(params[:page]).per(20)
-	end
-
-	def search
-		@items = Item.all
+		# Itemテーブルを検索
+		@search = Item.ransack(params[:q])
+		# 検索結果・ページネーション
+		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page])
 	end
 
 	def move_higher
@@ -52,12 +50,10 @@ class ManageItemsController < ApplicationController
 	
 	def edit
 		@item = Item.find(params[:id])
-		@disc = @item.discs.build
-		@song = @disc.songs.build
 	end
 	private
 	def item_params
-		params.require(:item).permit(:album,:image,:price,:stock,:status,:category_id,:artist_id,:label_id,:sales_status,:release_date,
+		params.require(:item).permit(:album,:image,:price,:stock,:category_id,:artist_id,:label_id,:sales_status,:release_date,
 		discs_attributes: [:id, :_destroy,
 		songs_attributes: [:id, :disc_id, :name, :artist_id, :song_order, :_destroy]])
 	end

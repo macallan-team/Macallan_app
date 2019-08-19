@@ -8,7 +8,6 @@
 
 
 Admin.create!(
-    email: "admin@admin.com"
+    email: "admin@admin.com",
     password: "111111"
-    password_confimation: "111111"
 )
