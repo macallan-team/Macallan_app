@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   #レーベル
   resources :labels, only: [:create, :destroy, :update]
 
-
+  # レビュー
+  resources :reviews
 
 end
