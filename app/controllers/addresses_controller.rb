@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
     def update
         address =  Address.find(params[:id])
         address.update(address_params)
-        redirect_to addresses_path
+        redirect_to end_user_addresses_path(current_end_user)
     end
     def edit
         @address = Address.find(params[:id])
@@ -21,8 +21,8 @@ class AddressesController < ApplicationController
     def create
         address = Address.new(address_params)
         address.end_user_id = current_end_user.id
-        address.save!
-        redirect_to addresses_path
+        address.save
+        redirect_to end_user_addresses_path(current_end_user)
     end
     def show
         @address = Address.find(params[:id])

@@ -2,10 +2,11 @@
   <div class = "row">
     <div class="col-xs-8 col-xs-offset-2" style="text-align:center;">
     <table class="table">
-      <thead><tr><th>商品名</th><th>個数</th><th></th></tr></thead>
+      <thead><tr><th></th><th>商品名</th><th>個数</th><th></th></tr></thead>
       <tbody>
       <% @cart_items.each do |cart_item| %>
-      <tr><td><%= cart_item.item.album %></td>
+      <tr><td><%= attachment_image_tag cartitem.item, :image, :fill, 100,100, fallback: "no_image.jpg", :size=>"100x100",class:"images" %></td>
+      <td><%= cart_item.item.album %></td>
       <td><%= cart_item.count %></td>
       <td><%= link_to "削除", cart_item_path(cart_item), method: :delete %></td></tr>
       <% end %>

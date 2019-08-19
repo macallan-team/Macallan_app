@@ -24,8 +24,9 @@ Rails.application.routes.draw do
 
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
-
     resources :addresses
+  end
+  post 'end_users/:end_user_id/orders/confirm/' => "order#confirm", as:"confirm_end_user_order"
     collection do
     get 'change_password'
     end
@@ -33,7 +34,6 @@ Rails.application.routes.draw do
 
 resources :admins, only: [:index]
 
-  get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
   get "end_users/:id/orders/complete" => "orders#complete", as:"complete_order"
   # get 'end_users/password/change' => 'end_users#change_password', as:'change_password'
 
