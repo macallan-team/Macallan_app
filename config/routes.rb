@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins,controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   end
   post 'end_users/:end_user_id/orders/confirm/' => "order#confirm", as:"confirm_end_user_order"
 
-   end
 
 resources :admins, only: [:index]
 
