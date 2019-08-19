@@ -13,36 +13,36 @@
       <h2>商品一覧</h2>
       <div class="box">
         <div class="row"><div class="col-xs-12">
-            <table style="width:100%; margin-bottom:-10px;">
+            <table class="table table-striped table-responsive">
+                <thead>
+                 <tr><th>ID</th>
+                    <th>商品名</th>
+                    <th>値段</th>
+                    <th>在庫</th>
+                    <th>アーティスト</th>
+                    <th>ステータス</th>
+                </tr></thead>
                 <tbody>
-                 <tr><th class="col-xs-3">商品名</th>
-                    <th class="col-xs-2">値段</th>
-                    <th class="col-xs-2">在庫</th>
-                    <th class="col-xs-3">アーティスト</th>
-                    <th class="col-xs-2">ステータス</th>
-                </tr>
-
 <% if @results.any? %>
 
  <% @results.each do |item| %>
-                <tr class="touch">
-                    <td class="col-xs-3">
+                <tr>
+                    <td><%= item.id %></td>
+                    <td>
                     <%= link_to  manage_item_path(item) do %>
                     <%= item.album %>
                     <% end %>
                     </td>
-                    <td class="col-xs-2">¥<%= item.price %></td>
-                    <td class="col-xs-2"><%= item.stock %></td>
-                    <td class="col-xs-3"><%= check_null(item.artist.name) %></td>
-                    <td class="col-xs-2"><%= sales_status(item) %></td>
+                    <td>¥<%= item.price %></td>
+                    <td><%= item.stock %></td>
+                    <td><%= check_null(item.artist.name) %></td>
+                    <td><%= sales_status(item) %></td>
                 </tr>
  <% end %>
 <% end %>
-
-        <tr><td colspan="5" style="text-align:center;">
-        <%= paginate @results %></td></tr>
                     </tbody>
                 </table>
+                <%= paginate @results %>
             </div>
         </div>
       </div>

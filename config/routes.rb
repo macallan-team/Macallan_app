@@ -22,8 +22,6 @@ Rails.application.routes.draw do
   resource :likes, only: [:create, :destroy]
   end
 
-  get "items/search" => "items#search", as:'search_items'
-
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
 
@@ -32,6 +30,7 @@ Rails.application.routes.draw do
 
   get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
   get "end_users/:id/orders/complete" => "orders#complete", as:"complete_order"
+  get 'end_users/change_password/' => 'end_users#change_password', as:'change_password'
 
   #カートあいてむ
   resources :cart_items, only: [:create, :destroy, :update, :index]
@@ -41,9 +40,9 @@ Rails.application.routes.draw do
     member do
       get :move_lower
       get :move_higher
+      get :restore
     end
   end
-  get "search/manage_items" => "manage_items#search", as:"search_manage_items"
 
   #エンドユーザー管理者
   resources :manage_end_users
@@ -51,7 +50,6 @@ Rails.application.routes.draw do
 
   #注文管理
   resources :manage_orders
-  get "manage_orders/search" => "manage_orders#search", as:"search_manage_order"
 
   #カテゴリー
   resources :categories, only: [:create, :destroy, :update]
