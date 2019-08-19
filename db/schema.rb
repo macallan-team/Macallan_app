@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_044652) do
+ActiveRecord::Schema.define(version: 2019_08_19_062410) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id", null: false
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 2019_08_14_044652) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carriages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "end_user_id", null: false
@@ -50,13 +55,6 @@ ActiveRecord::Schema.define(version: 2019_08_14_044652) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "costs", force: :cascade do |t|
-    t.integer "tax", null: false
-    t.integer "carriage", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,10 +100,6 @@ ActiveRecord::Schema.define(version: 2019_08_14_044652) do
     t.integer "price", null: false
     t.integer "stock", null: false
     t.integer "sales_status", null: false
-    t.date "release_date", null: false
-    t.integer "artist_id"
-    t.date "release_date", null: false
-    t.date "release_date", null: false
     t.date "release_date", null: false
     t.integer "artist_id"
     t.datetime "created_at", null: false
@@ -158,6 +152,11 @@ ActiveRecord::Schema.define(version: 2019_08_14_044652) do
     t.integer "artist_id"
     t.string "name", null: false
     t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taxes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

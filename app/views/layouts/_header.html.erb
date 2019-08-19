@@ -1,28 +1,29 @@
 <header class="container-fluid">
     <div class="row">
-        <div class="col-xs-4 head-left"></div>
-        <div class="col-xs-4 head-center">
+        <div class="col-xs-3 col-sm-4 head-left"></div>
+        <div class="col-xs-4 col-sm-4 head-center">
             <%= link_to root_path, class: "header-link" do %>
             <h1>Macallan</h1><% end %>
         </div>
-        <div class="col-xs-4 head-right head-menu">
+        <div class="col-xs-5 col-sm-4 head-right head-menu">
         <%# ハンバーガーメニュー機能 %>
 
             <%= link_to cart_items_path do %>
             <div class="menu pull-right">
-                <div id="humburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                    <span class="top"></span>
+                    <span class="middle"></span>
+                    <span class="bottom"></span>
             </div>
             <% end %>
         <%# ログイン機能 %>
             <div class="login-status pull-right">
                 <% if end_user_signed_in? %>
-                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %><br>
+                <%= link_to cart_items_path do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span>カート(<%= current_end_user.cart_items.count%>)
+                <% end %>
                 <% else %>
-                <%= link_to "ログイン", new_end_user_session_path %>
+                <%= link_to "ログイン", new_end_user_session_path %><br>
                 <%= link_to "新規登録", new_end_user_registration_path %>
                 <% end %>
             </div>
@@ -41,7 +42,8 @@
                 <%= f.submit '検索' %>
             </div>
             <div class="search-form">
-                <%= f.search_field :album_or_discs_songs_artist_name_or_label_name_or_category_name_cont, placeholder: "CD アーティスト名 曲名" %>
+                <%= f.search_field :album_or_artist_name_or_label_name_or_discs_songs_name_cont_any, placeholder: "CD・アーティスト・曲名で検索" %>
+            </div>
             </div>
             <% end %>
         </div>
