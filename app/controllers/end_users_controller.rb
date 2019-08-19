@@ -19,18 +19,11 @@ class EndUsersController < ApplicationController
    else
    render :edit
    end
-
   end
 
   def change_password
  @end_user = current_end_user
   end
-
-
-
-
-
-
 
 
  private

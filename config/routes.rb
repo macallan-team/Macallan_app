@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resource :likes, only: [:create, :destroy]
   end
 
-  resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
+  resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy, :index] do
     resources :orders, only: [:new, :create, :update, :index]
 
     resources :addresses
