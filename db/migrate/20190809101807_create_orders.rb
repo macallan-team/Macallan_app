@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.datetime :purchased_at, null: false, defalut: ""
       t.integer :shipping_status, null: false, defalut: ""
       t.integer :total_price, null: false, defalut: ""
+      t.integer :payment, null: false
 
       t.timestamps
     end

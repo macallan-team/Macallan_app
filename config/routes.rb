@@ -24,11 +24,10 @@ Rails.application.routes.draw do
 
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
-
     resources :addresses
-    end
+  end
+  post 'end_users/:end_user_id/orders/confirm/' => "order#confirm", as:"confirm_end_user_order"
 
-  get 'end_users/:id/orders/confirm' => 'orders#confirm', as:'confirm_order'
   get "end_users/:id/orders/complete" => "orders#complete", as:"complete_order"
   get 'end_users/change_password/' => 'end_users#change_password', as:'change_password'
 

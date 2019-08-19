@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.datetime "purchased_at", null: false
     t.integer "shipping_status", null: false
     t.integer "total_price", null: false
+    t.integer "payment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
