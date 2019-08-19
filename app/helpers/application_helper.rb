@@ -40,11 +40,12 @@ module ApplicationHelper
         else
             return "sold out"
         end
-
-
     end
 
-
+    def postal_hyphen(postal_code)
+        postal_code = postal_code.split("").insert(3, '-').join
+        return postal_code
+    end
 
      def devise_mapping
         @devise_mapping ||= Devise.mappings[:end_users]

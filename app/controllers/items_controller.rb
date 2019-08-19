@@ -1,23 +1,18 @@
 class ItemsController < ApplicationController
 	def show
-		# require "byebug"; byebug
 		@item = Item.find(params[:id])
-		@reviews = @item.reviews
-		@review = Review.new
-		@discs = @item.discs
+		@reviews = Review.all
+		@cart_item = CartItem.new
+		
+		
 	end
 
 	def index
-		@results = @search.result(distinct: true).order(release_date: "DESC")
-	end
-
-
-	def search
-	end
-
-	private
-	def item_params
-		params.require(:end_user).permit(:name, :price, :image)
+		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page]).per(15)
+		respond_to do |format|
+			format.html
+			format.js
+		end	
 	end
 
 

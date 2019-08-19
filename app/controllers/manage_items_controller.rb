@@ -14,12 +14,12 @@ class ManageItemsController < ApplicationController
 	def destroy
 		item = Item.find(params[:id])
 		item.update(sales_status: 'deleted')
-		redirect_to manage_item_path(params[:id])
+		redirect_to '/manage_items/?q%5Bsales_status_not_eq%5D=2'
 	end
 
 	def show
-		@item = Item.find(params[:id])
 		@search = Item.ransack(params[:q])
+		@item = Item.find(params[:id])
 	end
 
 	def create
@@ -32,20 +32,28 @@ class ManageItemsController < ApplicationController
 	end
 
 	def index
-		# Itemテーブルを検索
-		@search = Item.ransack(params[:q])
 		# 検索結果・ページネーション
+		@search = Item.ransack(params[:q])
 		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page])
 	end
 
 	def move_higher
 		Song.find(params[:id]).move_higher
-		redirect_to manage_items_path
+		song = Song.find(params[:id])
+		redirect_to manage_item_path(song.disc.item)
 	end
 
 	def move_lower
 		Song.find(params[:id]).move_lower
-		redirect_to manage_items_path
+		song = Song.find(params[:id])
+		redirect_to manage_item_path(song.disc.item)
+	end
+
+	def restore
+		item = Item.find(params[:id])
+		item.sales_status = 'suspension'
+		item.save
+		redirect_to manage_item_path(item)
 	end
 	
 	def edit
