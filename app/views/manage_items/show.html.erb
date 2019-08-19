@@ -23,17 +23,17 @@
                         <td class="col-sm-8"><%= @item.album %><%= link_to "[ 商品削除 ]", manage_item_path, method: :delete, class:"pull-right", data: { confirm: "削除してもよろしいですか？\n※削除後は削除済み一覧から復元が可能です。" } %><%= link_to "[ 編集 ]", edit_manage_item_path, class: "pull-right" %></td></tr>
 
                         <tr><th class="col-sm-4">ジャケット画像</th>
-                        <td class="col-sm-8"><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>
-                        
+                        <td class="col-sm-8"><%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "no_image.jpg" %></td></tr>
+
                         <tr><th class="col-sm-4">ジャンル</th>
                         <td class="col-sm-8"><%= check_null(@item.category.name) %></td></tr>
-                        
+
                         <tr><th class="col-sm-4">レーベル</th>
                         <td class="col-sm-8"><%= check_null(@item.label.name) %></td></tr>
 
                         <tr><th class="col-sm-4">アーティスト</th>
                         <td class="col-sm-8"><%= check_null(@item.artist.name) %></td></tr>
-                        
+
                         <tr><th class="col-sm-4">在庫数</th>
                         <td class="col-sm-8"><%= @item.stock %></td></tr>
 

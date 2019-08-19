@@ -21,15 +21,31 @@ module ApplicationHelper
 
 
 
-    
+
     def resource_name
         :end_users
      end
-     
+
      def resource
         @resource ||= EndUser.new
      end
-     
+
+    def stock_check(item)
+        if item.sales_status == "on_sale"
+            if item.stock <= 0
+                return "sold_out"
+            else
+                return "販売中"
+            end
+        else
+            return "sold out"
+        end
+
+
+    end
+
+
+
      def devise_mapping
         @devise_mapping ||= Devise.mappings[:end_users]
      end
