@@ -23,5 +23,10 @@ validates :category_id, presence: true
 validates :label_id, presence: true
 
 
+# いいね機能
+def favorited_by?(end_user)
+    likes.where(end_user_id: end_user.id).exists?
+end
+
 
 end
