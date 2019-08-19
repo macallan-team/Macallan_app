@@ -3,6 +3,9 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ]
+  prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
+  before_action :if_not_admins
 
   # GET /resource/sign_up
   # def new
@@ -59,4 +62,25 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [
+      :last_name,
+      :first_name,
+      :last_kana,
+      :first_kana,
+      :postal_code,
+      :address,
+      :phone_number
+    ])
+  end
+
+
+
+  private
+  def if_not_admin
+    redirect_to root_path unless current_admin.admin?
+  end
+
 end
