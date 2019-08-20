@@ -1,0 +1,18 @@
+                <table class="table table-striped table-responsive">
+                        <thead><tr class="info"><th colspan="4">ディスク</th></tr>
+                        <tbody>
+                        <tr><td>No.</td>
+                        <td>曲名</td>
+                        <td>アーティスト</td>
+                        <td></td></tr></thead>
+                <% disc.songs.each do |song| %>
+                        <tr><td><%= song.position %></td>
+                        <td><%=  song.name %></td>
+                        <td><%= song.artist.name %></td>
+                        <td class="sort-btns">
+                        <%= song.first? ? ' '.html_safe : link_to('▲', :action => 'move_higher', :id => song, remote: true) %>
+                        <%= song.last? ? ' '.html_safe : link_to('▼', :action => 'move_lower', :id => song, remote: true) %>
+                        </td></tr>
+                <% end %>
+                   </tbody>
+                </table>

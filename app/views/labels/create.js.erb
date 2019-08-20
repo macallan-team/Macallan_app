@@ -1,0 +1,5 @@
+$('#label-form').val("");
+$('#label > option').remove();
+<% Label.all.order('name').each do |label| %>
+$('#label').append($('<option>').html("<%= label.name %>").val("<%= label.id %>"));
+<% end%>

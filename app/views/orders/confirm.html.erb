@@ -1,50 +1,39 @@
-<%# 購入確認画面 %>
-<div class="container">
-    <div class="row">
-        <p>ご注文確認</p>
-        <%# 購入商品 %>
-        <%= @orders.each do |o| %>
-        <%# 商品名 %>
-        <%= o.item.id %>
-        <%# アーティスト名 %>
-        <%= o.artist.id %>
-        <%# 数量 %>
-        <%= o.count %>
-        <%# 価格 %>
-        <%= o.price %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-xs-8 col-xs-offset-2 text-center">
+      <h2>ご注文確認</h2>
+      <p>以下の内容でよろしければ確定ボタンを押してください。</p>
+      <div class="box text-left">
+        <h3>ご購入内容</h3>
+        <table class="table">
+          <tbody>
+            <tr><th class="col-xs-6">商品名</th><th class="col-xs-3">数量</th><th class="col-xs-3"></th></tr>
+            <% @cart_items.each do |cart_item| %>
+            <tr><td><%= cart_item.item.album %></td><td class="text-right"><%= cart_item.item.count %></td><td><%= total_price(cart_item) %></td></tr>
+            <% end %>
+            <tr><td></td><td></td><td class="text-right">送料　¥500</td></tr>
+            <tr><td></td><td></td><th class="text-right">計 ¥999</th></tr>
+          </tbody>
+        </table>
+
+        <h3>配送先</h3>
+          <table class="table table-responsive table-bordered table-condensed">
+            <tbody>
+              <tr><th class="col-xs-4">配送先氏名</th><td class="col-xs-8"><%= @shipping_name %></td></tr>
+              <tr><th>電話番号</th><td><%= @shipping_phone_number %></td></tr>
+              <tr><th>住所</th><td>〒<%= postal_hyphen(@shipping_postal_code) %></td></tr>
+              <tr><th></th><td><%= @shipping_address %></td></tr>
+            </tbody>
+          </table>
+        </label>
+        <%= form_with model: @order,url: {:action=>"create",:controller=>"orders"} do |f| %>
+        <%= f.hidden_field :shipping_name,:value=>@shipping_name %>
+        <%= f.hidden_field :shipping_address,:value=>@shipping_address %>
+        <%= f.hidden_field :shipping_postal_code,:value=>@shipping_postal_code %>
+        <%= f.hidden_field :shipping_phone_number,:value=>@shipping_phone_number %>
+        <%= f.submit "注文を確定", class:"btn btn-default center-block"%>
         <% end %>
-
-        <%# 購入者情報 %>
-        <%= @end_user.each do |e| %>
-        <%# 氏名 %>
-        <%= e.name %>
-        <%# 郵便番号 %>
-        <%= e.postal_code %>
-        <%# 発送先住所 %>
-        <%= e.address %>
-        <%# お支払い方法 %>
-        <p>お支払い方法</p>
-        <tbody>
-        <tr><p>代引き</p></tr>
-        <tr><p>カード</p></tr>
-        <tr><p>銀行</p></tr>
-        </tbody>
-        <% end %>
-
-        <%= @cost.each do |c| %>
-        <%# お支払い合計 %>
-        <%# 小計 %>
-        <%= c.total_price %>
-        <%# 送料 %>
-        送料　¥500
-
-        <%# 合計金額 %>
-        <%= c.total_price %>
-        <% end %>
-        <%= c.total_price to_i + 500 %>
-        <%# 購入を確定する %>
-        <%= link_to "購入を確定する", complete_order_path, method: :post, data: {confirm: "本当に購入しますか？"} %>
-        <%# 購入完了画面に遷移する %>
-
+      </div>
     </div>
+  </div>
 </div>

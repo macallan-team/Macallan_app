@@ -20,10 +20,10 @@
                 <table class="table table-responsive">
                     <tbody>
                         <tr><th>ID</th>
-                        <td><%= @item.id %></td></tr>
+                        <td><%= @item.id %><%= link_to "[ 商品削除 ]", manage_item_path, method: :delete, class:"pull-right", data: { confirm: "ステータスを「削除済み」に変更します。" } %><%= link_to "[ 編集 ]", edit_manage_item_path, class: "pull-right" %></td></tr>
 
                         <tr><th>商品名</th>
-                        <td><%= @item.album %><%= link_to "[ 商品削除 ]", manage_item_path, method: :delete, class:"pull-right", data: { confirm: "ステータスを「削除済み」に変更します。" } %><%= link_to "[ 編集 ]", edit_manage_item_path, class: "pull-right" %></td></tr>
+                        <td><%= @item.album %></td></tr>
 
                         <tr><th>ジャケット画像</th>
                         <td><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>
@@ -51,28 +51,11 @@
 
                         <tr><th>収録内容</th>
                         <td>
-                        <div class="sort">
                 <% @item.discs.each do |disc| %>
-                <table class="table table-striped table-responsive">
-                        <thead><tr class="info"><th colspan="4">ディスク</th></tr>
-                        <tbody>
-                        <tr><td>No.</td>
-                        <td>曲名</td>
-                        <td>アーティスト</td>
-                        <td></td></tr></thead>
-                <% disc.songs.each do |song| %>
-                        <tr><td><%= song.position %></td>
-                        <td><%=  song.name %></td>
-                        <td><%= song.artist.name %></td>
-                        <td class="sort-btns">
-                        <%= song.first? ? ' '.html_safe : link_to('▲', :action => 'move_higher', :id => song) %>
-                        <%= song.last? ? ' '.html_safe : link_to('▼', :action => 'move_lower', :id => song) %>
-                        </td></tr>
-                <% end %>
-                   </tbody>
-                </table>
-                <% end %>
+                        <div class="sort" id="disc-<%= disc.id %>">
+                        <%= render 'sort', disc: disc %>
                         </div>
+                <% end %>
                 </td>
                 </tbody>
               </table>

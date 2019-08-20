@@ -1,5 +1,9 @@
 class CartItemsController < ApplicationController
 	before_action :authenticate_end_user!
+	before_action :exclusion
+
+	def exclusion
+	end
 
 	def create
 		cart_item = current_end_user.cart_items.find_by(item_id: cart_item_params[:item_id])
@@ -7,11 +11,9 @@ class CartItemsController < ApplicationController
 			cart_item = CartItem.new(cart_item_params)
 			cart_item.end_user_id = current_end_user.id
 			cart_item.save
-			redirect_to item_path(cart_item.item)
 		else
 			cart_item.count += cart_item_params[:count].to_i
 			cart_item.save
-			redirect_to item_path(cart_item.item)
 		end
 	end
 
