@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   end
-  post 'end_users/:end_user_id/orders/confirm/' => "order#confirm", as:"confirm_end_user_order"
+  post 'end_users/:end_user_id/orders/confirm/' => "orders#confirm", as:"confirm_end_user_order"
 
 
 resources :admins, only: [:index]

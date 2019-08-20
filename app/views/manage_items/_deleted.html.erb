@@ -5,8 +5,11 @@
             <div class="col-sm-12">
                 <table class="table table-responsive">
                     <tbody>
+                        <tr><th>ID</th>
+                        <td><%= @item.id %><%= link_to "[ 元に戻す ]", restore_manage_item_path, method: :get, class:"pull-right", data: { confirm: "ステータスを「削除済み」から「販売停止中」に変更します。" } %></td></tr>
+
                         <tr><th>商品名</th>
-                        <td><%= @item.album %><%= link_to "[ 元に戻す ]", restore_manage_item_path, method: :get, class:"pull-right", data: { confirm: "ステータスを「削除済み」から「販売停止中」に変更します。" } %></td></tr>
+                        <td><%= @item.album %></td></tr>
 
                         <tr><th>ジャケット画像</th>
                         <td><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>

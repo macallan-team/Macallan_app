@@ -34,15 +34,15 @@
           <% end %>
           <% end %>
         </div>
+          <p class="text-center" style="margin-top:-10px;"><%= link_to "配送先を追加する", new_end_user_address_path %></p>
+
         <h3>お支払方法</h3>
         <div class="box-radius">
-          <label><%= f.radio_button :payment, 'cash_on_delivery'%>代引き</label>
+          <label><%= f.radio_button :payment, 'cash_on_delivery', :checked=>'checked'%>代引き</label><br>
           <label><%= f.radio_button :payment, 'bank_transfer'%>銀行振込</label>
-          <label><%= f.radio_button :payment, 'card_payment'%>カード払い</label>
-          
+
         </div>
         <div class="text-center">
-          <p><%= link_to "配送先を追加する", new_end_user_address_path %></p>
         
         <%= f.submit "確認画面へ進む", class:"btn btn-default"%>
         </div>

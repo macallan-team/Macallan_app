@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
 	def create
 		@category = Category.new(category_params)
 		@category.save
-		redirect_to new_manage_item_path
 	end
 
 	def destroy
