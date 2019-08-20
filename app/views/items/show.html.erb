@@ -23,6 +23,14 @@
                     <%= render 'likes/like_links', item: @item %>
                     <%# 価格 %>
                     <p>¥<%= @item.price %>(税込)</p>
+                    <%# カートに入れる %>
+                    <div>
+                        <%= form_with model: @cart_item, local: true do |f| %>
+                        <%= f.select :count, options_for_select((1..20).to_a), {}, class: "form-control pull-left", :style=>"width:50px;" %>
+                        <%= f.hidden_field :item_id, :value => @item.id %>
+                        <%= f.submit "カートに追加", class: "btn btn-default" %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,10 +69,10 @@
             <%# レビュー内容表示 %>
             <div class="item-rev">
                 <table>
+                <h4><strong>レビュー</strong></h4>
                     <% @reviews.each do |reviews| %>
                     <tr>
                         <td>
-                            <h4><strong>レビュー</strong></h4>
                             <p>投稿者：
                                 <%= reviews.name %>
                             </p>
