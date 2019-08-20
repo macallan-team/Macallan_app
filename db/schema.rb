@@ -129,12 +129,15 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "address_id", null: false
     t.integer "end_user_id", null: false
     t.datetime "purchased_at", null: false
     t.integer "shipping_status", null: false
     t.integer "total_price", null: false
     t.integer "payment", null: false
+    t.string "shipping_name", default: "", null: false
+    t.string "shipping_phone_number", default: "", null: false
+    t.string "shipping_address", default: "", null: false
+    t.string "shipping_postal_code", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

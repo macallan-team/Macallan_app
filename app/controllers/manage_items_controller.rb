@@ -14,6 +14,7 @@ class ManageItemsController < ApplicationController
 	def destroy
 		item = Item.find(params[:id])
 		item.update(sales_status: 'deleted')
+		# 削除済みを省いたインデックスにリダイレクト
 		redirect_to '/manage_items/?q%5Bsales_status_not_eq%5D=2'
 	end
 
@@ -24,7 +25,7 @@ class ManageItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-		if @item.save!
+		if @item.save
 			redirect_to manage_item_path(@item)
 		else
 			render :new
@@ -36,19 +37,21 @@ class ManageItemsController < ApplicationController
 		@search = Item.ransack(params[:q])
 		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page])
 	end
-
+		# acts_as_list使用
 	def move_higher
 		Song.find(params[:id]).move_higher
 		song = Song.find(params[:id])
-		redirect_to manage_item_path(song.disc.item)
+		@disc = song.disc
 	end
-
+		# acts_as_list使用
 	def move_lower
 		Song.find(params[:id]).move_lower
 		song = Song.find(params[:id])
-		redirect_to manage_item_path(song.disc.item)
+		@disc = song.disc
+
 	end
 
+		#  削除フラグを外す
 	def restore
 		item = Item.find(params[:id])
 		item.sales_status = 'suspension'

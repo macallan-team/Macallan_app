@@ -1,7 +1,7 @@
 <div class="nested-fields">
     <div class="row" style="margin-right:0; margin-left:0; margin-bottom:5px;">
         <div class="col-xs-5"><%= f.text_field :name, :style=>"width:100%;", class: "form-control", :placeholder=>"全角15文字まで" %></div>
-        <div class="col-xs-5"><%= f.collection_select :artist_id, Artist.all, :id, :name,  {}, {class: "form-control"} %></div>
+        <div class="col-xs-5"><%= f.collection_select :artist_id, Artist.all.order('name'), :id, :name,  {}, {class: "form-control artist" } %></div>
         <div class="col-xs-2"><%= link_to_remove_association "削除", f, class: "btn btn-default" %></div>
     </div>
 </div>

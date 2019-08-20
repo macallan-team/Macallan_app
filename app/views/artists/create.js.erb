@@ -1,0 +1,5 @@
+$('#artist-form').val("");
+$('.artist > option').remove();
+<% Artist.all.order('name').each do |artist| %>
+$('.artist').append($('<option>').html("<%= artist.name %>").val("<%= artist.id %>"));
+<% end%>
