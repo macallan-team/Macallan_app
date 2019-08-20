@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+    <!-- sidebar  ここから -->
+        <div class="col-sm-3">
+        <%= render "layouts/adminsidebar" %>
+            <div class="side-box">
+                <%= render "search" %>
+            </div>
+        </div>
+    <!-- sidebar  ここまで -->
+
+        <div class="col-xs-9">
+            <h2>注文一覧</h2>
+            <div class="box">
+                <div class="row">
+                <%# ここでEACH文 %>
+                <%= @orders.each do |orders| %>
+                    <table class="table-striped">
+                        <%# 注文日 %>
+                        <%= orders.purchased_at %>
+                        <%# 注文者 %>
+                        <%= orders.end_user %>
+                        <%# 発送先 %>
+                        <%= orders.addresses %>
+                        <%# 注文内容 %>
+                        <%= orders.order_id%>
+                        <%# ステータス %>
+                        <%= orders.shipping_status %>
+                        <%# 編集ボタン %>
+                        <%= link_to edit_manage_order_path(orders) do %>
+                            <button type="button" class="col-xs-12 btn btn-default"></button>
+                        <% end %>
+                        <%# ここでリンクエンド %>
+                    </table>
+                <% end %>
+                <%# ここでeachEND %>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div><!-- row -->
+</div><!-- container -->

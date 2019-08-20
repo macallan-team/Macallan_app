@@ -7,7 +7,57 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
+require 'faker'
+
+
 Admin.create!(
-    email: "admin@admin.com",
+    email: Faker::Food.fruits+"uuseruser@user.com",
     password: "111111"
+)
+
+
+EndUser.create(
+    email: Faker::Food.fruits+"uuseruser@user.com",
+    encrypted_password: "abc123",
+    reset_password_token: "aaa123",
+    reset_password_sent_at: "aaa123",
+    remember_created_at: "123abc",
+    sign_in_count: "kkkkk",
+    current_sign_in_at: "kkkkk",
+    last_sign_in_at: "kkkkk",
+    current_sign_in_ip:"kkkkk",
+    last_sign_in_ip: "kkkkk",
+    last_name: "kushi",
+    first_name: "yuya",
+    last_kana: "kushi",
+    first_kana: "yuya",
+    postal_code: "234567",
+    address: "神南",
+    phone_number: "0120777777",
+    created_at: "2019/08/30",
+    updated_at: "2019/08/30",
+    deleted_at: ""
+)
+
+
+Address.create(
+    end_user_id: 1,
+    name: "kushi",
+    address: "abiko",
+    postal_code: "1234567",
+    phone_number: "0120444444",
+    created_at: "2019/08/30",
+    updated_at: "2019/08/30"
+)
+
+
+Order.create(
+    address_id: 1,
+    end_user_id: 1,
+    purchased_at: "2019/08/30",
+    shipping_status: "販売中",
+    total_price: "11111",
+    created_at: "2019/08/30",
+    updated_at: "2019/08/30"
 )
