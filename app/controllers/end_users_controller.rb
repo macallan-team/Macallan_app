@@ -1,6 +1,8 @@
 class EndUsersController < ApplicationController
 
-# before_action :authenticate_admin!
+before_action :authenticate_end_user!
+before_action :correct_user
+
 
   def show
  @end_user = EndUser.find(params[:id])
@@ -30,6 +32,14 @@ class EndUsersController < ApplicationController
  def end_user_params
      params.require(:end_user).permit(:password, :password_confirmation, :current_password)
  end
+
+
+ def correct_user
+  user = EndUser.find(params[:id])
+  if current_end_user != user
+    redirect_to end_user_path(current_end_user)
+  end
+end
 
 
  protected
