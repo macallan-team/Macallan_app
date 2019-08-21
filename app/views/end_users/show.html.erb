@@ -1,23 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
-      <%= render "layouts/adminsidebar" %>
-      
-    </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9 col-sm-offset-2">
+      <h2><strong><%= @end_user.last_name %> <%= @end_user.first_name %> さんのマイページ</strong></h2>
 
-      <h1><%= @end_user.last_name %> <%= @end_user.first_name %> さんのマイページ</h1>
-      <p>氏名 : <%= @end_user.last_name %> <%= @end_user.first_name %></p>
-      <p>氏名（カナ）: <%= @end_user.last_kana %> <%= @end_user.first_kana %></p>
-      <p>郵便番号: <%= @end_user.postal_code %></p>
-      <p>住所: <%= @end_user.address %></p>
-      <p>電話番号: <%= @end_user.last_kana %></p>
-      <p>メールアドレス: <%= @end_user.email %></p>
-      <p>パスワード: <%= @end_user.encrypted_password = "●●●●" %></p>
+      <div class="box">
+        <div class="row form-box">
+            <div class="col-xs-2"><label>氏名</label></div>
+            <div class="col-xs-10"><%= @end_user.last_name %> <%= @end_user.first_name %></div>
+        </div>
+        <div class="row form-box">
+            <div class="col-xs-2"><label>カナ</label></div>
+            <div class="col-xs-10"><%= @end_user.last_kana %> <%= @end_user.first_kana %></div>
+        </div>
+        <div class="row form-box">
+            <div class="col-xs-2"><label>郵便番号</label></div>
+            <div class="col-xs-10"><%= @end_user.postal_code %></div>
+        </div>
+        <div class="row form-box">
+            <div class="col-xs-2"><label>住所</label></div>
+            <div class="col-xs-10"><%= @end_user.address %></div>
+        </div>
+        <div class="row form-box">
+            <div class="col-xs-2"><label>電話番号</label></div>
+            <div class="col-xs-10"><%= @end_user.phone_number %></div>
+        </div>
+        <div class="row form-box">
+            <div class="col-xs-2"><label>メールアドレス</label></div>
+            <div class="col-xs-10"><%= @end_user.email %></div>
+        </div>
+        <div class="row form-box">
+            <div class="col-xs-2"><label>パスワード</label></div>
+            <div class="col-xs-10"><%= @end_user.encrypted_password = "●●●●" %></div>
+        </div>
 
-
-      <%= link_to "マイページ編集", edit_end_user_path(@end_user) %><br>
-      <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
