@@ -8,13 +8,11 @@
         <div class="col-xs-5 col-sm-4 head-right head-menu">
         <%# ハンバーガーメニュー機能 %>
 
-            <%= link_to cart_items_path do %>
-            <div class="menu pull-right">
+            <div class="menu pull-right" id="menu">
                     <span class="top"></span>
                     <span class="middle"></span>
                     <span class="bottom"></span>
             </div>
-            <% end %>
         <%# ログイン機能 %>
             <div class="login-status pull-right">
                 <% if end_user_signed_in? %>
@@ -45,9 +43,13 @@
                 <%= f.search_field :album_or_artist_name_or_label_name_or_discs_songs_name_cont_any, placeholder: "CD・アーティスト・曲名で検索" %>
             </div>
             </div>
-            <% end %>
+    <% end %><%# seach_form %>
         </div>
         <div class="col-xs-1 col-sm-4"></div>
+
     </div>
-    <% end %>
+    <% end %><%# admin_signed_in? %>
+
 </header>
+
+        <%= render "layouts/menubox" %>

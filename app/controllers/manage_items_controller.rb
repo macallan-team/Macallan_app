@@ -13,7 +13,9 @@ class ManageItemsController < ApplicationController
 
 	def destroy
 		item = Item.find(params[:id])
-		item.update(sales_status: 'deleted')
+		item.update!(sales_status: 'deleted')
+		cart_items = item.cart_items
+		cart_items.destroy_all
 		# 削除済みを省いたインデックスにリダイレクト
 		redirect_to '/manage_items/?q%5Bsales_status_not_eq%5D=2'
 	end
@@ -35,7 +37,7 @@ class ManageItemsController < ApplicationController
 	def index
 		# 検索結果・ページネーション
 		@search = Item.ransack(params[:q])
-		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page])
+		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page]).per(20)
 	end
 		# acts_as_list使用
 	def move_higher

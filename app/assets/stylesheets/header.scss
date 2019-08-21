@@ -115,24 +115,62 @@
 		}
 	}
  }
- // ＊＊＊＊＊items＊＊＊＊＊
- .item-box{
-	 text-align: center;
-	 border-radius: 20px;
-	 padding: 10px 0;
-	 transition: 1s;
-	 margin-bottom: 15px;
-	 color: black;
-	 &:hover{
-		 background-color: rgba(0,0,0,1);
-		 color: white;
-	 }
-	 .item-text{
-		 border-bottom:1px solid white;
-	 }
- }
- .image-box{
-	 background-color:white;
-	 display:inline-block;
-	 padding: 2px;
- }
+
+// ＊＊＊＊＊ハンバーガーメニュー中身＊＊＊＊
+.menu-box {
+	z-index: 9;
+	display: none;
+	min-height: 100%;
+	width: 100%;
+	font-size: 2.5em;
+	background-color: rgba(0,0,0,.9);
+	position: fixed;
+	margin-top:-20px;
+	text-align: right;
+	font-family: 'Hiragino Maru Gothic Pro';
+	li {
+		list-style: none;
+		transition: .6s;
+		&:hover {
+			background: linear-gradient(90deg, rgba(0,0,0,0),rgba(255,255,255,.6));
+			a {
+				color: black;
+				transform: translateX(-30px);
+				font-size: 1.3em;
+			}
+		}
+		a {
+			color: white;
+			transition: .6s;
+			display: inline-block;
+			 &:hover {
+			 	color: black;
+			 	text-decoration: none;
+			 }
+		}
+	}
+}
+
+
+
+// ＊＊＊＊＊items＊＊＊＊＊
+.item-box{
+	text-align: center;
+	border-radius: 20px;
+	padding: 10px 0;
+	transition: 1s;
+	margin-bottom: 15px;
+	color: black;
+	&:hover{
+		background-color: rgba(0,0,0,1);
+		color: white;
+	}
+	.item-text{
+		border-bottom:1px solid white;
+	}
+}
+.image-box{
+	background-color:white;
+	display:inline-block;
+	padding: 2px;
+}
