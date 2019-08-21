@@ -7,9 +7,9 @@
 <div class="form-box">
     <ul>
         <li><strong>絞り込み</strong></li>
-        <li><label><%= f.check_box :sales_status_eq_any, { multiple: true, :checked => true},checked_value = 0, unchecked_value ="" %>販売中</label></li>
-        <li><label><%= f.check_box :sales_status_eq_any, {multiple: true, :checked => true},checked_value = 1, unchecked_value ="" %>販売停止中</label></li>
-        <li><label><%= f.check_box :sales_status_eq_any, {multiple: true},checked_value = 2, unchecked_value ="" %>削除済み</label></li>
+        <li><label style="font-weight:normal;"><%= f.check_box :sales_status_eq_any, { multiple: true, :checked => true},checked_value = 0, unchecked_value ="" %>販売中</label></li>
+        <li><label style="font-weight:normal;"><%= f.check_box :sales_status_eq_any, {multiple: true, :checked => true},checked_value = 1, unchecked_value ="" %>販売停止中</label></li>
+        <li><label style="font-weight:normal;"><%= f.check_box :sales_status_eq_any, {multiple: true},checked_value = 2, unchecked_value ="" %>削除済み</label></li>
     </ul>
 </div>
 <% end %>

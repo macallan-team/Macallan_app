@@ -15,15 +15,20 @@
             </div>
         <%# ログイン機能 %>
             <div class="login-status pull-right">
+            <% if admin_signed_in? %>
+                管理者ログイン中<br>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            <% else %>
                 <% if end_user_signed_in? %>
-                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %><br>
-                <%= link_to cart_items_path do %>
-                <span class="glyphicon glyphicon-shopping-cart"></span>カート(<span id="cart"><%= current_end_user.cart_items.count%></span>)
-                <% end %>
+                    <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %><br>
+                    <%= link_to cart_items_path do %>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>カート(<span id="cart"><%= current_end_user.cart_items.count%></span>)
+                    <% end %>
                 <% else %>
-                <%= link_to "ログイン", new_end_user_session_path %><br>
-                <%= link_to "新規登録", new_end_user_registration_path %>
+                    <%= link_to "ログイン", new_end_user_session_path %><br>
+                    <%= link_to "新規登録", new_end_user_registration_path %>
                 <% end %>
+            <% end %>
             </div>
         </div>
     </div>

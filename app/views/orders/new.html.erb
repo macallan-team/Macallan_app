@@ -10,11 +10,11 @@
         <label style="display:block;">
           <table class="table table-responsive table-bordered table-condensed">
             <tbody>
-              <tr><td rowspan="4" class="col-xs-1" style="vertical-align:middle;"><%= radio_button_tag :use_address, 'mine', true %></td>
-              <th class="col-xs-4">配送先氏名</th><td class="col-xs-7"><%= current_end_user.last_name %>　<%= current_end_user.first_name %></td></tr>
-              <tr><th>電話番号</th><td><%= current_end_user.phone_number %></td></tr>
-              <tr><th>郵便番号</th><td>〒<%= postal_code(current_end_user.postal_code) %></td></tr>
-              <tr><th>住所</th><td><%= current_end_user.address %></td></tr>
+              <tr><td rowspan="3" class="col-xs-1" style="vertical-align:middle;"><%= radio_button_tag :use_address, 'mine', true %></td>
+              <th class="col-xs-4">配送先氏名</th><td class="col-xs-7" style="font-weight: normal;"><%= current_end_user.last_name %>　<%= current_end_user.first_name %></td></tr>
+              <tr><th>電話番号</th><td style="font-weight: normal;"><%= current_end_user.phone_number %></td></tr>
+              <tr><th>住所</th><td style="font-weight: normal;">〒<%= postal_code(current_end_user.postal_code) %><br>
+              <%= current_end_user.address %></td></tr>
             </tbody>
           </table>
         </label>
@@ -25,11 +25,12 @@
         <label style="display:block;">
           <table class="table table-responsive table-bordered table-condensed">
             <tbody>
-              <tr><td rowspan="4" class="col-xs-1" style="vertical-align:middle;"><%= radio_button_tag :use_address, address.id %></td>
-              <th class="col-xs-4">配送先氏名</th><td class="col-xs-7"><%= address.name %></td></tr>
-              <tr><th>電話番号</th><td><%= address.phone_number %></td></tr>
-              <tr><th>郵便番号</th><td>〒<%= postal_code(address.postal_code) %></td></tr>
-              <tr><th>住所</th><td><%= address.address %></td></tr>
+              <tr><td rowspan="3" class="col-xs-1" style="vertical-align:middle;"><%= radio_button_tag :use_address, address.id %></td>
+              <th class="col-xs-4">配送先氏名</th><td class="col-xs-7" style="font-weight: normal;"><%= address.name %></td></tr>
+              <tr><th>電話番号</th><td style="font-weight: normal;"><%= address.phone_number %></td></tr>
+              <tr><th>住所</th><td style="font-weight: normal;">〒<%= postal_code(address.postal_code) %><br>
+              <%= address.address %></td></tr>
+              <tr><td colspan="3" class="text-center" style="font-weight:normal;">[<%= link_to "編集", edit_end_user_address_path(current_end_user,address) %>] [<%= link_to "削除", end_user_address_path(current_end_user,address),method: :delete,data:{confirm:"削除してもよろしいですか？"} %>]</td></tr>
             </tbody>
           </table>
         </label>

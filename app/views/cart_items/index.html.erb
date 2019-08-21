@@ -33,7 +33,7 @@
 
     <div class="text-center">
     <% if @cart_items.any? %>
-    <%= link_to "会計に進む", new_end_user_order_path(current_end_user), class:"btn btn-default" %>
+    <%= link_to "会計に進む", new_end_user_order_path(current_end_user),method: :get, class:"btn btn-default" %>
     <% end %>
     <p style="margin-top:25px;"><%= link_to "トップページ", items_path %></p>
       </div>

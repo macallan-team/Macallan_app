@@ -3,8 +3,8 @@ class OrdersController < ApplicationController
 	before_action :cart_existence_check,only: [:confirm,:new,:update,:create]
 	def new
 		@order = Order.new
-		@user = current_end_user
 		@addresses = Address.where(end_user_id: current_end_user.id)
+		render :new
 	end
 
 	def confirm
