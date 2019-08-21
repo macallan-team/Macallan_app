@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 		@reviews = @item.reviews
 		@review = Review.new
 		@discs = @item.discs
+		@cart_item = CartItem.new
 	end
 
 	def index

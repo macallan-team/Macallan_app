@@ -7,15 +7,18 @@ class ManageOrdersController < ApplicationController
 	def destroy
 		order = Order.find(params[:id])
 		order.destroy
-		redirect_to orders_path
+		redirect_to manage_orders_path
 	end
 
 	def show
 	end
 
 	def index
-		@order = Order.new
 		@orders = Order.all
+		@order_items = OrderItem.all
+		@items = Item.all
+		@addresses =Address.all
+		# @search = Item.ransack(params[:q])
 	end
 
 	def search

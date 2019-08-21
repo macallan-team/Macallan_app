@@ -20,7 +20,7 @@
                 <% if end_user_signed_in? %>
                 <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %><br>
                 <%= link_to cart_items_path do %>
-                <span class="glyphicon glyphicon-shopping-cart"></span>カート(<%= current_end_user.cart_items.count%>)
+                <span class="glyphicon glyphicon-shopping-cart"></span>カート(<span id="cart"><%= current_end_user.cart_items.count%></span>)
                 <% end %>
                 <% else %>
                 <%= link_to "ログイン", new_end_user_session_path %><br>

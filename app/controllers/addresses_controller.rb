@@ -22,7 +22,7 @@ class AddressesController < ApplicationController
         address = Address.new(address_params)
         address.end_user_id = current_end_user.id
         address.save
-        redirect_to end_user_addresses_path(current_end_user)
+        redirect_to new_end_user_order_path
     end
     def show
         @address = Address.find(params[:id])

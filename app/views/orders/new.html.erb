@@ -1,50 +1,56 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-xs-10 col-xs-offset-1">
-      <h2>お届け先・お支払方法</h2>
-      <h3>お届け先</h3>
+    <div class = "col-sm-8 col-sm-offset-2">
+      <h2>お届け先・お支払方法選択</h2>
+      <h3>1.お届け先</h3>
+      <p>以下から選択してください。</p>
       <div class="box-radius" style="overflow:auto; height:250px;">
-      <h4>お客様の登録住所</h4>
-        <%= form_with model: @order,url: confirm_end_user_order_path, local: true do |f| %>
+      <h4>お客様の住所</h4>
+        <%= form_with url: confirm_end_user_order_path, method: :get, local: true do |f| %>
         <label style="display:block;">
           <table class="table table-responsive table-bordered table-condensed">
             <tbody>
-              <tr><td rowspan="4" class="col-xs-1" style="vertical-align:middle;"><%= f.radio_button :use_address, 'mine', :checked=>'checked' %></td>
+              <tr><td rowspan="4" class="col-xs-1" style="vertical-align:middle;"><%= radio_button_tag :use_address, 'mine', true %></td>
               <th class="col-xs-4">配送先氏名</th><td class="col-xs-7"><%= current_end_user.last_name %>　<%= current_end_user.first_name %></td></tr>
               <tr><th>電話番号</th><td><%= current_end_user.phone_number %></td></tr>
-              <tr><th>郵便番号</th><td>〒<%= postal_hyphen(current_end_user.postal_code) %></td></tr>
+              <tr><th>郵便番号</th><td>〒<%= postal_code(current_end_user.postal_code) %></td></tr>
               <tr><th>住所</th><td><%= current_end_user.address %></td></tr>
             </tbody>
           </table>
         </label>
+
           <% if @addresses.any? %>
           <h4>登録済みの配送先</h4>
           <% @addresses.each do |address| %>
         <label style="display:block;">
           <table class="table table-responsive table-bordered table-condensed">
             <tbody>
-              <tr><td rowspan="4" class="col-xs-1" style="vertical-align:middle;"><%= f.radio_button :use_address, address.id %></td>
+              <tr><td rowspan="4" class="col-xs-1" style="vertical-align:middle;"><%= radio_button_tag :use_address, address.id %></td>
               <th class="col-xs-4">配送先氏名</th><td class="col-xs-7"><%= address.name %></td></tr>
               <tr><th>電話番号</th><td><%= address.phone_number %></td></tr>
-              <tr><th>郵便番号</th><td>〒<%= postal_hyphen(address.postal_code) %></td></tr>
+              <tr><th>郵便番号</th><td>〒<%= postal_code(address.postal_code) %></td></tr>
               <tr><th>住所</th><td><%= address.address %></td></tr>
             </tbody>
           </table>
         </label>
-          <% end %>
-          <% end %>
-        </div>
-        <h3>お支払方法</h3>
-        <div class="box-radius">
-          <label><%= f.radio_button :payment, 'cash_on_delivery'%>代引き</label>
-          <label><%= f.radio_button :payment, 'bank_transfer'%>銀行振込</label>
-          <label><%= f.radio_button :payment, 'card_payment'%>カード払い</label>
-          
-        </div>
-        <div class="text-center">
-          <p><%= link_to "配送先を追加する", new_end_user_address_path %></p>
         
-        <%= f.submit "確認画面へ進む", class:"btn btn-default"%>
+        <% end %>
+          <% end %>
+
+        </div>
+        
+          <p class="text-center" style="margin-top:-10px;"><%= link_to "配送先を追加する", new_end_user_address_path %></p>
+
+        <h3>2.お支払方法</h3>
+        <p>銀行振込・代引きを選択できます。</p>
+        <div class="box-radius">
+         <label style="margin-right:70px;"><%= f.radio_button :payment, 'cash_on_delivery',:checked=>"checked" %>代金引換</label>
+         <label><%= f.radio_button :payment, 'bank_transfer' %>銀行振込</label>
+        </div>
+
+        <div class="text-center">
+        <%= link_to "カートへ戻る", cart_items_path, class:"btn btn-default" %>　
+        <%= f.submit "注文確認へ進む", class:"btn btn-default"%>
         </div>
         <% end %>
     </div>
