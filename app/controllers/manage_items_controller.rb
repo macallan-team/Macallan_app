@@ -37,7 +37,7 @@ class ManageItemsController < ApplicationController
 	def index
 		# 検索結果・ページネーション
 		@search = Item.ransack(params[:q])
-		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page])
+		@results = @search.result.includes(discs:[:songs]).joins(discs:[:songs]).page(params[:page]).per(20)
 	end
 		# acts_as_list使用
 	def move_higher
