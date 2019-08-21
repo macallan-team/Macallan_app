@@ -1,37 +1,55 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-xs-8 col-xs-offset-2 text-center">
+    <div class = "col-sm-8 col-sm-offset-2 text-center">
       <h2>ご注文確認</h2>
-      <p>以下の内容でよろしければ確定ボタンを押してください。</p>
+      <p style="color:darkgreen;">以下の内容でよろしければ「注文を確定」ボタンを押してください。</p>
       <div class="box text-left">
-        <h3>ご購入内容</h3>
+        <h3>ご注文内容</h3>
         <table class="table">
           <tbody>
-            <tr><th class="col-xs-6">商品名</th><th class="col-xs-3">数量</th><th class="col-xs-3"></th></tr>
-            <% @cart_items.each do |cart_item| %>
-            <tr><td><%= cart_item.item.album %></td><td class="text-right"><%= cart_item.item.count %></td><td><%= total_price(cart_item) %></td></tr>
-            <% end %>
-            <tr><td></td><td></td><td class="text-right">送料　¥500</td></tr>
-            <tr><td></td><td></td><th class="text-right">計 ¥999</th></tr>
+            <tr>
+              <td class="col-xs-2"></td><th class="col-xs-4">商品名</th><th class="col-xs-3">数量</th><th class="col-xs-3"></th></tr>
+              <% @cart_items.each do |cart_item| %>
+            <tr><td>
+                <%= attachment_image_tag cart_item.item, :image, :fill, 50,50, fallback: "no_image.jpg", :size=>"50x50",class:"pull-left" %></td>
+            <td style="vertical-align:middle;"><%= cart_item.item.album %></td>
+            <td style="vertical-align:middle;"><%= cart_item.count %></td>
+            <td style="vertical-align:middle;" class="text-right">¥<%= total_price(cart_item) %></td></tr>
+                <% end %>
+            <tr><td colspan="4" class="text-right">小計　<%= @subtotal %></td></tr>
+            <tr><td colspan="4" class="text-right">消費税　¥<%= tax_calc(@subtotal) - @subtotal %><br>
+                送料（全国一律）¥500</td></tr>
+            <tr><th colspan="4" class="text-right">合計 ¥<%= tax_calc(@subtotal) + 500 %></th></tr>
           </tbody>
         </table>
 
         <h3>配送先</h3>
-          <table class="table table-responsive table-bordered table-condensed">
+          <table class="table table-responsive table-bordered">
             <tbody>
               <tr><th class="col-xs-4">配送先氏名</th><td class="col-xs-8"><%= @shipping_name %></td></tr>
               <tr><th>電話番号</th><td><%= @shipping_phone_number %></td></tr>
-              <tr><th>住所</th><td>〒<%= postal_hyphen(@shipping_postal_code) %></td></tr>
-              <tr><th></th><td><%= @shipping_address %></td></tr>
+              <tr><th>住所</th><td><p>〒<%= postal_code(@shipping_postal_code) %></p>
+              <%= @shipping_address %></td></tr>
             </tbody>
           </table>
         </label>
+        <h3>お支払い方法</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <th><%= payment(@order.payment) %></th>
+          </tbody>
+        </table>
         <%= form_with model: @order,url: {:action=>"create",:controller=>"orders"} do |f| %>
         <%= f.hidden_field :shipping_name,:value=>@shipping_name %>
         <%= f.hidden_field :shipping_address,:value=>@shipping_address %>
         <%= f.hidden_field :shipping_postal_code,:value=>@shipping_postal_code %>
         <%= f.hidden_field :shipping_phone_number,:value=>@shipping_phone_number %>
-        <%= f.submit "注文を確定", class:"btn btn-default center-block"%>
+        <%= f.hidden_field :total_price,:value=>(tax_calc(@subtotal) + 500) %>
+        <%= f.hidden_field :payment,:value=>@order.payment %>
+        <div class="text-center">
+          <%= link_to "戻る", new_end_user_order_path(current_end_user),class:"btn btn-default" %>
+          <%= f.submit "注文を確定", class:"btn btn-default"%>
+        </div>
         <% end %>
       </div>
     </div>

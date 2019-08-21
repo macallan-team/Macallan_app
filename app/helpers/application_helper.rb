@@ -21,12 +21,16 @@ module ApplicationHelper
     def simple_date(date)
         return  date.strftime('%Y年%m月%d日')
     end
-    # カートアイテムの単価*数量*税を算出
+    # カートアイテムの単価*数量
     def total_price(cart_item)
-        return BigDecimal((cart_item.item.price * 1.08).to_f.floor * cart_item.count)
+        return cart_item.item.price * cart_item.count
     end
-
-
+    # 税の計算
+    def tax_calc(num)
+        return num = (BigDecimal(num.to_s)*BigDecimal("1.08")).ceil.to_i
+    end
+        
+        
     def resource_name
         :end_users
      end
@@ -46,8 +50,14 @@ module ApplicationHelper
             return "sold out"
         end
     end
-
-    def postal_hyphen(postal_code)
+    def payment(payment)
+        if payment == 'cash_on_delivery'
+            return '代金引換'
+        else
+            return '銀行振込'
+        end
+    end
+    def postal_code(postal_code)
         postal_code = postal_code.split("").insert(3, '-').join
         return postal_code
     end

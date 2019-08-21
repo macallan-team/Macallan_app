@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.integer :end_user_id, null: false, defalut: ""
       t.datetime :purchased_at, null: false, defalut: ""
-      t.integer :shipping_status, null: false, defalut: ""
+      t.integer :shipping_status, null: false, defalut: 0
       t.integer :total_price, null: false, defalut: ""
       t.integer :payment, null: false
       t.string :shipping_name, null: false, default: ""
