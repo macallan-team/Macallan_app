@@ -7,9 +7,10 @@
             <% @results.each do |results| %>
             <%= link_to (item_path(results)) do %>
             <!-- ジャケット写真 -->
-            <div class="col-xs-4 item-box">
+            <div class="col-sm-4">
+                <div class="item-box">
                 <div class="image-box">
-                    <%= attachment_image_tag results, :image, :fill, 200, 200, fallback: "no_image.jpg", :size=>"200x200", class: "images" %>
+                    <%= attachment_image_tag results, :image, :fill, 215, 215, fallback: "no_image.jpg", :size=>"215x215", class: "images" %>
                 </div>
                 <%# 商品名 %>
                 <p><%= results.album %></p>
@@ -19,6 +20,7 @@
                 <p>¥<%= results.price %>(税込)</p>
                 <%# 販売ステータス %>
                 <p><%= stock_check(results) %></p>
+                </div>
             </div>
             <% end %><%# リンク %>
             <% end %><%# resultsのEND %>

@@ -1,50 +1,6 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
- @import "bootstrap-sprockets";
- @import "bootstrap";
- 
- * {
-	 margin: 0;
-	 padding: 0;
-	 box-sizing: border-box;
- }
- .clearfix::after {
-	 content:"";
-	 display: block;
-	 clear: both;
- }
-
- 
- 
- li {
-	 list-style: none;
- }
- 
- .sidebar {
-	 border: 1px solid rgba(0,0,0,.4);
-	 width: 100%;
- }
- html {
-	 min-height: 100vh;
-	 position: relative;
- }
- body{
-	 margin-bottom: 5em;
- }
+// Place all the styles related to the Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 
  // ＊＊＊＊＊ヘッダー＊＊＊＊＊
  header {
@@ -62,8 +18,6 @@
 	 }
  }
  
- .head-left {
- }
  
  .head-center {
 	 text-align: center;
@@ -85,7 +39,7 @@
 			 border: none;
 			 color: black;
 			 &:-webkit-autofill {
-				 -webkit-box-shadow: 0 0 0px 1000px white inset;
+				 box-shadow: 0 0 0px 1000px white inset;
 			 }
 		 }
 		 .search-form {
@@ -161,27 +115,6 @@
 		}
 	}
  }
- // ＊＊＊＊＊フッター＊＊＊＊＊
- .footer {
-	 margin-top: 30px;
-	 border-top:1px solid black;
-	 height: 50px;
-	 line-height: 50px;
-	 text-align: center;
-	 background-color: black;
-	 background-image: url('street.jpg');
-	 background-size: cover;
-	 background-position: bottom;
-	 color: white;
- }
-footer{
-	width:100%;
-	height:5em;
-	position: absolute;
-	bottom: 0;
-	margin-top:60px;
-}
- 
  // ＊＊＊＊＊items＊＊＊＊＊
  .item-box{
 	 text-align: center;
@@ -203,5 +136,3 @@ footer{
 	 display:inline-block;
 	 padding: 2px;
  }
-
-//  ＊＊＊＊＊cart-item＊＊＊＊＊

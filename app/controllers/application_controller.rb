@@ -23,6 +23,15 @@ before_action :correct_user, only: [:edit, :update]
 #   redirect_to root_path unless current_user.admin?
 # end
 
+# カレントエンドユーザーのカートアイテム小計
+def subtotal
+  cart_items = current_end_user.cart_items
+  array = []
+  cart_items.each do |cart_item|
+    array << (cart_item.item.price * cart_item.count)
+  end
+  @subtotal = array.sum
+end
 
 
 protected
