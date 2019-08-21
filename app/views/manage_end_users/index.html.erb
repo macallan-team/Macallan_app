@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <%= render "layouts/adminsidebar" %>
+      </div>
+      <div class="col-sm-9">
+        <h2>ユーザー一覧</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th class="box"><strong>ユーザー名</strong>/th>
+              <th class="box"><strong>電話番号</strong></th>
+              <th class="box"><strong>住所</strong></th>
+              <th colspan = "3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @end_user.each do |f| %>
+              <tr>
+                <td>ユーザー名：</p> <%= f.last_name %> <%= f.first_name %>
+                <td>電話番号：</p> <%= f.phone_number %>
+                <td>住所：</p> <%= f.address %>
+                <%= link_to "詳細", user_path(user.id)%>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>

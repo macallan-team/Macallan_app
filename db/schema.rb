@@ -59,9 +59,15 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "costs", force: :cascade do |t|
+    t.integer "tax", null: false
+    t.integer "carriage", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "discs", force: :cascade do |t|
     t.integer "item_id", null: false
-    t.integer "flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,12 +102,10 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.integer "label_id", null: false
     t.integer "category_id", null: false
     t.string "album", null: false
-    t.string "image_id"
+    t.string "image_id", null: false
     t.integer "price", null: false
     t.integer "stock", null: false
     t.integer "sales_status", null: false
-    t.date "release_date", null: false
-    t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -134,7 +138,6 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.datetime "purchased_at", null: false
     t.integer "shipping_status", null: false
     t.integer "total_price", null: false
-    t.integer "payment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -151,8 +154,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
   create_table "songs", force: :cascade do |t|
     t.integer "disc_id"
     t.integer "artist_id"
-    t.string "name", null: false
-    t.integer "position"
+    t.string "name"
+    t.integer "song_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

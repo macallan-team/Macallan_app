@@ -3,7 +3,7 @@
 class EndUsers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-
+  # before_action :correct_user
 
   def after_sign_in_path_for(resource)
     end_user_path(resource) # ログイン後にマイページへ遷移するpathを設定
@@ -35,4 +35,15 @@ class EndUsers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+
+  # private
+  # def correct_user
+  #   user = EndUser.find(params[:id])
+  #   if current_end_user != user
+  #     redirect_to end_user_path(current_end_user)
+  #   end
+  # end
+
+
 end
