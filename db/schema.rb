@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "costs", force: :cascade do |t|
+    t.integer "tax", null: false
+    t.integer "carriage", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "discs", force: :cascade do |t|
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
