@@ -9,9 +9,12 @@ class ManageEndUsersController < ApplicationController
 
 	def index
 		@end_user = EndUser.all
-	end
+		@results = @search_user.result(distinct: true)
+    end
 
 	def search
+		# 検索フォームで取得したパラメーターをモデルに渡す
+		# @search = EndUser.search(params{search})
 	end
 
 	def edit
