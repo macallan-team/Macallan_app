@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 before_action :set_search
 before_action :user_search
-
 before_action :correct_user, only: [:edit, :update]
+before_action :correct_user, only: [:edit, :update]
+
 def set_search
   @search = Item.includes(:category, :label,:artist, discs: [:songs]).where(sales_status: "on_sale").ransack(params[:q])
 end
@@ -23,7 +24,7 @@ def  user_search
 end
 
 
-before_action :correct_user, only: [:edit, :update]
+
 
 
 
