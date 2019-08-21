@@ -6,10 +6,24 @@ class ApplicationController < ActionController::Base
 
 before_action :configure_permitted_parameters, if: :devise_controller?
 before_action :set_search
+before_action :user_search
+
 before_action :correct_user, only: [:edit, :update]
 def set_search
   @search = Item.includes(:category, :label,:artist, discs: [:songs]).where(sales_status: "on_sale").ransack(params[:q])
 end
+
+# ユーザー検索
+def  user_search
+  @search_user = EndUser.ransack(params[:q])
+  @param_q = params[:q]
+  if @param_q.nil?
+    @param_q = 1 flash.now[:alert] = '該当の検索結果はありませんでした。'
+  end
+end
+
+
+before_action :correct_user, only: [:edit, :update]
 
 
 
