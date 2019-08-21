@@ -1,17 +1,18 @@
 <body class="profile-body">
   <div class="container-sign-up center-block">
     <div class="row">
-      <div class="col-md-3 col-md-offset-4">
-        <section>
+      <div class="col-xs-3 col-md-offset-4">
+        <div class="">
           <h2>編集ページ</h2>
             <%= form_for @end_user do |f| %>
-              <%= render 'end_users/shared/error_messages' %>
               <div class="form-body">
                 <div class="form-group has-icon">
                   <label class="control-lebel sr-only" for = "inputName">LastName</label>
                   <%= f.label :氏名 %><br>
                   <%= f.text_field :last_name, autofocus: true, class:"form-inline", id:"inputName",placeholder:"姓" %>
+                </div>
 
+                <div class="form-group has-icon">
                   <label class="control-lebel sr-only" for = "inputName">FirstName</label>
                   <%= f.text_field :first_name, autofocus: true, class:"form-inline", id:"inputName",placeholder:"名"%>
                 </div>
@@ -20,7 +21,9 @@
                   <label class="control-lebel sr-only" for = "inputName">LastKana</label>
                   <%= f.label :氏名%><em>(カナ)</em><br>
                   <%= f.text_field :last_kana, autofocus: true, class:"form-inline", id:"inputName",placeholder:"セイ" %>
+                </div>
 
+                <div class="form-group has-icon">
                   <label class="control-lebel sr-only" for = "inputName">FirstKana</label>
                   <%= f.text_field :first_kana, autofocus: true, class:"form-inline", id:"inputName",placeholder:"メイ"%>
                 </div>
@@ -61,7 +64,7 @@
               <%= link_to "戻る", :back %>
 
             </div>
-        </section>
+        </div>
       </div>
     </div>
 
