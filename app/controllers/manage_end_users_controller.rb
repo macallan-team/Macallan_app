@@ -1,6 +1,7 @@
 class ManageEndUsersController < ApplicationController
 	def show
-        @end_user = EndUser.find(params[:id])
+		@end_user = EndUser.find(params[:id])
+		@orders = Order.all
 	end
 
 	def destroy
