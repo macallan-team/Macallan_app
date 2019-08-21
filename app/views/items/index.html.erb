@@ -1,8 +1,14 @@
-<% if @results.any? %>
     <div class="container">
 <%# 商品詳細ページ遷移リンク %>
 
         <div class="row">
+
+        <% if params[:q].present?%>
+            <p>キーワード：<%= params[:q][:album_or_artist_name_or_label_name_or_discs_songs_name_cont_any] %>での検索結果 <%= @results.total_count %></p>
+        <% end %>
+
+        <% if @results.any? %>
+
         <%# 検索対象一覧 %>
             <% @results.each do |results| %>
             <%= link_to (item_path(results)) do %>
@@ -24,10 +30,13 @@
             </div>
             <% end %><%# リンク %>
             <% end %><%# resultsのEND %>
+            <% else %><%# result.any? ヒットしなかった時 %>
+            <p>該当する商品は見つかりませんでした。</p>
+            <p class="text-center"><%= link_to "トップページ",items_path %></p>
+            <% end %><%# results.any? %>
         </div>
 
     </div>
-<% end %>
 
 
 
