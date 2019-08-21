@@ -6,6 +6,9 @@ class LabelsController < ApplicationController
 	end
 
 	def destroy
+		label = Label.find(params[:id])
+		label.destroy
+		redirect_to new_manage_item_path
 	end
 
 	def update

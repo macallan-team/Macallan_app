@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.integer "stock", null: false
     t.integer "sales_status", null: false
     t.date "release_date", null: false
-    t.integer "artist_id"
+    t.integer "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -153,8 +153,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "disc_id"
-    t.integer "artist_id"
+    t.integer "disc_id", null: false
+    t.integer "artist_id", null: false
     t.string "name", null: false
     t.integer "position"
     t.datetime "created_at", null: false

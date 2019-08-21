@@ -16,11 +16,12 @@ enum sales_status: [:on_sale,:suspension, :deleted]
 accepts_nested_attributes_for :discs, allow_destroy: true
 
 validates :album, presence: true, length: { in: 1..30 }
-validates :price, presence: true, length: { in: 2..7 }
+validates :price, presence: true, length: { in: 1..7 }
 validates :stock, presence: true, length: { in: 1..4 }
 validates :sales_status, presence: true
 validates :category_id, presence: true
 validates :label_id, presence: true
+
 
 
 # いいね機能

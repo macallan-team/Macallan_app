@@ -5,6 +5,9 @@ class ArtistsController < ApplicationController
 	end
 
 	def destroy
+		artist = Artist.find(params[:id])
+		artist.destroy
+		redirect_to new_manage_item_path
 	end
 
 	def update

@@ -9,14 +9,7 @@ module ApplicationHelper
             return '削除済み'
         end
     end
-    # 関連するアーティストなどが存在するかチェック
-    def check_null(item_child)
-        if item_child.nil?
-            return 'なし'
-        else
-            return item_child
-        end
-    end
+    
     # dateを見やすくする
     def simple_date(date)
         return  date.strftime('%Y年%m月%d日')

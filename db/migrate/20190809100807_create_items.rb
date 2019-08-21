@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :stock, null: false, defalut: ""
       t.integer :sales_status, null: false, defalut: ""
       t.date :release_date, null: false, dafault: ""
-      t.integer :artist_id
+      t.integer :artist_id, null: false, defalut: ""
 
       t.timestamps
     end

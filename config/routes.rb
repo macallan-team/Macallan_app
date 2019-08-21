@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'carriages/new'
+  get 'carriages/edit'
+  get 'carriages/index'
+  get 'taxes/new'
+  get 'taxes/edit'
+  get 'taxes/index'
   devise_for :admins,controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -59,13 +65,17 @@ resources :admins, only: [:index]
   resources :manage_orders
 
   #カテゴリー
-  resources :categories, only: [:create, :destroy, :update]
+  resources :categories, only: [:create, :update]
+  delete 'category/destroy' => "categories#destroy", as: 'destroy_category'
 
   #アーティスト
-  resources :artists, only: [:create, :destroy, :update]
+  resources :artists, only: [:create, :update]
+  delete 'artist/destroy' => "artists#destroy", as: 'destroy_artist'
 
   #レーベル
-  resources :labels, only: [:create, :destroy, :update]
+  resources :labels, only: [:create, :update]
+  delete 'label/destroy' => "labels#destroy", as: 'destroy_label'
+
 
   # レビュー
   resources :reviews
