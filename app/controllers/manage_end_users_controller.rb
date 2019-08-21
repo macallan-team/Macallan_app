@@ -8,6 +8,7 @@ class ManageEndUsersController < ApplicationController
 	end
 
 	def index
+		@end_user = EndUser.all
 	end
 
 	def search

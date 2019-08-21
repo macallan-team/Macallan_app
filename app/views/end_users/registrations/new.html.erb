@@ -1,7 +1,7 @@
 <body class="sign-up-body">
   <div class="container-sign-up center-block">
     <div class="row">
-      <div class="col-md-3 col-md-offset-4">
+      <div class="col-md-4 col-md-offset-4">
         <section>
             <h2 class="form-headter-title">新規登録</h2>
 
@@ -56,9 +56,6 @@
                 <div class="form-group has-icon">
                   <%= f.label :パスワード %>
                   <em>※必須項目</em>
-                  <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                  <% end %><br />
                   <%= f.password_field :password, class:"form-control", id:"inputNewPassword", placeholder:"英数字6文字以上" %>
                 </div>
 
