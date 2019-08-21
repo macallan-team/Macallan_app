@@ -2,3 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.sidebar {
+  box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+  margin-top: 56px;
+  font-size: 1.1em;
+  li {
+      margin: 3px 0;
+      margin-left: 10%;
+  }
+}
