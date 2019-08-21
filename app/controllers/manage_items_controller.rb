@@ -13,7 +13,9 @@ class ManageItemsController < ApplicationController
 
 	def destroy
 		item = Item.find(params[:id])
-		item.update(sales_status: 'deleted')
+		item.update!(sales_status: 'deleted')
+		cart_items = item.cart_items
+		cart_items.destroy_all
 		# 削除済みを省いたインデックスにリダイレクト
 		redirect_to '/manage_items/?q%5Bsales_status_not_eq%5D=2'
 	end

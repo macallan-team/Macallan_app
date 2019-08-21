@@ -5,13 +5,12 @@ class ApplicationController < ActionController::Base
   # end
 
 before_action :configure_permitted_parameters, if: :devise_controller?
-
 before_action :set_search
+before_action :correct_user, only: [:edit, :update]
 def set_search
   @search = Item.includes(:category, :label, discs: {songs: :artist}).where.not(sales_status: "deleted").ransack(params[:q])
 end
 
-before_action :correct_user, only: [:edit, :update]
 
 
  def correct_user
@@ -32,9 +31,11 @@ def subtotal
   end
   @subtotal = array.sum
 end
+# カートアイテムの在庫あり・販売中以外削除
 
 
 protected
+
 
  def configure_permitted_parameters
    #以下の:name部分は追加したカラム名に変える

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :authenticate_end_user!
-	before_action :cart_check
+	before_action :cart_existence_check,only: [:confirm,:new,:update,:create]
 	def new
 		@order = Order.new
 		@user = current_end_user
@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
 	def order_params
 		params.require(:order).permit(:payment,:use_address,:total_price,:shipping_name,:shipping_address,:shipping_postal_code,:shipping_phone_number)
 	end
-	def cart_check
+	def cart_existence_check
 		if current_end_user.cart_items.any?
 		else
 			redirect_to items_path
