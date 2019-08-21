@@ -13,14 +13,14 @@
             <div class="item-info">
                 <div class="title">
                     <%# 商品名 %>
-                    <h2><%= @item.album %></h2>
+                    <h3><strong><%= @item.album %></strong></h3>
                     <%# アーティスト名 %>
                     <p><%= @item.artist.name %></p>
                     <%# 在庫ステータス %>
                     <p><%= stock_check(@item) %></p>
                     <%# いいねカウント %>
                     <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
-                    <%= render 'likes/like_links', item: @item %>
+                    <p><%= render 'likes/like_links', item: @item %></p>
                     <%# 価格 %>
                     <p>¥<%= @item.price %>(税込)</p>
                     <%# カートに入れる %>
@@ -46,9 +46,18 @@
         <%# 収録曲 %>
         <div class="col-xs-6">
             <div class="item-song">
-                <table><h4><strong>収録曲</strong></h4>
+            <h4><strong>収録曲</strong></h4>
+                <table class="table table-striped table-responsive">
                 <% @discs.each do |disc| %>
                     <% disc.songs.each do |song|%>
+                    <thead>
+                        <tr>
+                            <th>曲順</th>
+                            <th>曲名</th>
+                            <th>アーティスト名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <tr>
                             <td>
                                 <%= song.position %>
@@ -60,6 +69,7 @@
                                 <%= song.artist.name %>
                             </td>
                         </tr>
+                    </tbody>
                     <% end %>
                 <% end %>
                 </table>
@@ -70,9 +80,15 @@
         <div class="col-xs-6">
             <%# レビュー内容表示 %>
             <div class="item-rev">
-                <table>
-                <h4><strong>レビュー</strong></h4>
+            <h4><strong>レビュー</strong></h4>
+                <table class="table table-striped table-responsive">
                     <% @reviews.each do |reviews| %>
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>
                             <p>投稿者：
@@ -88,6 +104,7 @@
                             </p>
                         </td>
                     </tr>
+                    </tbody>
                     <% end %>
                 </table>
             </div>

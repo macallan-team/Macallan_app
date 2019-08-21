@@ -2,6 +2,7 @@ class ManageOrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		@order.update(item_params)
+		redirect_to manage_orders_path
 	end
 
 	def destroy
@@ -17,7 +18,7 @@ class ManageOrdersController < ApplicationController
 		@orders = Order.all
 		@order_items = OrderItem.all
 		@items = Item.all
-		@addresses =Address.all
+		@address = Address.all
 		# @search = Item.ransack(params[:q])
 	end
 
@@ -30,11 +31,12 @@ class ManageOrdersController < ApplicationController
 
 	def edit
 		@order = Order.find(params[:id])
+
 	end
 
 	private
 	def item_params
-		params.require(:user).permit(:name, :price)
+		params.require(:order).permit(:shipping_name, :shipping_phone_number, :shipping_postal_code, :shipping_address, :shipping_status)
 	end
 
 
