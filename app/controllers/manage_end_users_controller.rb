@@ -1,7 +1,12 @@
 class ManageEndUsersController < ApplicationController
 	def show
         @end_user = EndUser.find(params[:id])
+	end
 
+	def destroy
+		@end_user = EndUser.find(params[:id])
+		@end_user.destroy
+		redirect_to manage_end_users_path
 	end
 
 	def update
