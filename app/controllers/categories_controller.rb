@@ -5,9 +5,9 @@ class CategoriesController < ApplicationController
 	end
 
 	def destroy
-		category = Category.find(params)
+		category = Category.find(params[:id])
 		category.destroy
-		redirect_back(fallback_location: root_path)
+		redirect_to new_manage_item_path
 	end
 
 	def update

@@ -29,13 +29,13 @@
                         <td><%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td></tr>
                         
                         <tr><th>ジャンル</th>
-                        <td><%= check_null(@item.category.name) %></td></tr>
+                        <td><%= @item.category.name %></td></tr>
                         
                         <tr><th>レーベル</th>
-                        <td><%= check_null(@item.label.name) %></td></tr>
+                        <td><%= @item.label.name %></td></tr>
 
                         <tr><th>アーティスト</th>
-                        <td><%= check_null(@item.artist.name) %></td></tr>
+                        <td><%= @item.artist.name %></td></tr>
                         
                         <tr><th>在庫数</th>
                         <td><%= @item.stock %></td></tr>

@@ -23,6 +23,7 @@ document.addEventListener("turbolinks:load", function() {
 
 	$('#menu').on('click', function(){
 		$('.menu-box').fadeToggle();
+		$('#menu').toggleClass("open");
 		event.stopPropagation();
 	});
 	$('.menu-box').on('click', function(){
@@ -35,6 +36,7 @@ document.addEventListener("turbolinks:load", function() {
 	$('header').on('click', function(){
 		if ($('.menu-box').is(':visible')) {
 			$('.menu-box').fadeToggle();
+			$('#menu').toggleClass("open");
 			event.preventDefault();
 		}else{
 		}

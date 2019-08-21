@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 	end
 
 	def index
-		@results = @search.result(distinct: true).order(release_date: "DESC").page(params[:page]).per(15)
+		@results = @search.result(distinct: true).order(release_date: "DESC").page(params[:page]).per(9)
 	end
 
 

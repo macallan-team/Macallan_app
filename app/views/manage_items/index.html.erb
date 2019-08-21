@@ -35,7 +35,7 @@
                     </td>
                     <td>¥<%= item.price %></td>
                     <td><%= item.stock %></td>
-                    <td><%= check_null(item.artist.name) %></td>
+                    <td><%= item.artist.name %></td>
                     <td><%= sales_status(item) %></td>
                 </tr>
  <% end %>

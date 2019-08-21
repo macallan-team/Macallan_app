@@ -1,5 +1,5 @@
 $('#category-form').val("");
-$('#category > option').remove();
+$('.category > option').remove();
 <% Category.all.order('name').each do |category| %>
-$('#category').append($('<option>').html("<%= category.name %>").val("<%= category.id %>"));
+$('.category').append($('<option>').html("<%= category.name %>").val("<%= category.id %>"));
 <% end%>

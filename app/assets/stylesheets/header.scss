@@ -114,6 +114,21 @@
 		   }
 		}
 	}
+	.open {
+		.middle {
+		  background: rgba(255, 255, 255, 0);
+		}
+		.top {
+		  transform: rotate(405deg) !important;
+		  top: 23px;
+		  height:2px;
+		}
+		.bottom {
+		  transform: rotate(-405deg) !important;
+		  top: 23px;
+		  height: 2px;
+		}
+	}
  }
 
 // ＊＊＊＊＊ハンバーガーメニュー中身＊＊＊＊

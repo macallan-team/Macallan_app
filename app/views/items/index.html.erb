@@ -6,6 +6,8 @@
         <%# 検索ワードが空欄以外の時に表示 %>
         <% if params[:q].present? && params[:q][:album_or_artist_name_or_label_name_or_discs_songs_name_cont_any].present? %>
             <p>キーワード：<%= params[:q][:album_or_artist_name_or_label_name_or_discs_songs_name_cont_any] %>での検索結果 <%= @results.total_count %>件</p>
+        <% else %>
+            <h2 style="margin-left:50px;">新着商品</h2>
         <% end %>
 
         <% if @results.any? %>
@@ -39,6 +41,7 @@
             <% end %><%# resultsのEND %>
             <% else %><%# result.any? ヒットしなかった時 %>
             <p>該当する商品は見つかりませんでした。</p>
+            <p class="text-center"><%= link_to "トップページ",items_path %></p>
             <% end %><%# results.any? %>
         </div>
 
