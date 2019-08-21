@@ -18,3 +18,27 @@
 //= require bootstrap-sprockets
 //= require cocoon
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+
+	$('#menu').on('click', function(){
+		$('.menu-box').fadeToggle();
+		event.stopPropagation();
+	});
+	$('.menu-box').on('click', function(){
+		if ($('.menu-box').is('visible')) {
+			event.stopPropagation();
+		}else{
+		}
+	});
+
+	$('header').on('click', function(){
+		if ($('.menu-box').is(':visible')) {
+			$('.menu-box').fadeToggle();
+			event.preventDefault();
+		}else{
+		}
+	});
+
+
+});
