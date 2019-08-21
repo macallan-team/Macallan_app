@@ -4,12 +4,15 @@
 	<ul>
 		<li>商品管理</li>
 		<li>┣<%= link_to " 商品一覧", manage_items_path(@q, :'q[sales_status_not_eq]' => 2), method: :get %></li>
-		<li>┗<%=link_to " 商品登録", new_manage_item_path %></li>
-		<li></li>
+		<li style="margin-bottom:10px;">┗<%=link_to " 商品登録", new_manage_item_path %></li>
+
 		<li>ユーザー管理</li>
-		<li>┗<%= link_to "ユーザー一覧", manage_end_users_path %></li>
-		<li></li>
+		<li style="margin-bottom:10px;">┗<%= link_to "ユーザー一覧", manage_end_users_path %></li>
+
 		<li>注文管理</li>
-		<li>┗<%= link_to "注文管理", manage_orders_path %></li>
+		<li style="margin-bottom:10px;">┗<%= link_to "注文管理", manage_orders_path %></li>
+
+		<li>その他</li>
+		<li>┗<%= link_to "税率", taxes_path %>/<%= link_to "送料", carriages_path %></li>
 	</ul>
 </div>

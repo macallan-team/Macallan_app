@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'carriages/new'
-  get 'carriages/edit'
-  get 'carriages/index'
-  get 'taxes/new'
-  get 'taxes/edit'
-  get 'taxes/index'
   devise_for :admins,controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -30,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
-    resources :addresses
+    resources :addresses, only: [:new, :edit, :create, :update, :destroy]
 
   collection do
   get 'change_password'
@@ -79,5 +73,10 @@ resources :admins, only: [:index]
 
   # レビュー
   resources :reviews
+
+  resources :taxes, only: [:create, :update, :destroy, :index]
+
+  #　税率
+  resources :carriages, only: [:create, :update, :destroy, :index]
 
 end

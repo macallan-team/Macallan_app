@@ -16,7 +16,7 @@
             <td style="vertical-align:middle;"><%= cart_item.count %></td>
             <td style="vertical-align:middle;" class="text-right">¥<%= total_price(cart_item) %></td></tr>
                 <% end %>
-            <tr><td colspan="4" class="text-right">小計　<%= @subtotal %></td></tr>
+            <tr><td colspan="4" class="text-right">小計　¥<%= @subtotal %></td></tr>
             <tr><td colspan="4" class="text-right">消費税　¥<%= tax_calc(@subtotal) - @subtotal %><br>
                 送料（全国一律）¥500</td></tr>
             <tr><th colspan="4" class="text-right">合計 ¥<%= tax_calc(@subtotal) + 500 %></th></tr>
