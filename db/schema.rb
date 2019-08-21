@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
   end
 
   create_table "carriages", force: :cascade do |t|
+    t.integer "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -165,6 +166,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
   end
 
   create_table "taxes", force: :cascade do |t|
+    t.integer "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
