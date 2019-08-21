@@ -34,8 +34,8 @@ document.addEventListener("turbolinks:load", function() {
 
 	$('header').on('click', function(){
 		if ($('.menu-box').is(':visible')) {
-			$('.menu-box').fadeToggle(1);
-			event.stopPropagation();
+			$('.menu-box').fadeToggle();
+			event.preventDefault();
 		}else{
 		}
 	});
