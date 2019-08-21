@@ -19,7 +19,7 @@ def  user_search
   @search_user = EndUser.ransack(params[:q])
   @param_q = params[:q]
   if @param_q.nil?
-    @param_q = 1 flash.now[:alert] = '該当の検索結果はありませんでした。'
+    @param_q = 1
   end
 end
 
