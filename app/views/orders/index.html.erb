@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <%# ここからサイドバー %>
-    <div class = "col-sm-3">
+    <div class = "col-sm-2">
       <div class = "sidebar">
         <ul>
           <li><%= link_to "カート情報", cart_items_path %></li>
@@ -17,46 +17,48 @@
       <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h2>
       <%# 購入情報を購入した回数分表示する %>
         <% @orders.each do |order| %>
-        <h4>購入日：<%= order.purchased_at %></h4>
-        <table class = "table">
-          <tbody>
-          <%# order_itemをoと表す %>
-          <% order.order_items.each do |o| %>
-            <tr>
-              <%# ジャケ写 %>
-              <td>
-                <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg' %>
-              </td>
-              <td>
-                <%# アルバム名 リンク付き %>
-                <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
-                <%# アーティスト名 %>
-                <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
-                <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
-                <%# 購入数 %>
-                <span>購入数：<%= o.count %></span>
-              </td>
-              <td>
-                <%# 価格税込 %>
-                <span>価格 ¥</span>
-                <span><%= o.price %></span>
-              </td>
-            </tr>
-          <% end %>
-            <tr>
-              <td>
-                <%# 発送先 %>
-                <span>発送先：<%= order.shipping_address %></span>
-              </td>
-              <td>
-                <span>ステータス：<%= order.shipping_status %></span>
-              </td>
-              <td>
-                <span>合計金額 ¥：<%= order.total_price %></span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <%# time.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") strftimeメソッドを使って日時を扱う %>
+        <div class="box-radius">
+        <h4>購入日：<%= order.purchased_at.strftime("%Y年%-m月%-d日") %></h4>
+          <table class = "table" style="margin:-10px;">
+            <tbody>
+            <%# order_itemをoと表す %>
+            <% order.order_items.each do |o| %>
+              <tr>
+                <%# ジャケ写 %>
+                <td>
+                  <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg' %>
+                </td>
+                <td style="vertical-align:middle;">
+                  <%# アルバム名 リンク付き %>
+                  <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
+                  <%# アーティスト名 %>
+                  <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
+                  <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
+                  <%# 購入数 %>
+                  <span>購入数：<%= o.count %></span>
+                </td>
+                <td style="vertical-align:middle;">
+                  <%# 税抜価格 %>
+                  <span>価格 ¥<%= o.price %></span>
+                </td>
+              </tr>
+            <% end %>
+              <tr>
+                <td>
+                  <%# 発送先 %>
+                  <span>発送先：<%= order.shipping_address %></span>
+                </td>
+                <td>
+                  <span>ステータス：<%= order.shipping_status %></span>
+                </td>
+                <td>
+                  <span>合計 ¥<%= order.total_price %></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <% end %>
     </div>
   </div>
