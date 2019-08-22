@@ -91,24 +91,36 @@
             <% order.order_items.each do |o| %>
               <tr>
                 <%# ジャケ写 %>
-                <td>
-                  <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg' %>
+                <td class="col-xs-4">
+                  <%= attachment_image_tag o.item, :image, :fill, 100, 100, fallback: "no_image.jpg", :size=>"100x100",class:"images" %>
                 </td>
-                <td style="vertical-align:middle;">
+                <td class="col-xs-4" style="vertical-align:middle;">
                   <%# アルバム名 リンク付き %>
                   <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
                   <%# アーティスト名 %>
                   <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
                   <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
                   <%# 購入数 %>
-                  <span>購入数：<%= o.count %></span>
+                  <span>購入数：<%= o.count %></span><br>
+                  <span>¥<%= o.price %></span>
                 </td>
-                <td style="vertical-align:middle;">
+                <td class="col-xs-2 text-right" style="vertical-align:middle;">
                   <%# 税抜価格 %>
-                  <span>価格 ¥<%= o.price %></span>
+                  <span>¥<%= o.count * o.price %></span>
                 </td>
               </tr>
             <% end %>
+              <tr>
+                <td colspan="3" class="text-right">
+                  小計　¥<%= order.subtotal %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="text-right">
+                  消費税　¥<%= order.total_price - order.subtotal - 500 %><br>
+                  送料　¥500<br>
+                </td>
+              </tr>
               <tr>
                 <td>
                   <%# 発送先 %>
@@ -117,7 +129,7 @@
                 <td>
                   <span>ステータス：<%= order.shipping_status %></span>
                 </td>
-                <td>
+                <td class="text-right">
                   <span>合計 ¥<%= order.total_price %></span>
                 </td>
               </tr>
