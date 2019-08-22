@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:order).permit(:payment,:use_address,:total_price,:shipping_name,:shipping_address,:shipping_postal_code,:shipping_phone_number)
+		params.require(:order).permit(:payment,:use_address,:total_price,:shipping_name,:shipping_address,:shipping_postal_code,:shipping_phone_number,:subtotal)
 	end
 	def cart_existence_check
 		if current_end_user.cart_items.any?
