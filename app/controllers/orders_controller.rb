@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 		order = Order.new(order_params)
 		order.end_user_id = current_end_user.id
 		order.purchased_at = Time.now
-		order.shipping_status = 'accepting'
+		order.shipping_status = '受付'
 		ActiveRecord::Base.transaction do
 			order.save!
 			cart_items.each do |cart_item|
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:order).permit(:payment,:use_address,:total_price,:shipping_name,:shipping_address,:shipping_postal_code,:shipping_phone_number)
+		params.require(:order).permit(:payment,:use_address,:total_price,:shipping_name,:shipping_address,:shipping_postal_code,:shipping_phone_number,:subtotal)
 	end
 	def cart_existence_check
 		if current_end_user.cart_items.any?

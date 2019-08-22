@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-<!-- sidebar  ここから -->
+<%# <!-- sidebar  ここから --> %>
     <div class="col-sm-3">
     <%= render "layouts/adminsidebar" %>
       <div class="side-box">
     <%= render "manage_items/side", category: @category, label: @label, artist: @artist %>
       </div>
     </div>
-<!-- sidebar  ここまで -->
+<%# <!-- sidebar  ここまで --> %>
 <% if @item.sales_status == 'deleted' %>
 <%# ステータスがdeletedなら異なるビューを表示 %>
   <%= render 'deleted' %>
@@ -18,7 +18,7 @@
       
 <%= render 'editform', item: @item %>
       </div>
-    </div><!-- col-sm-9 -->
+    </div>
 <% end %>
-  </div><!-- row -->
-</div><!-- container -->
+  </div>
+</div>

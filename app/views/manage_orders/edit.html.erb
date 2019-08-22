@@ -17,7 +17,7 @@
             </div>
             <div class="field">
                 <label for="order_description">ステータス</label>
-                <%= o.select :shipping_status, [["受付",'accepting'], ["入荷待ち",'backordered'], ["出荷済",'shipped']], {:prompt => "選択してください"}, {class: "form-control"} %>
+                <%= o.select :shipping_status, Order.shipping_statuses.keys, {:prompt => "選択してください"}, {class: "form-control"} %>
             </div>
             <div class="action" style="padding:20px;">
                 <%= o.submit "Update Order",class:"btn btn-default" %>
