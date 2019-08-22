@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+      <div class="side-bar">
+        <ul>
+          <% if end_user_signed_in? %>
+          <li><%= link_to "注文履歴",end_user_orders_path(current_end_user) %></li>
+
+          <li><%= link_to "登録情報編集",end_user_path %></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</div>
