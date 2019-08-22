@@ -65,7 +65,7 @@
                 </div>
                 <div class="row">
                     <% @orders.each do |order| %>
-                    <h4>購入日：<%= order.purchased_at.strftime("%Y年%m月%d日") %></h4>
+                    <h4 style="font-weight:bold;color:darkgreen;">購入日：<%= order.purchased_at.strftime("%Y年%m月%d日") %></h4>
                     <table class = "table">
                         <tbody>
                         <%# order_itemをoと表す %>
@@ -90,12 +90,7 @@
                                     <span><%= o.price %></span>
                                 </td>
                             </tr>
-                        <% end %>
-                        <tr>
-                            <td>
-                                <span>発送先：<%= order.shipping_address %></span>
-                            </td>
-                            <td>
+                            <tr><th colspan="2">
                                 <span>ステータス：
                                     <% if order.shipping_status == "accepting" %>
                                     受付
@@ -105,11 +100,22 @@
                                     出荷待ち
                                     <% end %>
                                 </span>
-                            </td>
+                            </th>
                             <td>
-                                <span>合計金額 ¥：<%= order.total_price %></span>
+                                <span>合計金額 ¥<%= order.total_price %></span>
                             </td>
                         </tr>
+                        <% end %>
+                        <tr>
+                            <th colspan="2">発送先名：</th>
+                                    <td><%= order.shipping_name %></td></tr>
+                            <th colspan="2">郵便番号：</th>
+                                    <td><%= order.shipping_postal_code %></td></tr>
+                            <th colspan="2">住所：</th>
+                                    <td><%= order.shipping_address %></td></tr>
+                            <th colspan="2">電話番号：</th>
+                                    <td><%= order.shipping_phone_number %></td>
+                                </tr>
                         </tbody>
                     </table>
                     <% end %>
