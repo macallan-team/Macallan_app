@@ -45,8 +45,8 @@
         <h3>2.お支払方法</h3>
         <p>銀行振込・代引きを選択できます。</p>
         <div class="box-radius">
-         <label style="margin-right:70px;"><%= f.radio_button :payment, 'cash_on_delivery',:checked=>"checked" %>代金引換</label>
-         <label><%= f.radio_button :payment, 'bank_transfer' %>銀行振込</label>
+         <label style="margin-right:70px;"><%= f.radio_button :payment, '代金引換',:checked=>"checked" %>代金引換</label>
+         <label><%= f.radio_button :payment, '銀行振込' %>銀行振込</label>
         </div>
 
         <div class="text-center">

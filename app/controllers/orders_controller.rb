@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 		order = Order.new(order_params)
 		order.end_user_id = current_end_user.id
 		order.purchased_at = Time.now
-		order.shipping_status = 'accepting'
+		order.shipping_status = '受付'
 		ActiveRecord::Base.transaction do
 			order.save!
 			cart_items.each do |cart_item|
