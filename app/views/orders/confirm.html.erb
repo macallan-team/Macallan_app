@@ -36,7 +36,7 @@
         <h3>お支払い方法</h3>
         <table class="table table-bordered">
           <tbody>
-            <th><%= payment(@order.payment) %></th>
+            <th><%= @order.payment %></th>
           </tbody>
         </table>
         <%= form_with model: @order,url: {:action=>"create",:controller=>"orders"} do |f| %>
