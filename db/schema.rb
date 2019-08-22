@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.integer "shipping_status", null: false
     t.integer "total_price", null: false
     t.integer "payment", null: false
+    t.integer "subtotal", null: false
     t.string "shipping_name", default: "", null: false
     t.string "shipping_phone_number", default: "", null: false
     t.string "shipping_address", default: "", null: false

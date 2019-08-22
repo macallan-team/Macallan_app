@@ -1,6 +1,13 @@
 <header class="container-fluid">
     <div class="row">
-        <div class="col-xs-3 col-sm-4 head-left"></div>
+        <div class="col-xs-3 col-sm-4 head-left">
+        <div class="login-status">
+            <% if end_user_signed_in? %>
+            <%= link_to end_user_path(current_end_user), :style=>"color:lightgreen;" do %><%= current_end_user.last_name %><% end %>さん
+            <br>ログイン中
+            <% end %>
+        </div>
+        </div>
         <div class="col-xs-4 col-sm-4 head-center">
             <%= link_to root_path, class: "header-link" do %>
             <h1>Macallan</h1><% end %>

@@ -30,7 +30,7 @@
                                 <%# アーティスト名 %>
                                 <p><%= results.artist.name %></p>
                                 <%# 価格 %>
-                                <p>¥<%= results.price %>(税込)</p>
+                                <p>¥<%= tax_calc(results.price) %>(税込)</p>
                                 <%# 販売ステータス %>
                                 <p><%= stock_check(results) %></p>
                         </div>

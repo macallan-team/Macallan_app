@@ -1,2 +1,16 @@
-<h1>Taxes#edit</h1>
-<p>Find me in app/views/taxes/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+<%# <!-- sidebar  ここから --> %>
+    <div class="col-sm-3">
+    <%= render "layouts/adminsidebar" %>
+    </div>
+<%# <!-- sidebar  ここまで --> %>
+    <div class="col-sm-9">
+      <h2>新規税率</h2>
+      <div class="box">
+    <%= render 'form'%>
+    
+      </div>
+    </div>
+  </div>
+</div>

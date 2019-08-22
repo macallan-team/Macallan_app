@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :shipping_status, null: false, defalut: 0
       t.integer :total_price, null: false, defalut: ""
       t.integer :payment, null: false
+      t.integer :subtotal, null:false, default:""
       t.string :shipping_name, null: false, default: ""
       t.string :shipping_phone_number,null: false, default: ""
       t.string :shipping_address, null: false, default: ""

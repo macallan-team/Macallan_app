@@ -43,6 +43,7 @@
         <%= f.hidden_field :shipping_name,:value=>@shipping_name %>
         <%= f.hidden_field :shipping_address,:value=>@shipping_address %>
         <%= f.hidden_field :shipping_postal_code,:value=>@shipping_postal_code %>
+        <%= f.hidden_field :subtotal,:value=>@subtotal %>
         <%= f.hidden_field :shipping_phone_number,:value=>@shipping_phone_number %>
         <%= f.hidden_field :total_price,:value=>(tax_calc(@subtotal) + 500) %>
         <%= f.hidden_field :payment,:value=>@order.payment %>
