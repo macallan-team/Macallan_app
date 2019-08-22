@@ -41,13 +41,7 @@
                                         <% end %>
                                     </td>
                                     <td>
-                                        <% if order.shipping_status == "accepting" %>
-                                        受付
-                                        <% elsif order.shipping_status == "backordered" %>
-                                        入荷待ち
-                                        <% else %>
-                                        出荷済
-                                        <% end %>
+                                        <%= order.shipping_status %>
                                     </td>
                                     <td><%# 編集ボタン %>
                                         <%= link_to "編集",edit_manage_order_path(order),class:"btn btn-default" %>
