@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-
+<% if !@item.nil?%>
         <%# ジャケ写 %>
         <div class="col-sm-6 text-center">
             <div class="image-box">
@@ -28,7 +28,7 @@
 
                     <%# カートに入れる %>
 
-                    <% if end_user_signed_in? %>
+                    <% if end_user_signed_in? && @item.sales_status == 'on_sale' && @item.stock >= 1 %>
                         <%= form_with model: CartItem.new do |f| %>
                         <%= f.select :count, options_for_select((1..20).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
@@ -134,9 +134,9 @@
 
         </div>
 
-
-
-
+<%else%>
+<%= render 'deleted'%>
+<%end%>
 
 
     </div><%# rowクラス閉じタグ %>
