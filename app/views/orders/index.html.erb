@@ -6,7 +6,7 @@
         <ul>
           <li><%= link_to "カート情報", cart_items_path %></li>
           <li></li>
-          <li><%= link_to "Myいいね", cart_items_path %></li>
+          <li><%= link_to "Myいいね", likes_path %></li>
           <li></li>
           <li><%= link_to "登録情報編集", cart_items_path %></li>
         </ul>
@@ -14,9 +14,9 @@
     </div>
     <%# サイドバーここまで %>
     <div class = "col-sm-9">
-
+      <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h2>
                 <%# 注文履歴 %>
-            <div class="box">
+            <div class="box-radius">
                 <div class="text-center">
                     <strong><p>注文履歴</p></strong>
                 </div>
@@ -43,19 +43,19 @@
                                 </td>
                                 <td>
                             <%# 価格税込 %>
-
-
-                                    <span>小計 ¥</span>
-                                    <span><%= o.subtotal %></span>
-
-                                    <span>価格 ¥</span>
-                                    <span><%= o.price %></span>
+                                    <p>価格 ¥<%= o.price %></p>
+                                    <p>小計 ¥<%= order.subtotal %></p>
                                 </td>
                             </tr>
                         <% end %>
                         <tr>
                             <td>
-                                <span>発送先：<%= order.shipping_address %></span>
+                                <p><strong>発送先</strong>
+                                  <p><%= order.shipping_name %></p>
+                                  <p>〒<%= order.shipping_postal_code %></p>
+                                  <p><%= order.shipping_address %></p>
+                                  <p>TEL<%= order.shipping_phone_number %></p>
+                                </p>
                             </td>
                             <td>
                                 <span>ステータス：
@@ -77,66 +77,8 @@
                     <% end %>
                 </div>
             </div>
-          </div>
 
-      <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h2>
-      <%# 購入情報を購入した回数分表示する %>
-        <% @orders.each do |order| %>
-        <%# time.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") strftimeメソッドを使って日時を扱う %>
-        <div class="box-radius">
-        <h4>購入日：<%= order.purchased_at.strftime("%Y年%-m月%-d日") %></h4>
-          <table class = "table" style="margin:-10px;">
-            <tbody>
-            <%# order_itemをoと表す %>
-            <% order.order_items.each do |o| %>
-              <tr>
-                <%# ジャケ写 %>
-                <td class="col-xs-4">
-                  <%= attachment_image_tag o.item, :image, :fill, 100, 100, fallback: "no_image.jpg", :size=>"100x100",class:"images" %>
-                </td>
-                <td class="col-xs-4" style="vertical-align:middle;">
-                  <%# アルバム名 リンク付き %>
-                  <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
-                  <%# アーティスト名 %>
-                  <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
-                  <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
-                  <%# 購入数 %>
-                  <span>購入数：<%= o.count %></span><br>
-                  <span>¥<%= o.price %></span>
-                </td>
-                <td class="col-xs-2 text-right" style="vertical-align:middle;">
-                  <%# 税抜価格 %>
-                  <span>¥<%= o.count * o.price %></span>
-                </td>
-              </tr>
-            <% end %>
-              <tr>
-                <td colspan="3" class="text-right">
-                  小計　¥<%= order.subtotal %>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="3" class="text-right">
-                  消費税　¥<%= order.total_price - order.subtotal - 500 %><br>
-                  送料　¥500<br>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <%# 発送先 %>
-                  <span>発送先：<%= order.shipping_address %></span>
-                </td>
-                <td>
-                  <span>ステータス：<%= order.shipping_status %></span>
-                </td>
-                <td class="text-right">
-                  <span>合計 ¥<%= order.total_price %></span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <% end %>
+
     </div>
   </div>
   <div class = "row">
@@ -147,3 +89,4 @@
   </div>
 </div>
 
+</div>

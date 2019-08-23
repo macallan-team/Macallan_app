@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   #アイテムのルーティング
   resources :items, only: [:show, :index] do
   #いいねコントローラ
-  resource :likes, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
-
+  resources :likes, only: [:index]
+  
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
     resources :addresses, only: [:new, :edit, :create, :update, :destroy]
