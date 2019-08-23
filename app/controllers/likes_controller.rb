@@ -1,6 +1,11 @@
 class LikesController < ApplicationController
 
-before_action :set_variables
+before_action :set_variables, only: [:create, :destroy]
+
+def index
+	@likes = Like.page(params[:page]).per(5)
+	@cart_item = CartItem.new
+end
 
 def create
 	like = current_end_user.likes.new(item_id: @item.id)
@@ -21,6 +26,8 @@ def set_variables
 	@id_name = "#like-link-#{@item.id}"
 	@id_heart = "#heart-#{@item.id}"
 end
-
+def item_params
+	params.require(:end_user).permit(:name, :price, :image)
+end
 
 end
