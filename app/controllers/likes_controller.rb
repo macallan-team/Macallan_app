@@ -10,11 +10,13 @@ end
 def create
 	like = current_end_user.likes.new(item_id: @item.id)
 	like.save
+	flash.now[:notice] = "いいねしました。"
 end
 
 def destroy
 	like = current_end_user.likes.find_by(item_id: @item.id)
 	like.destroy
+	flash.now[:alert] = "いいねを取り消しました。"
 end
 
 # ストロングパラメータ

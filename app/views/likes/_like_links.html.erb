@@ -1,5 +1,5 @@
 <%# いいね機能 %>
-<div id="like-link-<%= item.id %>">
+<span id="like-link-<%= item.id %>">
 <% if end_user_signed_in? %>
     <% if item.favorited_by?(current_end_user) %>
         <%= link_to item_likes_path(item.id), method: :delete, remote: true do %>
@@ -15,4 +15,4 @@
 <%else%>
         <span class="btn glyphicon glyphicon-heart"></span><%= item.likes.count.to_s %>
 <%end%>
-</div>
+</span>

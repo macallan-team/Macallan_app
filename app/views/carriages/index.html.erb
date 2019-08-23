@@ -1,2 +1,44 @@
-<h1>Carriages#index</h1>
-<p>Find me in app/views/carriages/index.html.erb</p>
+<div class="container">
+  <div class="row">
+<%# <!-- sidebar  ここから --> %>
+    <div class="col-sm-3">
+    <%= render "layouts/adminsidebar" %>
+    </div>
+<%# <!-- sidebar  ここまで --> %>
+    <div class="col-sm-9">
+      <h2>送料管理</h2>
+      <div class="box">
+      <h4>送料選択</h4>
+<div class="form-box">
+    <%= form_with url: {:controller=>"carriages",:action=>"select"},method: :get,local: true do |f| %>
+    <table class="table table-hover">
+        <tbody>
+        <% @carriages.each do |carriage| %>
+            <tr>
+                <td>
+            <%if carriage.valid_flag == 'on'%>
+                <label class="valid"><%= f.radio_button :id, carriage.id, :checked=>"checked" %>¥<%= carriage.rate %></label><span style="color:red;">選択中</span><br>
+            <% else %>
+                <label><%= f.radio_button :id, carriage.id %>¥<%= carriage.rate %></label>
+                <%= link_to "", carriage_path(carriage),method: :delete,class:"pull-right glyphicon glyphicon-trash btn btn-default" %><br>
+            <% end %>
+                
+                </td>
+            </tr>
+        <% end %>
+            </tbody>
+        </table>
+        <%= f.submit "選択",class: "btn btn-default" %>
+    <% end %>
+</div>
+    <div class="form-box">
+    <h4>送料の数値を追加</h4>
+    <%= form_with model: @carriage do |f| %>
+        <%= f.text_field :rate, class: "form-control pull-left", :style=>"width:20%;",placeholder:"金額を入力" %>
+        <%= f.submit "登録",class:"btn btn-default",:style=>"width:10%;" %>
+    <% end %>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
