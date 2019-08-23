@@ -1,8 +1,9 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-sm-8 col-sm-offset-2">
             <h2>注文編集</h2>
+            <div class="box">
             <%= form_for(@order,url: manage_order_path) do |o| %>
             <div class="field">
                 <label for="shipping_address">発送先</label>
@@ -13,16 +14,17 @@
                 <p>郵便番号</p>
                 <%= o.text_field :shipping_postal_code,class: "form-control" %>
                 <p>住所</p>
-                <%= o.text_field :shipping_address,class: "form-control" %>
+                <%= o.text_area :shipping_address,class: "form-control" %>
             </div>
             <div class="field">
                 <label for="order_description">ステータス</label>
                 <%= o.select :shipping_status, Order.shipping_statuses.keys, {:prompt => "選択してください"}, {class: "form-control"} %>
             </div>
             <div class="action" style="padding:20px;">
-                <%= o.submit "Update Order",class:"btn btn-default" %>
+                <%= o.submit "Update Order",class:"btn btn-default center-block" %>
             </div>
             <% end %>
+            </div>
         </div>
     </div>
 </div>

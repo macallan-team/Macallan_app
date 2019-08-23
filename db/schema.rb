@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.integer "valid_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["valid_flag"], name: "index_carriages_on_valid_flag"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -141,6 +142,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
     t.string "shipping_phone_number", default: "", null: false
     t.string "shipping_address", default: "", null: false
     t.string "shipping_postal_code", default: "", null: false
+    t.integer "tax_rate", null: false
+    t.integer "carriage_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -164,10 +167,11 @@ ActiveRecord::Schema.define(version: 2019_08_19_062410) do
   end
 
   create_table "taxes", force: :cascade do |t|
-    t.integer "rate", null: false
+    t.decimal "rate", precision: 6, scale: 3
     t.integer "valid_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["valid_flag"], name: "index_taxes_on_valid_flag"
   end
 
 end

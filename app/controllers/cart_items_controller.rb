@@ -9,10 +9,13 @@ class CartItemsController < ApplicationController
 			if cart_item.item.sales_status == 'on_sale'
 				cart_item.end_user_id = current_end_user.id
 				cart_item.save
+				flash.now[:notice] = "カートに追加しました。"
+				
 			end
 		else
 			cart_item.count += cart_item_params[:count].to_i
 			cart_item.save
+			flash.now[:notice] = "カート内の数量が変更されました。"
 		end
 	end
 
@@ -29,7 +32,8 @@ class CartItemsController < ApplicationController
 	end
 
 	def index
-		subtotal
+		set_subtotal
+		set_total
 		@cart_items = CartItem.where(end_user_id: current_end_user.id)
 	end
 

@@ -75,8 +75,9 @@ resources :admins, only: [:index]
   resources :reviews
 
   resources :taxes, only: [:create, :update, :destroy, :index]
-
+  get 'tax/select' => "taxes#select", as: 'select_tax'
   #　税率
   resources :carriages, only: [:create, :update, :destroy, :index]
+  get 'carriage/select' => "carriages#select", as: 'select_carriage'
 
 end

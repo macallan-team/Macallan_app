@@ -6,11 +6,38 @@
     </div>
 <%# <!-- sidebar  ここまで --> %>
     <div class="col-sm-9">
-      <h2>新規税率</h2>
+      <h2>税率管理</h2>
       <div class="box">
-        <%= @texes.each do |tax| %>
-            <%= tax.rate %>
+      <h4>税率選択</h4>
+<div class="form-box">
+    <%= form_with url: {:controller=>"taxes",:action=>"select"},method: :get,local: true do |f| %>
+    <table class="table table-hover">
+        <tbody>
+        <% @taxes.each do |tax| %>
+            <tr>
+                <td>
+            <%if tax.valid_flag == 'on'%>
+                <label class="valid"><%= f.radio_button :id, tax.id, :checked=>"checked" %><%= (tax.rate - 1) * 100 %>%</label><span style="color:red;">選択中</span><br>
+            <% else %>
+                <label><%= f.radio_button :id, tax.id %><%= (tax.rate - 1) * 100 %>%</label>
+                <%= link_to "", tax_path(tax),method: :delete,class:"pull-right glyphicon glyphicon-trash btn btn-default" %><br>
+            <% end %>
+                
+                </td>
+            </tr>
         <% end %>
+            </tbody>
+        </table>
+        <%= f.submit "選択",class: "btn btn-default" %>
+    <% end %>
+</div>
+    <div class="form-box">
+    <h4>税率の数値を追加</h4>
+    <%= form_with model: @tax do |f| %>
+        <%= f.text_field :rate, class: "form-control pull-left", :style=>"width:20%;",placeholder:"1〜100(%)" %>
+        <%= f.submit "登録",class:"btn btn-default",:style=>"width:10%;" %>
+    <% end %>
+    </div>
       </div>
     </div>
   </div>

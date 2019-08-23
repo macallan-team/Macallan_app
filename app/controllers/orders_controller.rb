@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :authenticate_end_user!
-	before_action :cart_existence_check,only: [:confirm,:new,:update,:create]
+	before_action :check_cart_existence,only: [:confirm,:new,:update,:create]
 	def new
 		@order = Order.new
 		@addresses = Address.where(end_user_id: current_end_user.id)
@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
 	end
 
 	def confirm
-		subtotal
+		set_subtotal
+		set_total
 		@order = Order.new(payment: params[:payment])
 		@cart_items = current_end_user.cart_items
 		use_address = params[:use_address]
@@ -33,11 +34,17 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		set_subtotal
+		set_total
 		cart_items = current_end_user.cart_items
 		order = Order.new(order_params)
 		order.end_user_id = current_end_user.id
 		order.purchased_at = Time.now
 		order.shipping_status = '受付'
+		order.subtotal = @subtotal
+		order.total_price = @total
+		order.carriage_rate = @carriage_rate
+		order.tax_rate = @tax_rate
 		ActiveRecord::Base.transaction do
 			order.save!
 			cart_items.each do |cart_item|
@@ -69,7 +76,7 @@ class OrdersController < ApplicationController
 	def order_params
 		params.require(:order).permit(:payment,:use_address,:total_price,:shipping_name,:shipping_address,:shipping_postal_code,:shipping_phone_number,:subtotal)
 	end
-	def cart_existence_check
+	def check_cart_existence
 		if current_end_user.cart_items.any?
 		else
 			redirect_to items_path

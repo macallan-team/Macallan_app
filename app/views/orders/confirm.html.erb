@@ -17,9 +17,9 @@
             <td style="vertical-align:middle;" class="text-right">¥<%= total_price(cart_item) %></td></tr>
                 <% end %>
             <tr><td colspan="4" class="text-right">小計　¥<%= @subtotal %></td></tr>
-            <tr><td colspan="4" class="text-right">消費税　¥<%= tax_calc(@subtotal) - @subtotal %><br>
-                送料（全国一律）¥500</td></tr>
-            <tr><th colspan="4" class="text-right">合計 ¥<%= tax_calc(@subtotal) + 500 %></th></tr>
+            <tr><td colspan="4" class="text-right">+ 消費税　¥<%= @total - @subtotal - carriage_rate %><br>
+                + 送料（全国一律）¥<%= carriage_rate %></td></tr>
+            <tr><th colspan="4" class="text-right">合計 ¥<%= @total %></th></tr>
           </tbody>
         </table>
 
@@ -43,12 +43,10 @@
         <%= f.hidden_field :shipping_name,:value=>@shipping_name %>
         <%= f.hidden_field :shipping_address,:value=>@shipping_address %>
         <%= f.hidden_field :shipping_postal_code,:value=>@shipping_postal_code %>
-        <%= f.hidden_field :subtotal,:value=>@subtotal %>
         <%= f.hidden_field :shipping_phone_number,:value=>@shipping_phone_number %>
-        <%= f.hidden_field :total_price,:value=>(tax_calc(@subtotal) + 500) %>
         <%= f.hidden_field :payment,:value=>@order.payment %>
         <div class="text-center">
-          <%= link_to "戻る", new_end_user_order_path(current_end_user),class:"btn btn-default" %>
+          <%= link_to "戻る", new_end_user_order_path(current_end_user),method: :get,class:"btn btn-default" %>
           <%= f.submit "注文を確定", class:"btn btn-default"%>
         </div>
         <% end %>

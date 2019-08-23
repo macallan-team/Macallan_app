@@ -10,6 +10,9 @@
   <body>
 <div class="wrap">
   <%= render"layouts/header", results: @results %>
+  <div id="messages">
+  <%= render 'layouts/flash'%>
+  </div>
   <%= yield %>
   <%= render partial: "layouts/footer" %>
 </div>

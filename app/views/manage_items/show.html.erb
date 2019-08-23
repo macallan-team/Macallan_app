@@ -20,7 +20,7 @@
                 <table class="table table-responsive">
                     <tbody>
                         <tr><th>ID</th>
-                        <td><%= @item.id %><%= link_to "[ 商品削除 ]", manage_item_path, method: :delete, class:"pull-right", data: { confirm: "ステータスを「削除済み」に変更します。\n全ユーザーのカートから削除されます。" } %><%= link_to "[ 編集 ]", edit_manage_item_path, class: "pull-right" %></td></tr>
+                        <td><%= @item.id %><%= link_to "[ 商品削除 ]", manage_item_path, method: :delete, class:"pull-right", data: { confirm: "商品を削除します。\n全ユーザーのカートから削除されます。" } %><%= link_to "[ 編集 ]", edit_manage_item_path, class: "pull-right" %></td></tr>
 
                         <tr><th>商品名</th>
                         <td><%= @item.album %></td></tr>

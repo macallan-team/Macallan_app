@@ -27,7 +27,7 @@ end
 # end
 
 # カレントエンドユーザーのカートアイテム小計
-def subtotal
+def set_subtotal
   cart_items = current_end_user.cart_items
   array = []
   cart_items.each do |cart_item|
@@ -35,7 +35,24 @@ def subtotal
   end
   @subtotal = array.sum
 end
-# カートアイテムの在庫あり・販売中以外削除
+
+def set_total
+  set_tax_rate
+  set_carriage_rate
+    cart_items = current_end_user.cart_items
+    array = []
+    cart_items.each do |cart_item|
+      array << (BigDecimal(cart_item.item.price.to_s) * BigDecimal(@tax_rate.to_s)).to_f.ceil.to_i * cart_item.count
+    end
+    @total = array.sum + @carriage_rate
+end
+
+def set_tax_rate
+  @tax_rate = Tax.find_by(valid_flag: 'on').rate
+end	
+def set_carriage_rate
+  @carriage_rate = Carriage.find_by(valid_flag: 'on').rate
+end	
 
 
 protected
