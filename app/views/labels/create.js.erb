@@ -3,3 +3,4 @@ $('.labels > option').remove();
 <% Label.all.order('name').each do |label| %>
 $('.labels').append($('<option>').html("<%= label.name %>").val("<%= label.id %>"));
 <% end%>
+$('#messages').html('<%= escape_javascript(render("layouts/flash")) %>');

@@ -2,12 +2,13 @@ class ArtistsController < ApplicationController
 	def create
 		@artist = Artist.new(artist_params)
 		@artist.save
+		flash.now[:notice] = "アーティストを削除しました。"
 	end
 
 	def destroy
 		artist = Artist.find(params[:id])
 		artist.destroy
-		redirect_to new_manage_item_path
+		redirect_to new_manage_item_path, :alert => "アーティストを削除しました。"
 	end
 
 	def update

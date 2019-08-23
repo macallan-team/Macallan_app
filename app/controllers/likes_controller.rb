@@ -8,15 +8,15 @@ def index
 end
 
 def create
-	like = current_end_user.likes.new(item_id: @item.id)
-	like.save
-	flash.now[:notice] = "いいねしました。"
+		like = current_end_user.likes.new(item_id: @item.id)
+		like.save
+		flash.now[:notice] = "「#{@item.album}」にいいねしました。"
 end
 
 def destroy
-	like = current_end_user.likes.find_by(item_id: @item.id)
-	like.destroy
-	flash.now[:alert] = "いいねを取り消しました。"
+	like = current_end_user.likes.where(item_id: @item.id)
+	like.destroy_all
+	flash.now[:alert] = "「#{@item.album}」のいいねを取り消しました。"
 end
 
 # ストロングパラメータ

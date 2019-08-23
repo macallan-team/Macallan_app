@@ -43,6 +43,9 @@ body{
 li {
 	list-style: none;
 }
+.no-scroll{
+	overflow: hidden;
+}
 
 .sidebar {
 	border: 1px solid rgba(0,0,0,.4);
@@ -54,6 +57,61 @@ h2 {
 .valid {
 	background-color: lightgrey;
 }
+
+// スクロールボタン
+
+
+#scroll-button{
+	width: 40px;
+	height: 40px;
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	opacity: 0.6;
+	z-index:9;
+	display:none;
+  }
+  #scroll-button span{
+	position: relative;
+	display: block;
+	width: 70px;
+	height: 70px;
+	text-decoration: none;
+	border-radius: 50%;
+	background-color:rgba(0,0,0,.3);
+  }
+  #scroll-button span::before{
+	font-weight: 900;
+	content: '▲';
+	font-size: 25px;
+	color: white;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: -25px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	text-align: center;
+  }
+  #scroll-button span::after{
+	content: 'TOP';
+	font-family: 'arial black';
+	font-size: 13px;
+	color: #fff;
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	text-align: center;
+	color: #white;
+  }
+  #scroll-button:hover{
+	  opacity: 0.9;
+  }
 
 // アイテム一覧
 .item-box{

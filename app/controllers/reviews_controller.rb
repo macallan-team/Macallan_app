@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     def destroy
         review = Review.find(params[:id])
         review.destroy
-        redirect_to items_path, :alert => "レビューを削除しました。"
+        redirect_to item_path(@review.item), :alert => "レビューを削除しました。"
     end
 
     def update
