@@ -6,9 +6,7 @@
         <ul>
           <li><%= link_to "カート情報", cart_items_path %></li>
           <li></li>
-          <li><%= link_to "Myいいね", likes_path %></li>
-          <li></li>
-          <li><%= link_to "登録情報編集", cart_items_path %></li>
+          <li><%= link_to "登録情報編集", end_user_path(current_end_user) %></li>
         </ul>
       </div>
     </div>
