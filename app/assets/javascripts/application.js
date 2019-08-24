@@ -62,4 +62,12 @@ document.addEventListener("turbolinks:load", function() {
 		});
 	});
 
+	var cancelFlag = 0;
+ 
+	//++++++++++++++++++++++++++++
+	//クリックした時に長い長い処理をする
+	
+		
+	});
+
 });
