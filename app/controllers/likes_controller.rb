@@ -3,7 +3,7 @@ class LikesController < ApplicationController
 before_action :set_variables, only: [:create, :destroy]
 
 def index
-	@likes = Like.page(params[:page]).per(5)
+	@likes = current_end_user.likes.page(params[:page]).per(5)
 	@cart_item = CartItem.new
 end
 
