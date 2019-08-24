@@ -29,8 +29,8 @@ class OrdersController < ApplicationController
 				@shipping_phone_number = address.phone_number
 			end
 		end
-		
-		
+
+
 	end
 
 	def create
@@ -70,6 +70,10 @@ class OrdersController < ApplicationController
 
 	def complete
 
+	end
+
+	def edit
+		@order = Order.find(params[:id])
 	end
 
 	private
