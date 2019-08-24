@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
 	def create
 		@artist = Artist.new(artist_params)
 		@artist.save
-		flash.now[:notice] = "アーティストを削除しました。"
+		flash.now[:notice] = "アーティストを登録しました。"
 	end
 
 	def destroy
