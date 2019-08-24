@@ -11,7 +11,7 @@
         <%# 商品詳細情報 %>
         <div class="col-sm-6 text-center">
             <div style="margin-bottom:17px;">
-                
+
                     <%# 商品名 %>
                     <p><h2 style="display:inline-block;margin-right:20px;">
                     <%= @item.album %>
@@ -21,15 +21,12 @@
                     <%= render 'likes/like_links', item: @item %></p>
                     <%# アーティスト名 %>
                     <p style="margin:20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
-                
+
                     <%# 価格 %>
-<<<<<<< HEAD
                     <p style="color:red;">¥<%= @item.price %>(税込)</p>
-=======
                     <span style="font-size:1.4em;display:inline-block;">¥<%= tax_calc(@item.price) %>(税込)　</span><%= stock_check(@item) %>
                     <%# 在庫ステータス %>
 
->>>>>>> origin/master
                     <%# カートに入れる %>
 
                     <% if end_user_signed_in? && @item.sales_status == 'on_sale' && @item.stock >= 1 %>
@@ -51,10 +48,6 @@
         <div class="col-sm-6">
             <div class="box">
             <h4><strong>収録曲</strong></h4>
-<<<<<<< HEAD
-=======
-                <% @discs.each do |disc| %>
->>>>>>> origin/master
                 <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
@@ -64,10 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
                     <% @discs.each do |disc| %>
-=======
->>>>>>> origin/master
                     <% disc.songs.each do |song|%>
                         <tr>
                             <td>
@@ -122,12 +112,12 @@
 
                     </tbody>
                 </table>
-            
+
 
             <%# レビュー投稿 %>
             <% if end_user_signed_in? %>
             <div class="item-rev-edit">
-            
+
                 <%= form_for @review do |f| %>
                     <p>名前</p>
                     <%= f.text_field :name,class:"form-control" %>
