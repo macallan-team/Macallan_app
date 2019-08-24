@@ -11,6 +11,7 @@ class ManageEndUsersController < ApplicationController
 	end
 
 	def update
+		@end_user = EndUser.find(params[:id])
 	end
 
 	def index
@@ -24,6 +25,7 @@ class ManageEndUsersController < ApplicationController
 	end
 
 	def edit
+		@end_user = EndUser.find(params[:id])
 	end
 end
 
