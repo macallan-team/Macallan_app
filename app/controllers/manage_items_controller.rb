@@ -7,8 +7,12 @@ class ManageItemsController < ApplicationController
 
 	def update
 		item = Item.find(params[:id])
-		item.update(item_params)
-		redirect_to manage_item_path(item)
+		if item.update(item_params)
+			redirect_to manage_item_path(item), :notice => "商品を更新しました。"
+		else
+			flash.now[:alert] = "入力内容を確認してください。"
+			render :edit
+		end
 	end
 
 	def destroy
@@ -17,7 +21,7 @@ class ManageItemsController < ApplicationController
 		cart_items = item.cart_items
 		cart_items.destroy_all
 		# 削除済みを省いたインデックスにリダイレクト
-		redirect_to '/manage_items/?q%5Bsales_status_not_eq%5D=2'
+		redirect_to '/manage_items/?q%5Bsales_status_not_eq%5D=2', :alert => "商品を削除しました。"
 	end
 
 	def show
@@ -28,8 +32,9 @@ class ManageItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 		if @item.save
-			redirect_to manage_item_path(@item)
+			redirect_to manage_item_path(@item), :notice => "登録しました。"
 		else
+			flash.now[:alert] = '登録に失敗しました。入力内容を確認してください。'
 			render :new
 		end
 	end
@@ -58,7 +63,7 @@ class ManageItemsController < ApplicationController
 		item = Item.find(params[:id])
 		item.sales_status = 'suspension'
 		item.save
-		redirect_to manage_item_path(item)
+		redirect_to manage_item_path(item), :notice => "商品の削除を取り消しました。"
 	end
 	
 	def edit
