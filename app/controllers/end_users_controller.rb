@@ -30,7 +30,7 @@ before_action :correct_user
 
  private
  def end_user_params
-     params.require(:end_user).permit(:password, :password_confirmation, :current_password)
+     params.require(:end_user).permit(:last_name, :first_name, :last_kana, :first_kana, :postal_code, :address, :phone_number, :email)
  end
 
 

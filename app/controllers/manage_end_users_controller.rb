@@ -32,5 +32,5 @@ end
 
 	private
     def end_user_params
-    	 params.require(:end_user).permit(:first_name, :last_name, :first_kana, :last_kana, :email, :address, :postal_code)
+		 params.require(:end_user).permit(:last_name, :first_name, :last_kana, :first_kana, :postal_code, :address, :phone_number, :email)
     end
