@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="row form-box">
-                    <%= link_to "編集", edit_manege_end_user_path(@end_user.id), class: "btn btn-primary pull-right", :style=>"width: 10%;" %>
+                    <%= link_to "編集", edit_manage_end_user_path(@end_user.id), class: "btn btn-primary pull-right", :style=>"width: 10%;" %>
                 </div>
 
                 <div class="row form-box">
@@ -91,28 +91,21 @@
                                 </td>
                                 <td>
                             <%# 価格税込 %>
-                                    <span>価格 ¥</span>
-                                    <span><%= o.price %></span>
+                                    <p style="color:red;">価格 <%= o.price %>円</p>
+                                    <p style="color:red;">合計金額 <%= order.total_price %>円</p>
                                 </td>
                             </tr>
-                            <tr><th colspan="2">
-                                <span>ステータス：
-                                    <%= order.shipping_status %>
-                                </span>
-                            </th>
-                            <td>
-                                <span>合計金額 ¥<%= order.total_price %></span>
-                            </td>
-                        </tr>
                         <% end %>
                         <tr>
-                            <th colspan="2">発送先名：</th>
+                            <th colspan="2">ステータス</th>
+                                    <td><%= order.shipping_status %></td></tr>
+                            <th colspan="2">発送先名</th>
                                     <td><%= order.shipping_name %></td></tr>
-                            <th colspan="2">郵便番号：</th>
+                            <th colspan="2">郵便番号</th>
                                     <td><%= order.shipping_postal_code %></td></tr>
-                            <th colspan="2">住所：</th>
+                            <th colspan="2">住所</th>
                                     <td><%= order.shipping_address %></td></tr>
-                            <th colspan="2">電話番号：</th>
+                            <th colspan="2">電話番号</th>
                                     <td><%= order.shipping_phone_number %></td>
                                 </tr>
                         </tbody>
