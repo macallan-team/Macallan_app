@@ -40,11 +40,13 @@
                                     <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
                             <%# 購入数 %>
                                     <span>購入数：<%= o.count %></span>
+                                    <%# 価格税抜 %>
+                                    <p>税抜　¥<%= o.price %></p>
                                 </td>
                                 <td>
-                            <%# 価格税込 %>
-                                    <p>価格 ¥<%= o.price %></p>
-                                    <p>小計 ¥<%= order.subtotal %></p>
+                                  <%# 価格税抜 %>
+                                    <p>税抜　¥<%= o.price * o.count %> </p>
+                                    
                                 </td>
                             </tr>
                         <% end %>
@@ -69,7 +71,10 @@
                                 </span>
                             </td>
                             <td>
-                                <span>合計金額 ¥：<%= order.total_price %></span>
+                              <p>小計 ¥<%= order.subtotal %></p>
+                              <p>消費税　¥<%= order.total_price - order.subtotal - order.carriage_rate %></p>
+                              <p>送料（全国一律）¥<%= order.carriage_rate %></p>
+                              <span>合計金額 ¥<%= order.total_price %></span>
                             </td>
                         </tr>
                         </tbody>
