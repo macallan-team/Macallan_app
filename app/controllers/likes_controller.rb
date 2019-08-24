@@ -29,5 +29,8 @@ end
 def item_params
 	params.require(:end_user).permit(:name, :price, :image)
 end
+def like_params
+	params.require(:like).permit(:item_id)
+end
 
 end
