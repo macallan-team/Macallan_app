@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+respond_to :html,:json
   # def after_sign_out_path_for(resource)
   # 	root_path　#ログアウト後は商品の一覧ページに遷移
   # end
