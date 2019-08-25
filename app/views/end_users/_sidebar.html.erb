@@ -1,13 +1,12 @@
-<div class="container">
-  <div class="row">
-      <div class="side-bar">
-        <ul>
-          <% if end_user_signed_in? %>
-          <li><%= link_to "注文履歴",end_user_orders_path(current_end_user) %></li>
-
-          <li><%= link_to "登録情報編集",edit_end_user_path %></li>
-          <% end %>
-        </ul>
-      </div>
+<h3>メニュー</h3>
+  <div class = "sidebar">
+    <ul>
+      <li></li>
+      <li><%= link_to "Myいいね", likes_path %></li>
+      <li></li>
+      <li><%= link_to "注文履歴", end_user_orders_path(current_end_user) %></li>
+      <li></li>
+      <li><%= link_to "登録情報編集", end_user_path(current_end_user) %></li>
+      <li></li>
+    </ul>
   </div>
-</div>

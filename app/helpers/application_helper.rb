@@ -22,12 +22,12 @@ module ApplicationHelper
         cart_items = current_end_user.cart_items
         array = []
         cart_items.each do |cart_item|
-          array << (BigDecimal(cart_item.item.price.to_s) * BigDecimal(tax_rate.to_s)).to_f.ceil.to_i * cart_item.count
+          array << (BigDecimal(cart_item.item.price.to_s) * BigDecimal(tax_rate.to_s)).to_f.floor.to_i * cart_item.count
         end
     end
     # 税の計算
     def tax_calc(num)
-        return num = (BigDecimal(num.to_s)*BigDecimal(tax_rate)).ceil.to_i
+        return num = (BigDecimal(num.to_s)*BigDecimal(tax_rate)).floor.to_i
     end
         
         

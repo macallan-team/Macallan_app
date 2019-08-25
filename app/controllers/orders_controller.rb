@@ -4,10 +4,12 @@ class OrdersController < ApplicationController
 	def new
 		@order = Order.new
 		@addresses = Address.where(end_user_id: current_end_user.id)
+		check_out_of_stock
 		render :new
 	end
 
 	def confirm
+		check_out_of_stock
 		set_subtotal
 		set_total
 		@order = Order.new(payment: params[:payment])
@@ -29,14 +31,19 @@ class OrdersController < ApplicationController
 				@shipping_phone_number = address.phone_number
 			end
 		end
-		
-		
+
+
 	end
 
 	def create
 		set_subtotal
 		set_total
 		cart_items = current_end_user.cart_items
+		cart_items.each do |cart_item|
+			if cart_item.count > cart_item.item.stock
+				redirect_to cart_items_path
+			end
+		end
 		order = Order.new(order_params)
 		order.end_user_id = current_end_user.id
 		order.purchased_at = Time.now
@@ -65,11 +72,15 @@ class OrdersController < ApplicationController
 	end
 
 	def index
-		@orders = Order.page(params[:page]).per(5)
+		@orders = current_end_user.orders.page(params[:page]).per(5)
 	end
 
 	def complete
 
+	end
+
+	def edit
+		@order = Order.find(params[:id])
 	end
 
 	private

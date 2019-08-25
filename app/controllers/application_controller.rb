@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+respond_to :html,:json
   # def after_sign_out_path_for(resource)
   # 	root_path　#ログアウト後は商品の一覧ページに遷移
   # end
@@ -42,7 +42,7 @@ def set_total
     cart_items = current_end_user.cart_items
     array = []
     cart_items.each do |cart_item|
-      array << (BigDecimal(cart_item.item.price.to_s) * BigDecimal(@tax_rate.to_s)).to_f.ceil.to_i * cart_item.count
+      array << (BigDecimal(cart_item.item.price.to_s) * BigDecimal(@tax_rate.to_s)).to_f.floor.to_i * cart_item.count
     end
     @total = array.sum + @carriage_rate
 end
@@ -53,6 +53,20 @@ end
 def set_carriage_rate
   @carriage_rate = Carriage.find_by(valid_flag: 'on').rate
 end	
+
+def check_out_of_stock
+  cart_items = current_end_user.cart_items
+  cart_items.each do |cart_item|
+    if cart_item.item.sales_status != 'on_sale' || cart_item.item.stock <= 0
+      cart_item.destroy
+      flash.now[:alert] = "カート内の「#{cart_item.item.album}」の販売が終了したため、削除されました。"
+    elsif cart_item.count > cart_item.item.stock
+      cart_item.count = cart_item.item.stock
+      cart_item.save
+      flash.now[:alert] = "申し訳ございません。「#{cart_item.item.album}」は現在#{cart_item.count}点までしかご購入いただくことができません。"
+    end
+  end
+end
 
 
 protected

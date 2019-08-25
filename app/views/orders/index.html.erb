@@ -2,15 +2,7 @@
   <div class = "row">
     <%# ここからサイドバー %>
     <div class = "col-sm-2">
-      <div class = "sidebar">
-        <ul>
-          <li><%= link_to "カート情報", cart_items_path %></li>
-          <li></li>
-          <li><%= link_to "Myいいね", likes_path %></li>
-          <li></li>
-          <li><%= link_to "登録情報編集", end_user_path(current_end_user) %></li>
-        </ul>
-      </div>
+      <%= render "end_users/sidebar"%>
     </div>
     <%# サイドバーここまで %>
     <div class = "col-sm-9">
@@ -40,11 +32,13 @@
                                     <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
                             <%# 購入数 %>
                                     <span>購入数：<%= o.count %></span>
+                                    <%# 価格税抜 %>
+                                    <p>税抜　¥<%= o.price %></p>
                                 </td>
                                 <td>
-                            <%# 価格税込 %>
-                                    <p>価格 ¥<%= o.price %></p>
-                                    <p>小計 ¥<%= order.subtotal %></p>
+                                  <%# 価格税抜 %>
+                                    <p>税抜　¥<%= o.price * o.count %> </p>
+                                    
                                 </td>
                             </tr>
                         <% end %>
@@ -69,7 +63,10 @@
                                 </span>
                             </td>
                             <td>
-                                <span>合計金額 ¥：<%= order.total_price %></span>
+                              <p>小計 ¥<%= order.subtotal %></p>
+                              <p>消費税　¥<%= order.total_price - order.subtotal - order.carriage_rate %></p>
+                              <p>送料（全国一律）¥<%= order.carriage_rate %></p>
+                              <span>合計金額 ¥<%= order.total_price %></span>
                             </td>
                         </tr>
                         </tbody>
@@ -77,6 +74,7 @@
                     <% end %>
                 </div>
             </div>
+          
 
 
     </div>

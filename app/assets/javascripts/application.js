@@ -25,7 +25,6 @@ document.addEventListener("turbolinks:load", function() {
 		$('html').animate({scrollTop: 0},50,function(){
 			$('.menu-box').fadeToggle();
 			$('#menu').toggleClass("open");
-			$('html').toggleClass("no-scroll");
 			$('#scroll-button').fadeOut(300);
 		});
 		event.stopPropagation();
@@ -41,7 +40,6 @@ document.addEventListener("turbolinks:load", function() {
 		if ($('.menu-box').is(':visible')) {
 			$('.menu-box').fadeToggle();
 			$('#menu').toggleClass("open");
-			$('html').toggleClass("no-scroll");
 			event.preventDefault();
 		}else{
 		}
@@ -63,5 +61,4 @@ document.addEventListener("turbolinks:load", function() {
 			$('#scroll-button').fadeOut(300);
 		});
 	});
-
 });

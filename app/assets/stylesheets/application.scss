@@ -23,12 +23,10 @@
 	box-sizing: border-box;
 }
 
-.clearfix{
-	content::after{
+.clearfix::after{
 	content:"";
     display: block;
     clear: both;
-	}
 }
 
 html {
@@ -174,3 +172,14 @@ footer{
 	margin-top:60px;
 }
  
+// いいねボタン
+.like-btn{
+	border-radius:15px;
+	background-color:rgba(200,0,0,.2);
+	border:none;
+	padding:10px;
+	&:hover{
+		opacity:.5;
+	}
+	
+}

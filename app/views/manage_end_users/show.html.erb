@@ -78,7 +78,7 @@
                             <tr>
                             <%# ジャケ写 %>
                                 <td>
-                                    <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg' %>
+                                    <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg",:size=>"100x100" %>
                                 </td>
                                 <td>
                             <%# アルバム名 リンク付き %>
@@ -91,28 +91,21 @@
                                 </td>
                                 <td>
                             <%# 価格税込 %>
-                                    <span>価格 ¥</span>
-                                    <span><%= o.price %></span>
+                                    <p style="color:red;">価格 <%= o.price %>円</p>
+                                    <p style="color:red;">合計金額 <%= order.total_price %>円</p>
                                 </td>
                             </tr>
-                            <tr><th colspan="2">
-                                <span>ステータス：
-                                    <%= order.shipping_status %>
-                                </span>
-                            </th>
-                            <td>
-                                <span>合計金額 ¥<%= order.total_price %></span>
-                            </td>
-                        </tr>
                         <% end %>
                         <tr>
-                            <th colspan="2">発送先名：</th>
+                            <th colspan="2">ステータス</th>
+                                    <td><%= order.shipping_status %></td></tr>
+                            <th colspan="2">発送先名</th>
                                     <td><%= order.shipping_name %></td></tr>
-                            <th colspan="2">郵便番号：</th>
+                            <th colspan="2">郵便番号</th>
                                     <td><%= order.shipping_postal_code %></td></tr>
-                            <th colspan="2">住所：</th>
+                            <th colspan="2">住所</th>
                                     <td><%= order.shipping_address %></td></tr>
-                            <th colspan="2">電話番号：</th>
+                            <th colspan="2">電話番号</th>
                                     <td><%= order.shipping_phone_number %></td>
                                 </tr>
                         </tbody>

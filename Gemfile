@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'pry-byebug'
+  gem 'rspec-rails' # Rspecテスト
 end
 
 group :development do
@@ -65,6 +66,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'kaminari', '~> 1.1.1'
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"

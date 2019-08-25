@@ -2,15 +2,13 @@
 <span id="like-link-<%= item.id %>">
 <% if end_user_signed_in? %>
     <% if item.favorited_by?(current_end_user) %>
-        <%= link_to item_likes_path(item.id), method: :delete, remote: true do %>
-        <span class="btn btn-default glyphicon glyphicon-heart" id="heart-<%= item.id %>"></span>
-        <%= item.likes.count.to_s %>
-        <% end %>
+        <%= form_with model: Like.new, url: item_likes_path(item.id), method: :delete do |f| %>
+        <%= f.submit "★　#{item.likes.count.to_s}",class:"btn btn-default",data:{disable_with: "★　#{item.likes.count.to_s}"} %>
+        <%end%>
     <% else %>
-        <%= link_to item_likes_path(item.id), method: :post, remote: true do %>
-        <span class="btn btn-default glyphicon glyphicon-heart-empty" id="heart-<%= item.id %>"></span>
-        <% item.likes.count.to_s %>
-        <% end %>
+        <%= form_with model: Like.new, url: item_likes_path(item.id), method: :post do |f| %>
+        <%= f.submit "☆　#{item.likes.count.to_s}",class:"btn btn-default",data:{disable_with: "☆　#{item.likes.count.to_s}"} %>
+        <%end%>
     <% end %>
 <%else%>
         <span class="btn glyphicon glyphicon-heart"></span><%= item.likes.count.to_s %>

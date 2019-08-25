@@ -10,20 +10,29 @@
 
         <%# 商品詳細情報 %>
         <div class="col-sm-6 text-center">
-            <div style="margin-bottom:17px;">
-                
+            <div style="margin:25px 0;">
+
                     <%# 商品名 %>
-                    <p><h2 style="display:inline-block;margin-right:20px;">
-                    <%= @item.album %>
-                    </h2>
-                    <%# いいねカウント %>
-                    <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
-                    <%= render 'likes/like_links', item: @item %></p>
+                    <div class="row">
+                        <table class="col-xs-8 col-xs-offset-2">
+                            <tbody>
+                                <td class="text-right" style="padding-right:10px;">
+                                <h2 style="display:inline;"><%= @item.album %></h2>
+                                </td>
+                                <%# いいねカウント %>
+                                <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
+                                <td class="text-left" style="padding-left:10px;">
+                                    <%= render 'likes/like_links', item: @item %>
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
                     <%# アーティスト名 %>
-                    <p style="margin:20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
-                
+                    <p style="margin:30px 0 20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
+
                     <%# 価格 %>
-                    <span style="font-size:1.4em;display:inline-block;">¥<%= tax_calc(@item.price) %>(税込)　</span><%= stock_check(@item) %>
+
+                    <span style="font-size:1.4em;display:inline-block;color:red;">¥<%= tax_calc(@item.price) %><span style="color:black;">(税込)</span>　</span><%= stock_check(@item) %>
                     <%# 在庫ステータス %>
 
                     <%# カートに入れる %>
@@ -43,11 +52,11 @@
 
 
     <div class="row">
-
         <%# 収録曲 %>
         <div class="col-sm-6">
             <div class="box">
             <h4><strong>収録曲</strong></h4>
+
                 <% @discs.each do |disc| %>
                 <table class="table table-striped table-responsive">
                     <thead>
@@ -85,6 +94,7 @@
             <h4><strong>レビュー</strong></h4>
                 <table class="table table-responsive">
                     <tbody>
+                    <% if @reviews.any? %>
                     <% @reviews.each do |review| %>
                     <tr>
                         <td>
@@ -106,18 +116,21 @@
                             </p>
                         </td>
                     </tr>
+                    <%end%>
+                    <%else%>
+                    <tr><td>レビューはまだありません。</td></tr>
                     <% end %>
                     <td class="text-center"><%= paginate @reviews %></td>
 
 
                     </tbody>
                 </table>
-            
+
 
             <%# レビュー投稿 %>
             <% if end_user_signed_in? %>
             <div class="item-rev-edit">
-            
+
                 <%= form_for @review do |f| %>
                     <p>名前</p>
                     <%= f.text_field :name,class:"form-control" %>
