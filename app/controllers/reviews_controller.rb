@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+    before_action :authenticate_end_user!
     def create
         @review = Review.new(review_params)
         @review.end_user_id = current_end_user.id

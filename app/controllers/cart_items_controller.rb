@@ -27,10 +27,19 @@ class CartItemsController < ApplicationController
 	end
 
 	def update
-		@cart_item = CartItem.find(params[:id])
-		@cart_item.update(cart_item_params)
-		redirect_to item_path(@cart_item.item)
-		check_out_of_stock
+		@cart_item = CartItem.find(cart_item_params[:id])
+		@cart_item.count += cart_item_params[:count].to_i
+		if @cart_item.count <= 0
+			@cart_item.destroy
+			redirect_to cart_items_path
+		else
+			@cart_item.save
+			check_out_of_stock
+			@cart_item = CartItem.find(cart_item_params[:id])
+			set_subtotal
+			set_total
+			flash.now[:notice] = "「#{@cart_item.item.album}」の数量を変更しました。"
+		end
 	end
 
 	def index
@@ -42,6 +51,6 @@ class CartItemsController < ApplicationController
 
 	private
 	def cart_item_params
-		params.require(:cart_item).permit(:count,:item_id)
+		params.require(:cart_item).permit(:id,:count,:item_id)
 	end
 end
