@@ -42,7 +42,7 @@
                 
                 <%# カートに入れる %>
                 
-                  <% if end_user_signed_in? %>
+                  <% if like.item.sales_status == 'on_sale' && like.item.stock >= 1 %>
                       <%= form_with model: @cart_item do |f| %>
                     <%= f.hidden_field :item_id, :value => like.item.id %>
                   
