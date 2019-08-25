@@ -61,11 +61,4 @@ document.addEventListener("turbolinks:load", function() {
 			$('#scroll-button').fadeOut(300);
 		});
 	});
-
-	var cancelFlag = 0;
- 
-	//++++++++++++++++++++++++++++
-	//クリックした時に長い長い処理をする
-	
-		
-	});
+});

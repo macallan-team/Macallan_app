@@ -10,7 +10,7 @@ class CartItemsController < ApplicationController
 			if cart_item.item.sales_status == 'on_sale'
 				cart_item.end_user_id = current_end_user.id
 				cart_item.save
-				flash.now[:notice] = "カートに追加しました。"
+				flash.now[:notice] = "「#{cart_item}」をカートに追加しました。"
 				
 			end
 		else
