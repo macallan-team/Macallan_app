@@ -3,16 +3,12 @@
 <% if end_user_signed_in? %>
     <% if item.favorited_by?(current_end_user) %>
         <%= form_with model: Like.new, url: item_likes_path(item.id), method: :delete do |f| %>
-        <%= f.hidden_field :item_id, :value=>item.id%>
-        <%= f.submit "",class:"btn btn-default",data:{disable_with: "送信中"} %>
+        <%= f.submit "★　#{item.likes.count.to_s}",class:"btn btn-default",data:{disable_with: "★　#{item.likes.count.to_s}"} %>
         <%end%>
-        <%= item.likes.count.to_s %>
     <% else %>
         <%= form_with model: Like.new, url: item_likes_path(item.id), method: :post do |f| %>
-        <%= f.hidden_field :item_id, :value=>item.id%>
-        <%= f.submit "★いいね",class:"like-btn",data:{disable_with: "送信中"} %>
+        <%= f.submit "☆　#{item.likes.count.to_s}",class:"btn btn-default",data:{disable_with: "☆　#{item.likes.count.to_s}"} %>
         <%end%>
-        <%= item.likes.count.to_s %>
     <% end %>
 <%else%>
         <span class="btn glyphicon glyphicon-heart"></span><%= item.likes.count.to_s %>

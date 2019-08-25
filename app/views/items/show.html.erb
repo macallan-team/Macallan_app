@@ -10,18 +10,25 @@
 
         <%# 商品詳細情報 %>
         <div class="col-sm-6 text-center">
-            <div style="margin-bottom:17px;">
+            <div style="margin:25px 0;">
 
                     <%# 商品名 %>
-                    <p><h2 style="display:inline-block;margin-right:20px;">
-                    <%= @item.album %>
-                    </h2>
-                    <%# いいねカウント %>
-                    <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
-                    
-                    <%= render 'likes/like_links', item: @item %></p>
+                    <div class="row">
+                        <table class="col-xs-8 col-xs-offset-2">
+                            <tbody>
+                                <td class="text-right" style="padding-right:10px;">
+                                <h2 style="display:inline;"><%= @item.album %></h2>
+                                </td>
+                                <%# いいねカウント %>
+                                <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
+                                <td class="text-left" style="padding-left:10px;">
+                                    <%= render 'likes/like_links', item: @item %>
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
                     <%# アーティスト名 %>
-                    <p style="margin:20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
+                    <p style="margin:30px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
 
                     <%# 価格 %>
 

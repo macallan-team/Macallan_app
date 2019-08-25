@@ -48,6 +48,11 @@ class CartItemsController < ApplicationController
 			if cart_item.item.sales_status != 'on_sale' || cart_item.item.stock <= 0
 				cart_item.destroy
 				flash.now[:alert] = "カート内の「#{cart_item.item.album}」の販売が終了したため、削除されました。"
+			elsif cart_item.count > cart_item.item.stock
+				cart_item.count = cart_item.item.stock
+				cart_item.save
+				flash.now[:alert] = "カート内の「#{cart_item}」
+				"
 			end
 		end
 	end
