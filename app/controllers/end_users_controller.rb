@@ -1,7 +1,7 @@
 class EndUsersController < ApplicationController
 
 before_action :authenticate_end_user!
-before_action :correct_user, only: [:show,:edit,:update]
+before_action :correct_user, except: [:change_password ]
 
 
   def show
@@ -14,6 +14,7 @@ before_action :correct_user, only: [:show,:edit,:update]
 
   def update
  @end_user = EndUser.find(params[:id])
+
 
  # アカウント編集後、マイページに遷移。ダメだったら、編集画面にレンダー。
  if @end_user.update(end_user_params)
