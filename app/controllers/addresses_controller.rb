@@ -8,6 +8,7 @@ class AddressesController < ApplicationController
         if @address.update(address_params)
             redirect_to new_end_user_order_path(current_end_user),notice: '配送先を更新しました。'
         else
+            flash.now[:alert] = "登録に失敗しました。入力内容をご確認ください。"
             render :edit
         end
     end
@@ -25,6 +26,7 @@ class AddressesController < ApplicationController
         if @address.save
             redirect_to new_end_user_order_path(current_end_user),notice: '配送先を作成しました。'
         else
+            flash.now[:alert] = "登録に失敗しました。入力内容をご確認ください。"
             render :new
         end
     end
