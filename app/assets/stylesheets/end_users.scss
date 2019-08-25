@@ -1,3 +1,25 @@
 // Place all the styles related to the EndUsers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// エンドユーザー新規登録画面・編集画面
+.item{
+  padding-left: 16px;
+  }
+
+  .form-group{
+    padding-left: 65px;
+  }
+
+  .form-inline{
+    height: 35px;
+    margin-right: 105px;
+  }
+
+  .form-inline:last-child{
+    margin-right: 0px;
+  }
+
+  .link{
+    margin: 5px;
+  }
