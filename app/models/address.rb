@@ -10,7 +10,7 @@ class Address < ApplicationRecord
   validates :address, presence: true, length: { in: 2..80 }
   # 電話番号 => 空欄だめ、0から始まる10桁〜11桁で入力
   VALID_PHONE_REGEX = /\A0[0-9]{9,10}\z/
-  validates :phone_number, presence: true, uniqueness: true, format: { with: VALID_PHONE_REGEX }
+  validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
 
 
 

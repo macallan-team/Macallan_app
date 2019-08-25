@@ -54,6 +54,20 @@ def set_carriage_rate
   @carriage_rate = Carriage.find_by(valid_flag: 'on').rate
 end	
 
+def check_out_of_stock
+  cart_items = current_end_user.cart_items
+  cart_items.each do |cart_item|
+    if cart_item.item.sales_status != 'on_sale' || cart_item.item.stock <= 0
+      cart_item.destroy
+      flash.now[:alert] = "カート内の「#{cart_item.item.album}」の販売が終了したため、削除されました。"
+    elsif cart_item.count > cart_item.item.stock
+      cart_item.count = cart_item.item.stock
+      cart_item.save
+      flash.now[:alert] = "申し訳ございません。「#{cart_item.item.album}」は現在#{cart_item.count}点までしかご購入いただくことができません。"
+    end
+  end
+end
+
 
 protected
 
