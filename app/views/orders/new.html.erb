@@ -51,7 +51,7 @@
 
         <div class="text-center">
         <%= link_to "カートへ戻る", cart_items_path, class:"btn btn-default" %>　
-        <%= f.submit "注文確認へ進む", class:"btn btn-default"%>
+        <%= f.submit "注文確認へ進む", class:"btn btn-default", :data => {:disable_with => "注文確認へ進む"}%>
         </div>
         <% end %>
     </div>
