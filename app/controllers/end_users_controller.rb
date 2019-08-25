@@ -1,7 +1,7 @@
 class EndUsersController < ApplicationController
 
 before_action :authenticate_end_user!
-before_action :correct_user
+before_action :correct_user, except: [:change_password ]
 
 
   def show

@@ -1,10 +1,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-9">
-        <div class="">
           <h2>ユーザー情報編集ページ</h2>
             <%= form_for @end_user, url: manage_end_user_path do |f| %>
-              <div class="box">
+              <div class="form-box">
 
                 <div class="row form-box">
                   <p><%= f.label :氏名 %></p>
@@ -41,10 +40,9 @@
                 </div>
               <% end %>
 
-              <div><%= link_to "戻る", :back %></div>
+              <div><%= link_to "戻る", manage_end_user_path(@end_user.id) %></div>
 
             </div>
-        </div>
       </div>
     </div>
 
