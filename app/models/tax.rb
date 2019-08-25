@@ -3,5 +3,5 @@ class Tax < ApplicationRecord
     before_destroy :must_not_destroy
     def must_not_destroy
         throw(:abort) if self.valid_flag == 'on'
-    end  
+    end
 end
