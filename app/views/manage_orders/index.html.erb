@@ -30,9 +30,15 @@
                                 <tr>
                                     <td><%= order.purchased_at.strftime("%Y年%m月%d日") %></td>
                                     <td>
-                                        <%= order.shipping_name %>
+                                        <%= order.end_user.last_name %>
+                                        <%= order.end_user.first_name %>
                                     </td>
-                                    <td><%= order.shipping_address %></td>
+                                    <td>
+                                        <p><%= order.shipping_name %></p>
+                                        <p><%= order.shipping_address %></p>
+                                        <p><%= order.shipping_phone_number %></p>
+                                        <p><%= order.shipping_postal_code %></p>
+                                    </td>
                                     <td>
                                         <% order.order_items.each do |i| %>
                                         <p>アルバム名：<%= i.item.album %></p>
