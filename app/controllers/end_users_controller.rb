@@ -15,9 +15,9 @@ before_action :correct_user
   def update
  @end_user = EndUser.find(params[:id])
 
- # アカウント編集後、マイページに遷移
- if @end_user.update_with_password(end_user_params)
-  redirect_to end_user_path   #  , notice: 'プロフィールを更新しました'
+ # アカウント編集後、マイページに遷移。ダメだったら、編集画面にレンダー。
+ if @end_user.update(end_user_params)
+  redirect_to end_user_path
    else
    render :edit
    end
