@@ -41,7 +41,8 @@ resources :admins, only: [:index]
   # get 'end_users/password/change' => 'end_users#change_password', as:'change_password'
 
   #カートあいてむ
-  resources :cart_items, only: [:create, :destroy, :update, :index]
+  resources :cart_items, only: [:create, :destroy, :index]
+  post "cart_item/count"  => "cart_items#update",as:"cart_item_count"
 
   #商品管理
   resources :manage_items do

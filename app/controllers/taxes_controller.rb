@@ -1,5 +1,5 @@
 class TaxesController < ApplicationController
- 
+  # before_action :authenticate_admin!
   def index
     @tax = Tax.new
     @taxes = Tax.all
