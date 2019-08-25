@@ -30,7 +30,7 @@
               <tr><th>電話番号</th><td style="font-weight: normal;"><%= address.phone_number %></td></tr>
               <tr><th>住所</th><td style="font-weight: normal;">〒<%= postal_code(address.postal_code) %><br>
               <%= address.address %></td></tr>
-              <tr><td colspan="3" class="text-center" style="font-weight:normal;"><%= link_to " 編集", edit_end_user_address_path(current_end_user,address), class:"glyphicon glyphicon-edit btn btn-default" %> <%= link_to " 削除", end_user_address_path(current_end_user,address),method: :delete,class:"glyphicon glyphicon-trash btn btn-default",data:{confirm:"削除してもよろしいですか？"} %></td></tr>
+              <tr><td colspan="3" class="text-center" style="font-weight:normal;"><%= link_to " 編集", edit_end_user_address_path(current_end_user,address), class:"glyphicon glyphicon-edit btn btn-default" %> <%= link_to " 削除", end_user_address_path(current_end_user,address),method: :delete,class:"glyphicon glyphicon-trash btn btn-default",data:{confirm:"削除してもよろしいですか？",:disable_with => "　削除"} %></td></tr>
             </tbody>
           </table>
         </label>

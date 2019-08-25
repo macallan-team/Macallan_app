@@ -50,7 +50,7 @@ li {
 	width: 100%;
 }
 h2 {
-	font-weight: bold;
+	font-family: 'Hiragino Kaku Gothic StdN'
 }
 .valid {
 	background-color: lightgrey;
@@ -153,15 +153,11 @@ h2 {
 
   // ＊＊＊＊＊フッター＊＊＊＊＊
  .footer {
+	 background-color:rgba(0,0,0,.6);
 	 margin-top: 30px;
-	 border-top:1px solid black;
 	 height: 50px;
 	 line-height: 50px;
 	 text-align: center;
-	 background-color: black;
-	 background-image: url('street.jpg');
-	 background-size: cover;
-	 background-position: bottom;
 	 color: white;
  }
 footer{
@@ -182,4 +178,15 @@ footer{
 		opacity:.5;
 	}
 	
+}
+.container {
+	background-color: rgba(255,255,255,.9);
+	border-radius: 20px;
+	padding:30px 20px;
+}
+body{
+	background-color:black;
+	background-image:url('boat.jpg');
+	background-attachment: fixed;
+	background-size: cover;
 }
