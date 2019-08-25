@@ -62,4 +62,8 @@ document.addEventListener("turbolinks:load", function() {
 		});
 	});
 
+	$('.like3-btn').on('click', function(){
+		$(this).html('ああ');
+	});
+
 });

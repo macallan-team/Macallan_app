@@ -86,6 +86,7 @@
             <h4><strong>レビュー</strong></h4>
                 <table class="table table-responsive">
                     <tbody>
+                    <% if @reviews.any? %>
                     <% @reviews.each do |review| %>
                     <tr>
                         <td>
@@ -107,6 +108,9 @@
                             </p>
                         </td>
                     </tr>
+                    <%end%>
+                    <%else%>
+                    <tr><td>レビューはまだありません。</td></tr>
                     <% end %>
                     <td class="text-center"><%= paginate @reviews %></td>
 
