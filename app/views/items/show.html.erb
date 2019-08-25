@@ -18,6 +18,7 @@
                     </h2>
                     <%# いいねカウント %>
                     <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
+                    
                     <%= render 'likes/like_links', item: @item %></p>
                     <%# アーティスト名 %>
                     <p style="margin:20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>

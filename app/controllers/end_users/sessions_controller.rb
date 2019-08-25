@@ -10,7 +10,7 @@ class EndUsers::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    root_path(resource) # ログイン後にマイページへ遷移するpathを設定
+    root_path # ログアウト後にItemのインデックスへ遷移するpathを設定
   end
 
 

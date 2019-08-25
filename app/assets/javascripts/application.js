@@ -61,9 +61,4 @@ document.addEventListener("turbolinks:load", function() {
 			$('#scroll-button').fadeOut(300);
 		});
 	});
-
-	$('.like3-btn').on('click', function(){
-		$(this).html('ああ');
-	});
-
 });

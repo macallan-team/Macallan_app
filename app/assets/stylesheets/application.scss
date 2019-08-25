@@ -174,3 +174,14 @@ footer{
 	margin-top:60px;
 }
  
+// いいねボタン
+.like-btn{
+	border-radius:15px;
+	background-color:rgba(200,0,0,.2);
+	border:none;
+	padding:10px;
+	&:hover{
+		opacity:.5;
+	}
+	
+}
