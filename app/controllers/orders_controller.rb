@@ -39,32 +39,33 @@ class OrdersController < ApplicationController
 		set_subtotal
 		set_total
 		cart_items = current_end_user.cart_items
-		if cart_items.count > cart_items.item.stock
-			redirect_to cart_items_path
-		else
-			order = Order.new(order_params)
-			order.end_user_id = current_end_user.id
-			order.purchased_at = Time.now
-			order.shipping_status = '受付'
-			order.subtotal = @subtotal
-			order.total_price = @total
-			order.carriage_rate = @carriage_rate
-			order.tax_rate = @tax_rate
-			ActiveRecord::Base.transaction do
-				order.save!
-				cart_items.each do |cart_item|
-					order_item = OrderItem.create!({
-							order_id: order.id,
-							item_id: cart_item.item.id,
-							count: cart_item.count,
-							price: cart_item.item.price})
-					item = cart_item.item
-					item.update!(stock: (item.stock - cart_item.count))
-				end
+		cart_items.each do |cart_item|
+			if cart_item.count > cart_item.item.stock
+				redirect_to cart_items_path
 			end
+		end
+		order = Order.new(order_params)
+		order.end_user_id = current_end_user.id
+		order.purchased_at = Time.now
+		order.shipping_status = '受付'
+		order.subtotal = @subtotal
+		order.total_price = @total
+		order.carriage_rate = @carriage_rate
+		order.tax_rate = @tax_rate
+		ActiveRecord::Base.transaction do
+			order.save!
+			cart_items.each do |cart_item|
+				order_item = OrderItem.create!({
+						order_id: order.id,
+						item_id: cart_item.item.id,
+						count: cart_item.count,
+						price: cart_item.item.price})
+				item = cart_item.item
+				item.update!(stock: (item.stock - cart_item.count))
+			end
+		end
 		cart_items.destroy_all
 		redirect_to complete_order_path
-		end
 	end
 
 	def update
