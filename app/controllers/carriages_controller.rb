@@ -1,5 +1,5 @@
 class CarriagesController < ApplicationController
- 
+  before_action :authenticate_admin!
   def index
     @carriage = Carriage.new
     @carriages = Carriage.all
