@@ -47,7 +47,7 @@
         <%= f.hidden_field :payment,:value=>@order.payment %>
         <div class="text-center">
           <%= link_to "戻る", new_end_user_order_path(current_end_user),method: :get,class:"btn btn-default" %>
-          <%= f.submit "注文を確定", class:"btn btn-default"%>
+          <%= f.submit "注文を確定", class:"btn btn-default", :data => {:disable_with => "注文を確定"}%>
         </div>
         <% end %>
       </div>

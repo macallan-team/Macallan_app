@@ -17,7 +17,7 @@
         <%= f.text_area :address, class:"form-control", placeholder: "全角80文字以内" %>
     </div>
     <div class="form-box">
-        <%= f.submit "登録", class:"btn btn-default center-block"%>
+        <%= f.submit "登録", class:"btn btn-default center-block", :data => {:disable_with => "登録"}%>
     </div>
     <% end %>
 </div>
