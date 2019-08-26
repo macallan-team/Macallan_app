@@ -65,11 +65,13 @@ def check_out_of_stock
     # 販売中または在庫が０より小さいとき、削除
     if cart_item.item.sales_status != 'on_sale' || cart_item.item.stock <= 0
       cart_item.destroy
+      flash[:notice] = nil
       flash.now[:alert] = "カート内の「#{cart_item.item.album}」の販売が終了したため、削除されました。"
     # カートアイテムの数量がアイテムの在庫を上回った時、数量＝在庫数量に変更
     elsif cart_item.count > cart_item.item.stock
       cart_item.count = cart_item.item.stock
       cart_item.save
+      flash[:notice] = nil
       flash.now[:alert] = "申し訳ございません。「#{cart_item.item.album}」は現在#{cart_item.count}点までしかご購入いただくことができません。"
     end
   end

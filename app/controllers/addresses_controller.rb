@@ -18,7 +18,7 @@ class AddressesController < ApplicationController
     def destroy
         address = Address.find(params[:id])
         address.destroy
-        redirect_to new_end_user_order_path(current_end_user),notice: '配送先を削除しました。'
+        redirect_to new_end_user_order_path(current_end_user),alert: '配送先を削除しました。'
     end
     def create
         @address = Address.new(address_params)

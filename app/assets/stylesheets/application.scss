@@ -55,6 +55,11 @@ h2 {
 .valid {
 	background-color: lightgrey;
 }
+.touch {
+	&:hover{
+		background-color:rgba(0,0,255,.1);
+	}
+}
 
 // スクロールボタン
 
@@ -188,3 +193,10 @@ body{
 	background-attachment: fixed;
 	background-size: cover;
 }
+
+// エンドユーザーログイン画面
+.login{
+	color: white;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
