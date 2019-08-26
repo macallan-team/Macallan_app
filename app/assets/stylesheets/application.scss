@@ -55,6 +55,11 @@ h2 {
 .valid {
 	background-color: lightgrey;
 }
+.touch {
+	&:hover{
+		background-color:rgba(0,0,255,.1);
+	}
+}
 
 // スクロールボタン
 
