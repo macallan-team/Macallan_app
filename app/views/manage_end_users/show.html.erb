@@ -77,49 +77,75 @@
                             <% order.order_items.each do |o| %>
                             <tr>
                             <%# ジャケ写 %>
-                                <td>
+                                <td class="col-xs-2">
                                     <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg",:size=>"100x100" %>
                                 </td>
-                                <td>
+                                <td class="col-xs-4" style="vertical-align:middle;">
                             <%# アルバム名 リンク付き %>
                                     <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
                             <%# アーティスト名 %>
-                            <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
                                     <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
+                                </td>
+                                <td class="col-xs-3" style="vertical-align:middle;">
                             <%# 購入数 %>
                                     <span>購入数：<%= o.count %></span>
+                            <%# 価格税抜 %>
+                                    <p>税抜　¥<%= o.price %></p>
                                 </td>
-                                <td>
+                                <td class="col-xs-3 text-right" style="vertical-align:middle;">
                             <%# 価格税込 %>
-                                    <p style="color:red;">価格 <%= o.price %>円</p>
-                                    <p style="color:red;">合計金額 <%= order.total_price %>円</p>
+                                    <%# 価格税抜 %>
+                                    <p>税抜　¥<%= o.price * o.count %> </p>
                                 </td>
                             </tr>
                         <% end %>
                         <tr>
-                            <th colspan="2">ステータス</th>
-                                    <td><%= order.shipping_status %></td></tr>
-                            <th colspan="2">発送先名</th>
-                                    <td><%= order.shipping_name %></td></tr>
-                            <th colspan="2">郵便番号</th>
-                                    <td><%= order.shipping_postal_code %></td></tr>
-                            <th colspan="2">住所</th>
-                                    <td><%= order.shipping_address %></td></tr>
-                            <th colspan="2">電話番号</th>
-                                    <td><%= order.shipping_phone_number %></td>
-                                </tr>
+                        <td colspan="4" class="text-right">
+                        小計　¥<%= order.subtotal %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">
+                        + 消費税　¥<%= order.total_price - order.subtotal - order.carriage_rate %><br>
+                        + 送料（全国一律）¥<%= order.carriage_rate %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4" class="text-right">
+                        合計　¥<%= order.total_price %>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                        配送状況：　<%= order.shipping_status %>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3>配送先</h3>
+                    <table class="table table-responsive table-bordered">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-3">配送先氏名</th>
+                                <td class="col-xs-9"><%= order.shipping_name %></td>
+                            </tr>
+                            <tr>
+                                <th class="col-xs-3">電話番号</th>
+                                <td class="col-xs-9"><%= order.shipping_phone_number %></td>
+                            </tr>
+                            <tr>
+                                <th>住所</th>
+                                <td><p>〒<%= postal_code(order.shipping_postal_code) %></p>
+                                <%= order.shipping_address %>
+                            </td>
+                            </tr>
                         </tbody>
                     </table>
                     <% end %>
-
-
-
-
-
                 </div>
             </div>
-
-
         </div><%# col-xs-9 %>
     </div><!-- row  ここまで -->
 </div><!-- container  ここまで -->
+

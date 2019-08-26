@@ -9,7 +9,7 @@
 <div class="form-box">
 <%= form_with url: {:controller=>'categories',:action=>'destroy'},method: :delete, local: true do |f| %>
       <%= f.collection_select :id, Category.all.order('name'), :id, :name, {}, {class: "form-control pull-left category",:style => "width:67%;"} %>
-      <%= f.submit "削除", :style => "width:33%;", class: "btn btn-danger",data: { confirm: "選択されたジャンルを削除します。\n（商品に設定されている状態では削除できません。）"} %>
+      <%= f.submit "削除", :style => "width:33%;", class: "btn btn-danger",data: { confirm: "選択されたジャンルを削除します。\n（商品に設定されている状態では削除できません。）",:disable_with=>"削除"} %>
 <% end %>
 </div>
     
@@ -24,7 +24,7 @@
 <div class="form-box">
 <%= form_with url: {:controller=>'labels',:action=>'destroy'},method: :delete, local: true do |f| %>
       <%= f.collection_select :id, Label.all.order('name'), :id, :name, {}, {class: "form-control pull-left labels",:style => "width:67%;"} %>
-      <%= f.submit "削除", :style => "width:33%;", class: "btn btn-danger",data: { confirm: "選択されたレーベルを削除します。\n（商品に設定されている状態では削除できません。）"} %>
+      <%= f.submit "削除", :style => "width:33%;", class: "btn btn-danger",data: { confirm: "選択されたレーベルを削除します。\n（商品に設定されている状態では削除できません。）",:disable_with=>"削除"} %>
 <% end %>
 </div>
 
@@ -39,6 +39,6 @@
 <div class="form-box">
 <%= form_with url: {:controller=>'artists',:action=>'destroy'},method: :delete, local: true do |f| %>
       <%= f.collection_select :id, Artist.all.order('name'), :id, :name, {}, {class: "form-control pull-left artist",:style => "width:67%;"} %>
-      <%= f.submit "削除", :style => "width:33%;", class: "btn btn-danger",data: { confirm: "選択されたアーティストを削除します。\n（商品に設定されている状態では削除できません。）"} %>
+      <%= f.submit "削除", :style => "width:33%;", class: "btn btn-danger",data: { confirm: "選択されたアーティストを削除します。\n（商品に設定されている状態では削除できません。）",:disable_with=>"削除"} %>
 <% end %>
 </div>

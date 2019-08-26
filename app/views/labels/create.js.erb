@@ -4,3 +4,4 @@ $('.labels > option').remove();
 $('.labels').append($('<option>').html("<%= label.name %>").val("<%= label.id %>"));
 <% end%>
 $('#messages').html('<%= escape_javascript(render("layouts/flash")) %>');
+<%= render 'layouts/alert'%>

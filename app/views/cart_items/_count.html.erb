@@ -1,0 +1,14 @@
+<span id="cart-<%= cart_item.id %>">
+<table class="pull-right">
+    <tbody>
+        <td>
+            <%= cart_item.count %>
+        </td>
+        <td style="padding-left:10px;">
+            <%= button_to '+', cart_item_count_path(cart_item: {id: cart_item.id,count: 1}),{remote: true, method: :post,class:"btn-xs btn-default",:style=>"width:20px;", :data => {:disable_with => "+"}} %>
+        
+            <%= button_to '-', cart_item_count_path(cart_item: {id: cart_item.id,count: -1}),{remote: true, method: :post,class:"btn-xs btn-default",:style=>"width:20px;", :data => {:disable_with => "-"}} %>
+        </td>
+    </tbody>
+</table>
+</span>

@@ -3,6 +3,7 @@
         <div class="col-xs-3 col-sm-4 head-left">
         <div class="login-status">
             <% if end_user_signed_in? %>
+            <span class="glyphicon glyphicon-user"></span>
             <%= link_to end_user_path(current_end_user), :style=>"color:lightgreen;" do %><%= current_end_user.last_name %><% end %>さん
             <br>ログイン中
             <% end %>

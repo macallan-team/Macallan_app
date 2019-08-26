@@ -3,7 +3,7 @@
     <div class = "col-sm-8 col-sm-offset-2 text-center">
       <h2>ご注文確認</h2>
       <p style="color:darkgreen;">以下の内容でよろしければ「注文を確定」ボタンを押してください。</p>
-      <div class="box text-left">
+      <div class="box-radius text-left">
         <h3>ご注文内容</h3>
         <table class="table">
           <tbody>
@@ -47,7 +47,7 @@
         <%= f.hidden_field :payment,:value=>@order.payment %>
         <div class="text-center">
           <%= link_to "戻る", new_end_user_order_path(current_end_user),method: :get,class:"btn btn-default" %>
-          <%= f.submit "注文を確定", class:"btn btn-default"%>
+          <%= f.submit "注文を確定", class:"btn btn-default", :data => {:disable_with => "注文を確定"}%>
         </div>
         <% end %>
       </div>

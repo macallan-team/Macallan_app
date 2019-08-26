@@ -17,7 +17,7 @@
                         <table class="col-xs-8 col-xs-offset-2">
                             <tbody>
                                 <td class="text-right" style="padding-right:10px;">
-                                <h2 style="display:inline;"><%= @item.album %></h2>
+                                <h2 style="display:inline;">💿<%= @item.album %></h2>
                                 </td>
                                 <%# いいねカウント %>
                                 <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
@@ -28,7 +28,7 @@
                         </table>
                     </div>
                     <%# アーティスト名 %>
-                    <p style="margin:30px 0 20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
+                    <p style="margin:30px 0 20px 0;">🎤<%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
 
                     <%# 価格 %>
 
@@ -41,7 +41,7 @@
                         <%= form_with model: CartItem.new do |f| %>
                         <%= f.select :count, options_for_select((1..20).to_a), {}, class: "form-control", :style=>"width:50px;display:inline-block;margin-top:20px;" %>
                         <%= f.hidden_field :item_id, :value => @item.id %>
-                        <%= f.submit "カートに追加", class: "btn btn-default", :style=>"display:inline-block;margin-left:15px;" %>
+                        <%= f.submit "カートに追加", class: "btn btn-default", :style=>"display:inline-block;margin-left:15px;", :data => {:disable_with => "カートに追加"} %>
                         <% end %>
                     <% end%>
             </div>
@@ -49,28 +49,32 @@
 
     </div><%# rowクラス閉じタグ %>
 
-
+<p></p>
 
     <div class="row">
         <%# 収録曲 %>
         <div class="col-sm-6">
             <div class="box">
-            <h4><strong>収録曲</strong></h4>
+
+            <h4><strong class="glyphicon glyphicon-music">収録曲</strong></h4>
+
+            <h4><strong>♪収録曲♪</strong></h4>
+
 
                 <% @discs.each do |disc| %>
                 <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
-                            <th>曲順</th>
-                            <th>曲名</th>
-                            <th>アーティスト名</th>
+                            <th width="10%">曲順</th>
+                            <th width="45%">曲名</th>
+                            <th width="45%">アーティスト名</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <% disc.songs.each do |song|%>
+                    <% disc.songs.each do |song| %>
                         <tr>
                             <td>
-                                <%= song.position %>
+                                No.<%= song.position %>
                             </td>
                             <td>
                                 <%= song.name %>
@@ -79,7 +83,6 @@
                                 <%= song.artist.name %>
                             </td>
                         </tr>
-
                     <% end %>
                     </tbody>
                 </table>
@@ -91,7 +94,11 @@
         <div class="col-sm-6">
             <%# レビュー内容表示 %>
             <div class="box-radius">
-            <h4><strong>レビュー</strong></h4>
+
+            <h4><strong class="glyphicon glyphicon-comment">レビュー</strong></h4>
+
+            <h4><strong>🗒レビュー</strong></h4>
+
                 <table class="table table-responsive">
                     <tbody>
                     <% if @reviews.any? %>
@@ -102,7 +109,7 @@
                                 <%= review.name %>
                                 <% if end_user_signed_in?%>
                                     <% if review.end_user_id == current_end_user.id%>
-                                <%= link_to "", review_path(review),method: :delete,class:"btn btn-danger glyphicon glyphicon-trash pull-right"%>
+                                <%= link_to "", review_path(review),method: :delete,class:"btn btn-danger glyphicon glyphicon-trash pull-right",:data => {:disable_with => ""}%>
                                     <% end %>
                                 <% end %>
                             </p>
@@ -139,7 +146,7 @@
                     <p></p>
                     <%# hidden_fieldで情報を渡す %>
                     <%= f.hidden_field :item_id, :value => @item.id %>
-                    <%= f.submit("レビューする",class: 'btn btn-primary center-block') %>
+                    <%= f.submit("レビューする",class: 'btn btn-primary center-block ') %>
                 <% end %>
             </div>
             <% end %>

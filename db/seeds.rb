@@ -56,10 +56,10 @@
 
 
 
-# Admin.create!(
-#     email: Faker::Food.fruits+"uuseruser@user.com",
-#     password: "111111"
-# )
+Admin.create!(
+    email: "uuseruser@user.com",
+    password: "111111"
+)
 
 
 # OrderItem.create!(
