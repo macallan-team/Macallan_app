@@ -47,7 +47,7 @@
                 </div>
                 <div class="row form-box">
                     <div class="col-xs-2"><label>郵便番号</label></div>
-                    <div class="col-xs-10"><%= @end_user.postal_code %></div>
+                    <div class="col-xs-10">〒<%= postal_code(@end_user.postal_code) %></div>
                 </div>
                 <div class="row form-box">
                     <div class="col-xs-2"><label>住所</label></div>
@@ -65,100 +65,5 @@
 
             <%# 注文履歴 %>
             <div class="box">
-                <div class="text-center">
-                    <strong><p>注文履歴</p></strong>
-                </div>
-                <div class="row">
-                    <% @orders.each do |order| %>
-                    <h4 style="font-weight:bold;color:darkgreen;">購入日：<%= order.purchased_at.strftime("%Y年%-m月%-d日") %></h4>
-                    <table class = "table">
-                        <tbody>
-                        <%# order_itemをoと表す %>
-                        <% order.order_items.each do |o| %>
-                            <tr>
-                            <%# ジャケ写 %>
-                                <td class="col-xs-2">
-                                    <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg",:size=>"100x100" %>
-                                </td>
-                                <td class="col-xs-4" style="vertical-align:middle;">
-                            <%# アルバム名 リンク付き %>
-                                    <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
-                            <%# アーティスト名 %>
-                                    <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
-                                </td>
-                                <td class="col-xs-3" style="vertical-align:middle;">
-                            <%# 購入数 %>
-                                    <span>購入数：<%= o.count %></span>
-                            <%# 価格税抜 %>
-                                    <p>税抜　¥<%= o.price %></p>
-                                </td>
-                                <td class="col-xs-3 text-right" style="vertical-align:middle;">
-                            <%# 価格税込 %>
-                                    <%# 価格税抜 %>
-                                    <p>税抜　¥<%= o.price * o.count %> </p>
-                                </td>
-                            </tr>
-                        <% end %>
-                        <tr>
-                        <td colspan="4" class="text-right">
-                        小計　¥<%= order.subtotal %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="text-right">
-                        + 消費税　¥<%= order.total_price - order.subtotal - order.carriage_rate %><br>
-                        + 送料（全国一律）¥<%= order.carriage_rate %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th colspan="4" class="text-right">
-                        合計　¥<%= order.total_price %>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th colspan="2">
-                        配送状況：　<%= order.shipping_status %>
-                        </th>
-                    </tr>
-                    </tbody>
-                </table>
 
-                <h3>配送先</h3>
-                <div style="margin-bottom:50px;">
-                    <table class="table table-responsive table-bordered">
-                        <tbody>
-                            <tr>
-                                <th class="col-xs-3">配送先氏名</th>
-                                <td class="col-xs-9"><%= order.shipping_name %></td>
-                            </tr>
-                            <tr>
-                                <th class="col-xs-3">電話番号</th>
-                                <td class="col-xs-9"><%= order.shipping_phone_number %></td>
-                            </tr>
-                            <tr>
-                                <th>住所</th>
-                                <td><p>〒<%= postal_code(order.shipping_postal_code) %></p>
-                                <%= order.shipping_address %>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                    <% end %>
-                </div>
-            </div>
-        </div><%# col-xs-9 %>
-
-        <div class = "col-sm-12">
-            <%# KAMINARI実装 %>
-            <%= paginate @orders %>
-        </div>
-    </div><!-- row  ここまで -->
-    <div class = "row">
-    <div class = "col-sm-12">
-      <%# KAMINARI実装 %>
-      <%= paginate @orders %>
-    </div>
-  </div>
-</div><!-- container  ここまで -->
-
+            <%= render 'orders/history', orders: @orders %>
