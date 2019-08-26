@@ -39,8 +39,6 @@
 
   // エンドユーザーのログイン画面 ここから
 
-  .form-body {
-  .form-body-end-user {
   .form-body-end-user {
     margin: 70px auto;
     background: #2a3644;
@@ -50,8 +48,7 @@
     border-radius: 6px;
   }
 
-  .form-body > h2 {
-  .form-body-end-user > h2 {
+
   .form-body-end-user > h2 {
     color: #f4f4f4;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
@@ -97,8 +94,5 @@
   padding: 40px;
   border-radius: 6px;
 }
-
-
-
 
 // エンドユーザー新規登録画面　ここまで
