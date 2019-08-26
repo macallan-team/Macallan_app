@@ -28,7 +28,7 @@
                             <tbody>
                             <% @orders.each do |order| %>
                                 <tr>
-                                    <td><%= order.purchased_at.strftime("%Y年%m月%d日") %></td>
+                                    <td><%= order.purchased_at.strftime("%Y年%-m月%-d日") %></td>
                                     <td>
                                         <!-- 修正 -->
                                         <%= order.end_user.last_name %>
@@ -65,7 +65,10 @@
         </div>
 
 
-
+        <div class = "col-sm-12">
+            <%# KAMINARI実装 %>
+            <%= paginate @orders %>
+        </div>
 
 
 

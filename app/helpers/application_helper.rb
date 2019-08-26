@@ -12,7 +12,7 @@ module ApplicationHelper
     
     # dateを見やすくする
     def simple_date(date)
-        return  date.strftime('%Y年%m月%d日')
+        return  date.strftime('%Y年%-m月%-d日')
     end
     # カートアイテムの単価*数量
     def total_price(cart_item)
