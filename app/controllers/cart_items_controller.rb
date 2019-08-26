@@ -34,11 +34,11 @@ class CartItemsController < ApplicationController
 			redirect_to cart_items_path
 		else
 			@cart_item.save
+			flash.now[:notice] = "カート内の「#{@cart_item.item.album}」の数量が変更されました。"
 			check_out_of_stock
 			@cart_item = CartItem.find(cart_item_params[:id])
 			set_subtotal
 			set_total
-			flash.now[:notice] = "「#{@cart_item.item.album}」の数量を変更しました。"
 		end
 	end
 

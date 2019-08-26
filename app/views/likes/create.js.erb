@@ -3,3 +3,4 @@ $('<%= @id_name %>').html('<%= escape_javascript(render("likes/like_links", item
 $('<%= @id_heart %>').removeClass('glyphicon-heart-empty');
 $('<%= @id_heart %>').addClass('glyphicon-heart');
 $('#messages').html('<%= escape_javascript(render("layouts/flash")) %>');
+<%= render 'layouts/alert'%>

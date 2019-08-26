@@ -1,2 +1,5 @@
 $('#cart').html("<%= current_end_user.cart_items.count %>");
 $('#messages').html('<%= escape_javascript(render("layouts/flash")) %>');
+$('.alert').fadeIn("slow", function () {
+	$(this).delay(3000).fadeOut("slow");
+});

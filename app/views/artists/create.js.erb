@@ -4,3 +4,4 @@ $('.artist > option').remove();
 $('.artist').append($('<option>').html("<%= artist.name %>").val("<%= artist.id %>"));
 <% end%>
 $('#messages').html('<%= escape_javascript(render("layouts/flash")) %>');
+<%= render 'layouts/alert'%>

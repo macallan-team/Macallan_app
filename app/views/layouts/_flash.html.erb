@@ -1,11 +1,12 @@
-
+<div style="height:50px;margin-top:-20px;">
 <% if flash[:notice] %>
-  <div class="alert alert-success">
+  <div class="alert">
     <%= flash[:notice] %>
   </div>
 <% end %>
 <% if flash[:alert] %>
-  <div class="alert alert-danger">
+  <div class="alert red-color">
     <%= flash[:alert] %>
   </div>
 <% end %>
+</div>
