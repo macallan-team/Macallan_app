@@ -5,6 +5,9 @@
       <%= render "end_users/sidebar"%>
     </div>
     <%# サイドバーここまで %>
+
+
+
     <div class = "col-sm-9">
       <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h2>
       <div class="box-radius">
@@ -12,7 +15,6 @@
           <%# 注文履歴 %>
           <strong><p>注文履歴</p></strong>
         </div>
-        <div class="row">
           <% @orders.each do |order| %>
           <h4 style="font-weight:bold;color:darkgreen;">購入日：<%= order.purchased_at.strftime("%Y年%m月%d日") %></h4>
           <table class = "table">
@@ -67,6 +69,7 @@
           </table>
 
           <h3>配送先</h3>
+          <div style="margin-bottom:50px;">
             <table class="table table-responsive table-bordered">
               <tbody>
                 <tr>
@@ -85,12 +88,12 @@
                 </tr>
               </tbody>
             </table>
+          </div>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
-  <div class = "row">
+
     <div class = "col-sm-12">
       <%# KAMINARI実装 %>
       <%= paginate @orders %>
@@ -98,4 +101,4 @@
   </div>
 </div>
 
-</div>
+
