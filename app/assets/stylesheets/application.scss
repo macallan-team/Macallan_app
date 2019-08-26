@@ -44,6 +44,9 @@ li {
 .no-scroll{
 	overflow: hidden;
 }
+p {
+	margin:3px;
+}
 
 .sidebar {
 	border: 1px solid rgba(0,0,0,.4);
@@ -57,7 +60,7 @@ h2 {
 }
 .touch {
 	&:hover{
-		background-color:rgba(0,0,255,.1);
+		background-color:rgba(0,0,255,.05);
 	}
 }
 
@@ -200,3 +203,10 @@ body{
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
+// manage-order
+.red-status{
+	background-color:rgba(255,0,0,.1);
+}
+.waiting{
+	background-color:rgba(0,255,0,.1);
+}

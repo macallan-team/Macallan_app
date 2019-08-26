@@ -8,7 +8,7 @@ class CarriagesController < ApplicationController
     carriage = Carriage.new(carriage_params)
       carriage.valid_flag = 'off'
       carriage.save
-      redirect_to carriages_path, :notice => "登録しました。"
+      redirect_to carriages_path, :notice => "送料を登録しました。"
   end
   def select
     carriages = Carriage.all
@@ -22,7 +22,7 @@ class CarriagesController < ApplicationController
         carriage.valid_flag = "on"
         carriage.save
       end
-      redirect_to carriages_path, :notice => "設定を変更しました。"
+      redirect_to carriages_path, :notice => "送料設定を変更しました。"
     else
       redirect_to carriages_path
     end

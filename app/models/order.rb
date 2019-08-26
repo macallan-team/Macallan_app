@@ -1,7 +1,11 @@
 class Order < ApplicationRecord
 
-has_many :order_items
+has_many :order_items, :dependent => :destroy
 belongs_to :end_user
+
+validates :tax_rate, presence: true
+validates :carriage_rate, presence: true
+validates :payment, presence: true
 
   # 氏名　=> 姓名どっちも入る、2〜20文字
   validates :shipping_name, presence: true, length: { in: 2..20 }

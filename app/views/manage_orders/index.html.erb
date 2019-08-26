@@ -4,7 +4,7 @@
         <div class="col-sm-3">
         <%= render "layouts/adminsidebar" %>
             <div class="side-box">
-                <%= render "search" %>
+            <%= render 'search'%>
             </div>
         </div>
     <!-- sidebar  ここまで -->
@@ -14,20 +14,20 @@
             <div class="box">
                 <div class="row">
                     <div class="col-xs-12">
-                        <table class="table table-striped table-responsive">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th width="9%">注文日</th>
                                     <th width="15%">注文者</th>
-                                    <th width="35%">発送先</th>
-                                    <th width="15%">注文内容</th>
+                                    <th width="30%">発送先</th>
+                                    <th width="20%">注文内容</th>
                                     <th width="11%">ステータス</th>
                                     <th width="5%"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <% @orders.each do |order| %>
-                                <tr>
+                            <% @results.each do |order| %>
+                                <tr class="<% if order.shipping_status == '受付'%>red-status<% elsif order.shipping_status == '入荷待ち' %>waiting<%end%>">
                                     <td><%= order.purchased_at.strftime("%Y年%n%-m月%-d日") %></td>
                                     <td>
                                         <!-- 修正 -->
@@ -36,15 +36,16 @@
                                     </td>
                                     <td>
                                         <p><%= order.shipping_name %></p>
-                                        <p><%= order.shipping_address %></p>
                                         <p>TEL：<%= order.shipping_phone_number %></p>
                                         <p>〒<%= postal_code(order.shipping_postal_code) %></p>
+                                        <p><%= order.shipping_address %></p>
                                     </td>
                                     <td>
                                         <% order.order_items.each do |i| %>
-                                        <p>アルバム名：<br><%= i.item.album %></p>
-                                        <p>アーティスト名：<br><%= i.item.artist.name %></p>
+                                        <p style="font-weight:bold;"><%= i.item.album %></p>
+                                        <p><%= i.item.artist.name %></p>
                                         <p>数量：<%= i.count %></p>
+                                        <p style="color:red;">合計¥<%= i.price %></p>
                                         <% end %>
                                     </td>
                                     <td>
@@ -65,9 +66,9 @@
         </div>
 
 
-        <div class = "col-sm-12">
+        <div class = "col-sm-4 col-sm-offset-4">
             <%# KAMINARI実装 %>
-            <%= paginate @orders %>
+            <%= paginate @results %>
         </div>
 
 

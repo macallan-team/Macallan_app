@@ -63,7 +63,7 @@ document.addEventListener("turbolinks:load", function() {
 	});
 
 	$('#scroll-button').on('click', function(){
-		$('html').animate({scrollTop: 0},70,function(){
+		$('html').animate({scrollTop: 0},300,function(){
 			$('#scroll-button').fadeOut(300);
 		});
 	});

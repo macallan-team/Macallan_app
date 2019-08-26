@@ -17,7 +17,9 @@ accepts_nested_attributes_for :discs, allow_destroy: true
 
 validates :album, presence: true, length: { in: 1..30 }
 validates :price, presence: true, length: { in: 1..7 }
+validates :price, :numericality => { :greater_than => 0 }
 validates :stock, presence: true, length: { in: 1..4 }
+validates :stock, :numericality => { :greater_than_or_equal_to => 0 }
 validates :sales_status, presence: true
 validates :category_id, presence: true
 validates :label_id, presence: true

@@ -26,11 +26,11 @@
                         </div>
                         <div class="col-xs-6 col-sm-12">
                                 <%# 商品名 %>
-                                <p><%= results.album %></p>
+                                <p style="font-weight:bold;"><%= results.album %></p>
                                 <%# アーティスト名 %>
                                 <p><%= results.artist.name %></p>
                                 <%# 価格 %>
-                                <p>¥<%= tax_calc(results.price) %>(税込)</p>
+                                <p><span style="color:red;">¥<%= tax_calc(results.price) %></span>(税込)</p>
                                 <%# 販売ステータス %>
                                 <p><%= stock_check(results) %></p>
                         </div>

@@ -129,13 +129,14 @@
 
             <%# レビュー投稿 %>
             <% if end_user_signed_in? %>
+            <h4 class="glyphicon glyphicon-pencil" style="margin-top:-10px;">新規投稿・編集</h4>
             <div class="item-rev-edit">
 
                 <%= form_for @review do |f| %>
                     <p>名前</p>
-                    <%= f.text_field :name,class:"form-control" %>
+                    <%= f.text_field :name,class:"form-control" ,placeholder:"ニックネームを入力"%>
                     <p>レビュー</p>
-                    <%= f.text_area :comment,class:"form-control" %>
+                    <%= f.text_area :comment,class:"form-control",placeholder:"レビューを入力（投稿は商品につき１件まで可能です。）" %>
                     <p></p>
                     <%# hidden_fieldで情報を渡す %>
                     <%= f.hidden_field :item_id, :value => @item.id %>

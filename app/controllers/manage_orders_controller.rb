@@ -14,22 +14,10 @@ class ManageOrdersController < ApplicationController
 		redirect_to manage_orders_path
 	end
 
-	def show
-	end
 
 	def index
-		@orders = Order.all.order(created_at: :desc).page(params[:page]).per(20)
-		@order_items = OrderItem.all
-		@items = Item.all
-		@address = Address.all
-		# @search = Item.ransack(params[:q])
-	end
-
-	def search
-		#とりあえず試しに入れてみる
-		@item = Item.new
-		@items = Item.all
-		@item = Item.where(['content LIKE ?', "%#{search}%"])
+		@search = Order.ransack(params[:q])
+		@results = @search.result.page(params[:page]).per(10)
 	end
 
 	def edit

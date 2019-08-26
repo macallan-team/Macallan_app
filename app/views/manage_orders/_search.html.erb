@@ -1,15 +1,15 @@
 <h3>商品検索</h3>
 <%= search_form_for @search, url: manage_orders_path do |f| %>
 <div class="form-box">
-    <%= f.search_field :album_or_artist_name_or_label_name_or_discs_songs_name_cont_any, class: "form-control pull-left", :style=>"width: 67%;", placeholder: "商品名・曲名など" %>
+    <%= f.search_field :shipping_name_cont, class: "form-control pull-left", :style=>"width: 67%;", placeholder: "注文者で検索" %>
     <%= f.submit '検索', class: "btn btn-default", :style=> "width:33%;" %>
 </div>
 <div class="form-box">
     <ul>
         <li><strong>絞り込み</strong></li>
-        <li><%= f.check_box :sales_status_eq_any, { multiple: true, :checked => true},checked_value = 0, unchecked_value ="" %>販売中</li>
-        <li><%= f.check_box :sales_status_eq_any, {multiple: true, :checked => true},checked_value = 1, unchecked_value ="" %>販売停止中</li>
-        <li><%= f.check_box :sales_status_eq_any, {multiple: true},checked_value = 2, unchecked_value ="" %>削除済み</li>
+        <li><label style="font-weight:100;"><%= f.check_box :shipping_status_eq_any, { multiple: true, :checked => true},checked_value = 0, unchecked_value ="" %>受付</label></li>
+        <li><label style="font-weight:100;"><%= f.check_box :shipping_status_eq_any, {multiple: true, :checked => true},checked_value = 1, unchecked_value ="" %>入荷待ち</label></li>
+        <li><label style="font-weight:100;"><%= f.check_box :shipping_status_eq_any, {multiple: true},checked_value = 2, unchecked_value ="" %>発送済み</label></li>
     </ul>
 </div>
 <% end %>
