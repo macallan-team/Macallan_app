@@ -1,5 +1,7 @@
 class ArtistsController < ApplicationController
-	# before_action :authenticate_admin!
+
+	before_action :authenticate_admin!
+
 	def create
 		@artist = Artist.new(artist_params)
 		@artist.save
