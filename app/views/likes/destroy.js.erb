@@ -4,3 +4,4 @@ $('<%= @id_heart %>').addClass('glyphicon-heart-empty');
 $('<%= @id_heart %>').removeClass('glyphicon-heart');
 $('#messages').html('<%= escape_javascript(render("layouts/flash")) %>');
 $('#like-<%= @item.id %>').slideUp();
+<%= render 'layouts/alert'%>

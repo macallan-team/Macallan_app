@@ -4,10 +4,7 @@
 
  // ＊＊＊＊＊ヘッダー＊＊＊＊＊
  header {
-	 background-color: black;
-	 background-image: url('street.jpg');
-	 background-size: cover;
-	 background-position: center;
+	 background-color: rgba(0,0,0,.6);
 	 color: white;
 	 margin-bottom: 20px;
 	 a {
@@ -71,7 +68,6 @@
 	 text-align: right;
  }
  .login-status{
-	background-color: rgba(0,0,0,.3);
 	margin-top: 5px;
  }
  .head-menu {
@@ -138,7 +134,7 @@
 	min-height: 100%;
 	width: 100%;
 	font-size: 2.5em;
-	background-color: rgba(0,0,0,.9);
+	background-color: rgba(0,0,0,.6);
 	position: fixed;
 	margin-top:-20px;
 	text-align: right;
