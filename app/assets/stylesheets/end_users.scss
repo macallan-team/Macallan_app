@@ -25,6 +25,10 @@
     margin: 5px;
   }
 
+  .check-box{
+    color: #f4f4f4;
+  }
+
   .forgot-pass{
     color: #f4f4f4;
   }
@@ -35,6 +39,8 @@
 
   // エンドユーザーのログイン画面 ここから
 
+  .form-body {
+  .form-body-end-user {
   .form-body-end-user {
     margin: 70px auto;
     background: #2a3644;
@@ -44,6 +50,8 @@
     border-radius: 6px;
   }
 
+  .form-body > h2 {
+  .form-body-end-user > h2 {
   .form-body-end-user > h2 {
     color: #f4f4f4;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
@@ -69,6 +77,9 @@
     transition: all 0.1s ease-in-out;
   }
 
+  .check-box-end-user{
+    color: #f4f4f4;
+  }
   .check-box-end-user{
     color: #f4f4f4;
   }
