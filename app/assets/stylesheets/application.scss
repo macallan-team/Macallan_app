@@ -137,19 +137,17 @@ h2 {
 
 }
 
+// フラッシュメッセージ
 
-// 注文完了画像
-.thanx-image{
-	background-image: url('shop.jpg');
-	background-size: cover;
-	height: 50vh;
+.alert {
+	background-color: rgba(0,0,0,.5);
+	color:white;
+	text-align:center;
+	display:none;
 }
-
-
-
-
-
-
+.red-color {
+	background-color: rgba(200,0,0,.4);
+}
 
   // ＊＊＊＊＊フッター＊＊＊＊＊
  .footer {
@@ -180,7 +178,7 @@ footer{
 	
 }
 .container {
-	background-color: rgba(255,255,255,.9);
+	background-color: rgba(255,255,255,.93);
 	border-radius: 20px;
 	padding:30px 20px;
 }

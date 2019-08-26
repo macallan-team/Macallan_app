@@ -4,3 +4,4 @@ $('#item-total').html('¥<%= total_price(@cart_item) %>');
 $('#subtotal').html('小計　¥<%= @subtotal %>');
 $('#cost').html('+ 消費税　¥<%= @total - @subtotal - carriage_rate%><br>+ 送料（全国一律）¥<%= carriage_rate %>');
 $('#total').html('<strong>合計　¥<%= @total %></strong>')
+<%= render 'layouts/alert'%>
