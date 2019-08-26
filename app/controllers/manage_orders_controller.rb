@@ -18,7 +18,7 @@ class ManageOrdersController < ApplicationController
 	end
 
 	def index
-		@orders = Order.all
+		@orders = Order.all.order(created_at: :desc).page(params[:page]).per(20)
 		@order_items = OrderItem.all
 		@items = Item.all
 		@address = Address.all

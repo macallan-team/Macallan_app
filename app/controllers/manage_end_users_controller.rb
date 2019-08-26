@@ -1,11 +1,13 @@
 class ManageEndUsersController < ApplicationController
 
+	# before_action :authenticate_admin!
+
 	before_action :authenticate_admin!
 	
 
 	def show
 		@end_user = EndUser.find(params[:id])
-		@orders = Order.all
+		@orders = Order.where(end_user_id: params[:id]).order(created_at: :desc).page(params[:page]).per(5)
 	end
 
 	def destroy
