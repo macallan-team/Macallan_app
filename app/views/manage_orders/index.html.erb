@@ -17,18 +17,18 @@
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th class="col-xs-1">注文日</th>
-                                    <th class="col-xs-2">注文者</th>
-                                    <th class="col-xs-4">発送先</th>
-                                    <th class="col-xs-2">注文内容</th>
-                                    <th class="col-xs-2">ステータス</th>
-                                    <th class="col-xs-1"></th>
+                                    <th width="9%">注文日</th>
+                                    <th width="15%">注文者</th>
+                                    <th width="35%">発送先</th>
+                                    <th width="15%">注文内容</th>
+                                    <th width="11%">ステータス</th>
+                                    <th width="5%"></th>
                                 </tr>
                             </thead>
                             <tbody>
                             <% @orders.each do |order| %>
                                 <tr>
-                                    <td><%= order.purchased_at.strftime("%Y年%-m月%-d日") %></td>
+                                    <td><%= order.purchased_at.strftime("%Y年%n%-m月%-d日") %></td>
                                     <td>
                                         <!-- 修正 -->
                                         <%= order.end_user.last_name %>
@@ -37,8 +37,8 @@
                                     <td>
                                         <p><%= order.shipping_name %></p>
                                         <p><%= order.shipping_address %></p>
-                                        <p><%= order.shipping_phone_number %></p>
-                                        <p><%= order.shipping_postal_code %></p>
+                                        <p>TEL：<%= order.shipping_phone_number %></p>
+                                        <p>〒<%= postal_code(order.shipping_postal_code) %></p>
                                     </td>
                                     <td>
                                         <% order.order_items.each do |i| %>
