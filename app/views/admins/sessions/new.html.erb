@@ -1,40 +1,36 @@
-<body class="login-body">
-  <div class="container-sign-up center-block">
+  <div class="container">
     <div class="row">
-      <div class="col-md-3 col-md-offset-4">
-        <section>
-          <h2 class="form-headter-title">管理者ログイン</h2>
+      <div class="col-md-4 col-md-offset-4">
+          <h2>管理者ログイン</h2>
 
             <div class="form-body">
 
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <div class="form-group has-icon">
-                  <%= f.label :メールアドレス %><br />
+                <div class="orm-group-sign-in">
+                  <div><%= f.label :メールアドレス %></div>
                   <%= f.email_field :email, autofocus: true, class:"form-control", autocomplete: "email" %>
                 </div>
 
-                <div class="form-group has-icon">
-                  <%= f.label :パスワード %><br />
+                <div class="orm-group-sign-in">
+                  <div><%= f.label :パスワード %></div>
                   <%= f.password_field :password, class:"form-control", autocomplete: "current-password" %>
                 </div>
 
                 <% if devise_mapping.rememberable? %>
-                  <div class="field">
+                  <div class="check-box">
                     <%= f.check_box :remember_me %>
                     <%= f.label :次回より入力を省略 %>
                   </div>
                 <% end %>
 
-                <div class="actions">
-                  <%= f.submit "ログイン", class:"btn btn-lg btn-primary btn-block btn-base-1 mt-20" %>
+                <div class="link">
+                  <%= f.submit "ログイン", class:"btn btn-primary btn-block" %>
                 </div>
               <% end %>
 
-              <%= render "end_users/shared/links" %>
+              <div class="link"><%= render "end_users/shared/links" %></div>
 
           </div>
-        </section>
       </div>
     </div>
   </div>
-</body>

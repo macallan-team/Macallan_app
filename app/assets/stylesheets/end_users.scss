@@ -24,3 +24,54 @@
   .link{
     margin: 5px;
   }
+
+  .check-box{
+    color: #f4f4f4;
+  }
+
+  .forgot-pass{
+    color: #f4f4f4;
+  }
+
+  .forgot-pass:hover{
+    color: #f4f4f4;
+  }
+
+  // エンドユーザーのログイン画面 ここから
+
+  .form-body {
+    margin: 70px auto;
+    background: #2a3644;
+    width: 347px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 6px;
+  }
+
+  .form-body > h2 {
+    color: #f4f4f4;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+    .login {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+    // display: block;
+    // width: 269px;
+    // padding: 30px;
+    margin-bottom: 35px;
+    // border-radius: 6px;
+    // transition: all 0.1s ease-in-out;
+    outline: none;
+  }
+
+  .login:focus {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in-out;
+  }
+
+
+// エンドユーザーのログイン画面 ここまで
