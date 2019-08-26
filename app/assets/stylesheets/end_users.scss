@@ -4,7 +4,7 @@
 
 
 // エンドユーザー新規登録画面・編集画面
-.item{
+.item-form{
   padding-left: 16px;
   }
 
@@ -14,7 +14,7 @@
 
   .form-inline{
     height: 35px;
-    margin-right: 105px;
+    margin-right: 100px;
   }
 
   .form-inline:last-child{
@@ -24,3 +24,67 @@
   .link{
     margin: 5px;
   }
+
+  .check-box{
+    color: #f4f4f4;
+  }
+
+  .forgot-pass{
+    color: #f4f4f4;
+  }
+
+  .forgot-pass:hover{
+    color: #f4f4f4;
+  }
+
+  em{
+    color: red;
+  }
+
+  // エンドユーザーのログイン画面 ここから
+
+  .form-body-end-user {
+    margin: 70px auto;
+    background: #2a3644;
+    width: 347px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 6px;
+  }
+
+
+  .form-body-end-user > h2 {
+    color: #f4f4f4;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+    .login {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+    // display: block;
+    // width: 269px;
+    // padding: 30px;
+    margin-bottom: 35px;
+    // border-radius: 6px;
+    // transition: all 0.1s ease-in-out;
+    outline: none;
+  }
+
+  .login:focus {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .check-box-end-user{
+    color: #f4f4f4;
+  }
+  .check-box-end-user{
+    color: #f4f4f4;
+  }
+
+// エンドユーザーのログイン画面 ここまで
+
+

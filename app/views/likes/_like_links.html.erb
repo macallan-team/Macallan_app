@@ -11,6 +11,6 @@
         <%end%>
     <% end %>
 <%else%>
-        <span class="box-radius">★ <%= item.likes.count.to_s %></span>
+        <span class="btn glyphicon glyphicon-heart" style="color: red;"></span><%= item.likes.count.to_s %>
 <%end%>
 </span>

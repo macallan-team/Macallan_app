@@ -17,7 +17,7 @@
                         <table class="col-xs-8 col-xs-offset-2">
                             <tbody>
                                 <td class="text-right" style="padding-right:10px;">
-                                <h2 style="display:inline;">💿<%= @item.album %></h2>
+                                <h2 style="display:inline;" class="glyphicon glyphicon-cd"><%= @item.album %></h2>
                                 </td>
                                 <%# いいねカウント %>
                                 <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
@@ -28,7 +28,7 @@
                         </table>
                     </div>
                     <%# アーティスト名 %>
-                    <p style="margin:30px 0 20px 0;">🎤<%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
+                    <p style="margin:30px 0 20px 0;"><%= @item.artist.name %> / <%= @item.label.name %> / <%= @item.category.name %></p>
 
                     <%# 価格 %>
 
@@ -55,8 +55,8 @@
         <%# 収録曲 %>
         <div class="col-sm-6">
             <div class="box">
-            <h4><strong>♪収録曲♪</strong></h4>
 
+            <h4><strong class="glyphicon glyphicon-music">収録曲</strong></h4>
                 <% @discs.each do |disc| %>
                 <table class="table table-striped table-responsive">
                     <thead>
@@ -70,7 +70,7 @@
                     <% disc.songs.each do |song| %>
                         <tr>
                             <td>
-                                <%= song.position %>
+                                No.<%= song.position %>
                             </td>
                             <td>
                                 <%= song.name %>
@@ -90,7 +90,8 @@
         <div class="col-sm-6">
             <%# レビュー内容表示 %>
             <div class="box-radius">
-            <h4><strong>🗒レビュー</strong></h4>
+
+            <h4><strong class="glyphicon glyphicon-comment">レビュー</strong></h4>
                 <table class="table table-responsive">
                     <tbody>
                     <% if @reviews.any? %>
@@ -138,7 +139,7 @@
                     <p></p>
                     <%# hidden_fieldで情報を渡す %>
                     <%= f.hidden_field :item_id, :value => @item.id %>
-                    <%= f.submit("レビューする",class: 'btn btn-primary center-block') %>
+                    <%= f.submit("レビューする",class: 'btn btn-primary center-block ') %>
                 <% end %>
             </div>
             <% end %>

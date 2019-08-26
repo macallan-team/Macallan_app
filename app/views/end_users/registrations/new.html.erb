@@ -7,51 +7,51 @@
                 <%= render "devise/shared/error_messages", resource: resource %>
 
                 <div class="row form-group name-form">
-                  <div class="item"><%= f.label :氏名 %>
+                  <div class="item-form"><%= f.label :氏名 %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10 form name-form"><%= f.text_field :last_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"姓" %>
                   <%= f.text_field :first_name, :size=>"25", autofocus: true, class:"form-inline", placeholder:"名"%></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :氏名%><em>(カナ)</em>
+                  <div class="item-form"><%= f.label :氏名%><i>(カナ)</i>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.text_field :last_kana, :size=>"25", autofocus: true, class:"form-inline", placeholder:"セイ" %>
                   <%= f.text_field :first_kana, :size=>"25", autofocus: true, class:"form-inline", placeholder:"メイ"%></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :郵便番号 %>
+                  <div class="item-form"><%= f.label :郵便番号 %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.text_field :postal_code, autofocus: true, class:"form-control", placeholder:"ハイフンなし" %></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :住所 %>
+                  <div class="item-form"><%= f.label :住所 %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.text_field :address, autofocus: true, class:"form-control" %></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :電話番号 %>
+                  <div class="item-form"><%= f.label :電話番号 %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.text_field :phone_number, autofocus: true, class:"form-control", placeholder:"ハイフンなし" %></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :メールアドレス %>
+                  <div class="item-form"><%= f.label :メールアドレス %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.email_field :email, class:"form-control" %></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :パスワード %>
+                  <div class="item-form"><%= f.label :パスワード %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.password_field :password, class:"form-control", placeholder:"英数字6文字以上" %></div>
                 </div>
 
                 <div class="row form-group">
-                  <div class="item"><%= f.label :パスワード再確認用 %>
+                  <div class="item-form"><%= f.label :パスワード再確認用 %>
                   <em>※必須項目</em></div>
                   <div class="col-md-10"><%= f.password_field :password_confirmation, class:"form-control", placeholder:"英数字6文字以上" %></div>
                 </div>

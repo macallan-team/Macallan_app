@@ -5,86 +5,12 @@
       <%= render "end_users/sidebar"%>
     </div>
     <%# サイドバーここまで %>
+
+
+
+    <%# 注文履歴 %>
     <div class = "col-sm-9">
       <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h2>
-                <%# 注文履歴 %>
-            <div class="box-radius">
-                <div class="text-center">
-                    <strong><p>注文履歴</p></strong>
-                </div>
-                <div class="row">
-                    <% @orders.each do |order| %>
-                    <h4>購入日：<%= order.purchased_at.strftime("%Y年%m月%d日") %></h4>
-                    <table class = "table">
-                        <tbody>
-                        <%# order_itemをoと表す %>
-                            <% order.order_items.each do |o| %>
-                            <tr>
-                            <%# ジャケ写 %>
-                                <td>
-                                    <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg' %>
-                                </td>
-                                <td>
-                            <%# アルバム名 リンク付き %>
-                                    <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
-                            <%# アーティスト名 %>
-                            <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
-                                    <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
-                            <%# 購入数 %>
-                                    <span>購入数：<%= o.count %></span>
-                                    <%# 価格税抜 %>
-                                    <p>税抜　¥<%= o.price %></p>
-                                </td>
-                                <td>
-                                  <%# 価格税抜 %>
-                                    <p>税抜　¥<%= o.price * o.count %> </p>
-                                    
-                                </td>
-                            </tr>
-                        <% end %>
-                        <tr>
-                            <td>
-                                <p><strong>発送先</strong>
-                                  <p><%= order.shipping_name %></p>
-                                  <p>〒<%= order.shipping_postal_code %></p>
-                                  <p><%= order.shipping_address %></p>
-                                  <p>TEL<%= order.shipping_phone_number %></p>
-                                </p>
-                            </td>
-                            <td>
-                                <span>ステータス：
-                                    <% if order.shipping_status == "accepting" %>
-                                    受付
-                                    <% elsif order.shipping_status == "backordered" %>
-                                    入荷待ち
-                                    <% else %>
-                                    出荷待ち
-                                    <% end %>
-                                </span>
-                            </td>
-                            <td>
-                              <p>小計 ¥<%= order.subtotal %></p>
-                              <p>消費税　¥<%= order.total_price - order.subtotal - order.carriage_rate %></p>
-                              <p>送料（全国一律）¥<%= order.carriage_rate %></p>
-                              <span>合計金額 ¥<%= order.total_price %></span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <% end %>
-                </div>
-            </div>
-          
+      <div class="box-radius">
 
-
-    </div>
-  </div>
-  <div class = "row">
-    <div class = "col-sm-12">
-      <%# KAMINARI実装 %>
-      <%= paginate @orders %>
-    </div>
-  </div>
-</div>
-
-</div>
+      <%= render 'orders/history', orders: @orders %>

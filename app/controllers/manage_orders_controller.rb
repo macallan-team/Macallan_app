@@ -1,5 +1,7 @@
 class ManageOrdersController < ApplicationController
-	# before_action :authenticate_admin!
+
+	before_action :authenticate_admin!
+
 	def update
 		@order = Order.find(params[:id])
 		@order.update(item_params)
@@ -16,7 +18,7 @@ class ManageOrdersController < ApplicationController
 	end
 
 	def index
-		@orders = Order.all
+		@orders = Order.all.order(created_at: :desc).page(params[:page]).per(20)
 		@order_items = OrderItem.all
 		@items = Item.all
 		@address = Address.all

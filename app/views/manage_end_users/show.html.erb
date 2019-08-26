@@ -47,7 +47,7 @@
                 </div>
                 <div class="row form-box">
                     <div class="col-xs-2"><label>郵便番号</label></div>
-                    <div class="col-xs-10"><%= @end_user.postal_code %></div>
+                    <div class="col-xs-10">〒<%= postal_code(@end_user.postal_code) %></div>
                 </div>
                 <div class="row form-box">
                     <div class="col-xs-2"><label>住所</label></div>
@@ -65,61 +65,5 @@
 
             <%# 注文履歴 %>
             <div class="box">
-                <div class="text-center">
-                    <strong><p>注文履歴</p></strong>
-                </div>
-                <div class="row">
-                    <% @orders.each do |order| %>
-                    <h4 style="font-weight:bold;color:darkgreen;">購入日：<%= order.purchased_at.strftime("%Y年%m月%d日") %></h4>
-                    <table class = "table">
-                        <tbody>
-                        <%# order_itemをoと表す %>
-                            <% order.order_items.each do |o| %>
-                            <tr>
-                            <%# ジャケ写 %>
-                                <td>
-                                    <%= attachment_image_tag o.item, :image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg",:size=>"100x100" %>
-                                </td>
-                                <td>
-                            <%# アルバム名 リンク付き %>
-                                    <span><%= link_to o.item.album, item_path(o.item.id) %></span><br>
-                            <%# アーティスト名 %>
-                            <%# itemの後のdiscsとsongsがhas_manyで複数あるため１番最初のものを持ってくるように.firstをつける %>
-                                    <span><%= o.item.discs.first.songs.first.artist.name %></span><br>
-                            <%# 購入数 %>
-                                    <span>購入数：<%= o.count %></span>
-                                </td>
-                                <td>
-                            <%# 価格税込 %>
-                                    <p style="color:red;">価格 <%= o.price %>円</p>
-                                    <p style="color:red;">合計金額 <%= order.total_price %>円</p>
-                                </td>
-                            </tr>
-                        <% end %>
-                        <tr>
-                            <th colspan="2">ステータス</th>
-                                    <td><%= order.shipping_status %></td></tr>
-                            <th colspan="2">発送先名</th>
-                                    <td><%= order.shipping_name %></td></tr>
-                            <th colspan="2">郵便番号</th>
-                                    <td><%= order.shipping_postal_code %></td></tr>
-                            <th colspan="2">住所</th>
-                                    <td><%= order.shipping_address %></td></tr>
-                            <th colspan="2">電話番号</th>
-                                    <td><%= order.shipping_phone_number %></td>
-                                </tr>
-                        </tbody>
-                    </table>
-                    <% end %>
 
-
-
-
-
-                </div>
-            </div>
-
-
-        </div><%# col-xs-9 %>
-    </div><!-- row  ここまで -->
-</div><!-- container  ここまで -->
+            <%= render 'orders/history', orders: @orders %>

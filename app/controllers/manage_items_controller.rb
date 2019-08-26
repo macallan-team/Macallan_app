@@ -1,5 +1,7 @@
 class ManageItemsController < ApplicationController
-	# before_action :authenticate_admin!
+
+	before_action :authenticate_admin!
+
 	def new
 		@item = Item.new
 		@discs = @item.discs.build
