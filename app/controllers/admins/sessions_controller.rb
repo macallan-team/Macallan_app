@@ -7,7 +7,7 @@ class Admins::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    new_admin_session_path(resource) # ログアウト後管理者ログイン画面へ遷移するpathを設定
+    new_admin_session_path # ログアウト後管理者ログイン画面へ遷移するpathを設定
   end
 
   # before_action :configure_sign_in_params, only: [:create]
