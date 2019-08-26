@@ -31,7 +31,7 @@ class CartItemsController < ApplicationController
 		@cart_item.count += cart_item_params[:count].to_i
 		if @cart_item.count <= 0
 			@cart_item.destroy
-			redirect_to cart_items_path
+			redirect_to cart_items_path, :alert =>"カートから商品を削除しました。"
 		else
 			@cart_item.save
 			flash.now[:notice] = "カート内の「#{@cart_item.item.album}」の数量が変更されました。"
