@@ -21,7 +21,7 @@
                 <%= o.select :shipping_status, Order.shipping_statuses.keys, {:prompt => "選択してください"}, {class: "form-control"} %>
             </div>
             <div class="action" style="padding:20px;">
-                <%= o.submit "Update Order",class:"btn btn-default center-block" %>
+                <div class="center-block btns"><%= o.submit "Update Order",class:"btn btn-default pull-left" %><%= link_to "注文を削除",manage_order_path(@order),method: :delete,class:"btn btn-danger" %></div>
             </div>
             <% end %>
             </div>

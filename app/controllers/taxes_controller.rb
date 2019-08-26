@@ -10,7 +10,7 @@ class TaxesController < ApplicationController
       tax.rate = (tax.rate / 100) + 1
       tax.valid_flag = 'off'
       tax.save
-      redirect_to taxes_path, :notice => "登録しました。"
+      redirect_to taxes_path, :notice => "税率を登録しました。"
     else
       render :index
     end
@@ -27,7 +27,7 @@ class TaxesController < ApplicationController
         tax.valid_flag = "on"
         tax.save
       end
-      redirect_to taxes_path, :notice => "設定を変更しました。"
+      redirect_to taxes_path, :notice => "税率設定を変更しました。"
     else
       redirect_to taxes_path
     end

@@ -35,7 +35,7 @@ class ManageItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 		if @item.save
-			redirect_to manage_item_path(@item), :notice => "登録しました。"
+			redirect_to manage_item_path(@item), :notice => "商品を登録しました。"
 		else
 			flash.now[:alert] = '登録に失敗しました。入力内容を確認してください。'
 			render :new
