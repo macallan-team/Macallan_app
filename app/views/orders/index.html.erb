@@ -10,7 +10,8 @@
 
     <%# 注文履歴 %>
     <div class = "col-sm-9">
-      <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h2>
+    <h2>マイページ</h2>
+      <h3><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h3>
       <div class="box-radius">
 
       <%= render 'orders/history', orders: @orders %>
