@@ -2,11 +2,11 @@
   <div class = "sidebar">
     <ul>
       <li></li>
-      <li><%= link_to "Myいいね", likes_path %></li>
+      <li><%= link_to "Myいいね", likes_path ,class:'glyphicon glyphicon-star'%></li>
       <li></li>
-      <li><%= link_to "注文履歴", end_user_orders_path(current_end_user) %></li>
+      <li><%= link_to "注文履歴", end_user_orders_path(current_end_user),class:'glyphicon glyphicon-list-alt' %></li>
       <li></li>
-      <li><%= link_to "登録情報編集", end_user_path(current_end_user) %></li>
+      <li><%= link_to "登録情報", end_user_path(current_end_user) ,class:'glyphicon glyphicon-user' %></li>
       <li></li>
     </ul>
   </div>
