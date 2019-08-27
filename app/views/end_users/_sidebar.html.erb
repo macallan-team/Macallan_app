@@ -1,12 +1,9 @@
 <h3>メニュー</h3>
-  <div class = "sidebar">
+  <div class = "user-sidebar">
     <ul>
-      <li></li>
-      <li><%= link_to "Myいいね", likes_path ,class:'glyphicon glyphicon-star'%></li>
-      <li></li>
-      <li><%= link_to "注文履歴", end_user_orders_path(current_end_user),class:'glyphicon glyphicon-list-alt' %></li>
-      <li></li>
-      <li><%= link_to "登録情報", end_user_path(current_end_user) ,class:'glyphicon glyphicon-user' %></li>
-      <li></li>
+      <%# クリックすると文字色が変わる %>
+      <li><%= link_to "Myいいね", likes_path ,class: "glyphicon glyphicon-star #{'sample_selecting' if params[:controller] == "likes" }"%></li>
+      <li><%= link_to "注文履歴", end_user_orders_path(current_end_user),class:"glyphicon glyphicon-list-alt #{'sample_selecting' if params[:controller] == "orders" }" %></li>
+      <li><%= link_to "登録情報", end_user_path(current_end_user) ,class:"glyphicon glyphicon-user #{'sample_selecting' if params[:controller] == "end_users" }" %></li>
     </ul>
   </div>
