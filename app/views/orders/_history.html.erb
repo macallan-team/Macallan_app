@@ -1,11 +1,12 @@
 <div class="text-center">
           <strong><p>注文履歴</p></strong>
         </div>
+          <%# 購入するごとに表示 %>
           <% orders.each do |order| %>
           <h4 style="font-weight:bold;color:darkgreen;">購入日：<%= order.purchased_at.strftime("%Y年%-m月%-d日") %></h4>
           <table class = "table">
             <tbody>
-            <%# order_itemをoと表す %>
+            <%# 商品内容ごとに繰り返し表示 %>
             <% order.order_items.each do |o| %>
               <tr>
                 <td class="col-xs-2">
