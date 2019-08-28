@@ -2,7 +2,7 @@ class CarriagesController < ApplicationController
   before_action :authenticate_admin!
   def index
     @carriage = Carriage.new
-    @carriages = Carriage.all
+    @carriages = Carriage.all.order(rate: "ASC")
   end
   def create
     carriage = Carriage.new(carriage_params)
