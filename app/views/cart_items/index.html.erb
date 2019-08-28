@@ -9,6 +9,7 @@
     <table class="table" style="margin-bottom:-10px;">
       <thead><tr><th class="col-xs-3"></th><th class="col-xs-3">商品名</th><th class="col-xs-2 text-right">数量</th><th class="col-xs-2 text-right">税抜価格</th><th class="col-xs-2"></th></tr></thead>
       <tbody>
+      
       <% @cart_items.each do |cart_item| %>
         <tr><td><%= attachment_image_tag cart_item.item, :image, :fill, 50,50, fallback: "no_image.jpg", :size=>"50x50",class:"images" %></td>
         <td style="vertical-align:middle;"><%= link_to item_path(cart_item.item) do %><%= cart_item.item.album %><% end %></td>

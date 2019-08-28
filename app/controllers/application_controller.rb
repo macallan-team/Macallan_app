@@ -48,7 +48,7 @@ def set_total
     @total = array.sum + @carriage_rate
 end
 
-# 現在の税レートをせっと
+# 現在の税レートをセット
 def set_tax_rate
   @tax_rate = Tax.find_by(valid_flag: 'on').rate
 end	

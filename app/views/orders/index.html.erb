@@ -14,4 +14,5 @@
       <h3><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんが購入した商品</h3>
       <div class="box-radius">
 
+      <%# 購入履歴部分テンプレート %>
       <%= render 'orders/history', orders: @orders %>

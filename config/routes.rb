@@ -16,11 +16,12 @@ Rails.application.routes.draw do
 
   #ルートでアイテムインデックス記載
   root "items#index"
-  #アイテムのルーティング
+  #アイテム
   resources :items, only: [:show, :index] do
-  #いいねコントローラ
+  #いいね
     resource :likes, only: [:create, :destroy]
   end
+  # いいねidを
   resources :likes, only: [:index]
   
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
@@ -74,9 +75,11 @@ resources :admins, only: [:index]
   # レビュー
   resources :reviews
 
+  #　税率
   resources :taxes, only: [:create, :update, :destroy, :index]
   get 'tax/select' => "taxes#select", as: 'select_tax'
-  #　税率
+
+  # 送料
   resources :carriages, only: [:create, :update, :destroy, :index]
   get 'carriage/select' => "carriages#select", as: 'select_carriage'
 
