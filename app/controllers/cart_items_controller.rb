@@ -29,6 +29,7 @@ class CartItemsController < ApplicationController
 	def update
 		@cart_item = CartItem.find(cart_item_params[:id])
 		@cart_item.count += cart_item_params[:count].to_i
+		# 販売中または在庫が０より小さいとき、削除
 		if @cart_item.count <= 0
 			@cart_item.destroy
 			redirect_to cart_items_path, :alert =>"カートから商品を削除しました。"
