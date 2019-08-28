@@ -5,6 +5,7 @@ class ManageItemsController < ApplicationController
 	def new
 		@item = Item.new
 		@discs = @item.discs.build
+				# build:newと同じ意味、慣習的に関連するモデルを生成するときに使用
 		@songs = @discs.songs.build
 	end
 

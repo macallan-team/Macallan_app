@@ -66,18 +66,32 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+  # Deviseの日本語化
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+  # ページネーション 
 gem 'kaminari', '~> 1.1.1'
+# ファイルのアップロード先を柔軟に設定できる
+# 簡単に組み込める
+# 画像のサムネイルを生成できる
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
+# アップロードした画像のリサイズを簡単に実装
 gem "refile-mini_magick"
+# Sass：「Syntactically Awesome Style Sheets」の略。Ruby ベース
 gem 'bootstrap-sass','~>3.3.6'
+# jqueryを扱えるようになる
 gem 'jquery-rails'
+# 簡単にフォームを追加したり、削除したりして中間テーブルに保存するように処理を作ることができる
 gem 'cocoon'
-
+# 削除しても残しておける論理削除を実装
 gem 'paranoia'
+# デフォルトの言語を日本語に設定
 gem 'rails-i18n'
+# 検索機能
 gem 'ransack'
+# データの並び替え機能
 gem 'acts_as_list'
+# クレジット機能（今回は未使用）
 gem 'payjp'
+# kaminariを使用したページネーションにBootstrapデザインを適用
 gem 'kaminari-bootstrap', '~> 3.0.1'
