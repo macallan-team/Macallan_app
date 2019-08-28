@@ -16,8 +16,9 @@
         <label>住所</label>
         <%= f.text_area :address, class:"form-control", placeholder: "全角80文字以内" %>
     </div>
-    <div class="form-box">
-        <%= f.submit "登録", class:"btn btn-default center-block", :data => {:disable_with => "登録"}%>
+    <div class="text-center">
+        <%= link_to "戻る", new_end_user_order_path(current_end_user),method: :get,class:"btn btn-default" %>
+        <%= f.submit "登録", class:"btn btn-default", :data => {:disable_with => "登録"}%>
     </div>
     <% end %>
 </div>
