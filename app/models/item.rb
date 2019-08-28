@@ -13,6 +13,7 @@ attachment :image
 
 enum sales_status: [:on_sale,:suspension, :deleted]
 
+# accepts_nested_attributes_for：has_many関連の子レコードをまとめて登録（ネストした関連先のテーブルもまとめて保存）
 accepts_nested_attributes_for :discs, allow_destroy: true
 
 validates :album, presence: true, length: { in: 1..30 }

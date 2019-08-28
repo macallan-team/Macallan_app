@@ -108,7 +108,10 @@
     li {
       margin:0;
       padding: 5px 15px 5px 15px;
+      &:hover{
+        background-color: rgba(0,0,255,0.1)
       }
+    }
   }
 }
 
@@ -117,9 +120,6 @@
   color: black;
 }
 
-.user-sidebar ul li:hover{
-  background-color: rgba(0,0,255,0.1)
-}
 
 // クリックした後色が変更する
 .sample_selecting{
