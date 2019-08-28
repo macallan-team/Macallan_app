@@ -6,7 +6,8 @@
     </div>
     <%# サイドバーここまで %>
     <div class = "col-sm-9">
-      <h2><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんがいいねをした商品</h2>
+    <h2>マイページ</h2>
+      <h3><%= current_end_user.last_name %> <%= current_end_user.first_name %> さんがいいねをした商品</h3>
       <%# いいねをした商品を表示する %>
         <% @likes.each do |like| %>
         <div class="box-radius"  id="like-<%= like.item.id %>" >

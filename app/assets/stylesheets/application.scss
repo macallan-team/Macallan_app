@@ -43,25 +43,21 @@ li {
 }
 .no-scroll{
 	overflow: hidden;
+	// 内容がボックスに収まらない場合、収まらない部分は非表示
 }
-p {
-	margin:3px;
-}
-
+// サイドバー
 .sidebar {
 	border: 1px solid rgba(0,0,0,.4);
 	width: 100%;
 }
+
+
+
 h2 {
 	font-family: 'Hiragino Kaku Gothic StdN'
 }
 .valid {
 	background-color: lightgrey;
-}
-.touch {
-	&:hover{
-		background-color:rgba(0,0,255,.05);
-	}
 }
 
 // スクロールボタン
@@ -197,6 +193,7 @@ body{
 	background-size: cover;
 }
 
+
 // エンドユーザーログイン画面
 .login{
 	color: white;
@@ -210,3 +207,5 @@ body{
 .waiting{
 	background-color:rgba(0,255,0,.1);
 }
+
+

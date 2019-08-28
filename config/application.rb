@@ -10,6 +10,8 @@ module MacallanApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+
+    # デフォルトのlocaleを日本語(:ja)にする
     config.i18n.default_locale = :ja
     
     # Settings in config/environments/* take precedence over those specified here.
