@@ -17,7 +17,7 @@ class ManageOrdersController < ApplicationController
 
 	def index
 		@search = Order.ransack(params[:q])
-		@results = @search.result.page(params[:page]).per(10)
+		@results = @search.result.order(created_at: :desc).page(params[:page]).per(10)
 	end
 
 	def edit
