@@ -1,7 +1,7 @@
 class EndUsersController < ApplicationController
 
 before_action :authenticate_end_user!
-before_action :correct_user, except: [:change_password ]
+before_action :correct_user, except: [:change_password, :password_update]
 
 
   def show
@@ -26,12 +26,23 @@ before_action :correct_user, except: [:change_password ]
 
   def change_password
  @end_user = current_end_user
+ 
+  end
+
+  def password_update
+    @end_user = current_end_user
+    @end_user.update(change_password_params)
+    redirect_to end_user_path(@end_user)
   end
 
 
  private
  def end_user_params
      params.require(:end_user).permit(:last_name, :first_name, :last_kana, :first_kana, :postal_code, :address, :phone_number, :email)
+ end
+
+ def change_password_params
+      params.require(:end_user).permit(:reset_password_token, :password, :password_confirmation, :curent_password)
  end
 
 
