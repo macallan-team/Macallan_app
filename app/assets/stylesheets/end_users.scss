@@ -109,16 +109,16 @@
       margin:0;
       padding: 5px 15px 5px 15px;
       &:hover{
-        background-color: rgba(0,0,255,0.1)
+        background-color: rgba(181, 181, 196, 0.2);
+        span{
+          font-weight:bold;
+          color: black;
+        }
       }
     }
   }
 }
 
-.user-sidebar ul li a:hover{
-  text-decoration: none;;
-  color: black;
-}
 
 
 // クリックした後色が変更する
