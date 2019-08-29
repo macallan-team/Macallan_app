@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
 // エンドユーザー新規登録画面・編集画面
 .item-form{
   padding-left: 16px;
@@ -93,3 +94,35 @@
 }
 
 // エンドユーザー新規登録画面　ここまで
+
+
+// サイドバー　ここから
+.user-sidebar {
+  border: 1px solid rgba(0,0,0,.4);
+	width: 100%;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+  margin-bottom: 14px;
+  font-size: 1.1em;
+  ul {
+    margin-bottom:0;
+    li {
+      margin:0;
+      padding: 5px 15px 5px 15px;
+      &:hover{
+        background-color: rgba(181, 181, 196, 0.2);
+        span{
+          font-weight:bold;
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+
+// クリックした後色が変更する
+.sample_selecting{
+  color: green;
+}
+
+// サイドバー　ここまで

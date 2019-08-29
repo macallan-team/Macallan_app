@@ -1,12 +1,12 @@
 <h3>メニュー</h3>
-  <div class = "sidebar">
+  <div class = "user-sidebar">
     <ul>
-      <li></li>
-      <li><%= link_to "Myいいね", likes_path %></li>
-      <li></li>
-      <li><%= link_to "注文履歴", end_user_orders_path(current_end_user) %></li>
-      <li></li>
-      <li><%= link_to "登録情報編集", end_user_path(current_end_user) %></li>
-      <li></li>
+      <%# マウスホバーで背景色がつく %>
+      <%= link_to likes_path do%><li><span class="glyphicon glyphicon-star <%= 'sample_selecting' if params[:controller] == "likes"%>">Myいいね
+      </span></li><%end%>
+      <%= link_to end_user_orders_path(current_end_user) do%><li><span class="glyphicon glyphicon-list-alt <%= 'sample_selecting' if params[:controller] == "orders"%>">注文履歴
+      </span></li><%end%>
+      <%= link_to end_user_path(current_end_user) do%><li><span class="glyphicon glyphicon-user <%= 'sample_selecting' if params[:controller] == "end_users"%>">登録情報
+      </span></li><%end%>
     </ul>
   </div>

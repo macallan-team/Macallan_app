@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-respond_to :html,:json
+# respond_to :html,:json
   # def after_sign_out_path_for(resource)
   # 	root_path　#ログアウト後は商品の一覧ページに遷移
   # end
@@ -9,6 +9,8 @@ before_action :set_search
 before_action :user_search
 
 def set_search
+  # includesとwhereを同時に使用すると、SQLの発行回数を少なく抑えつつ、条件をつけられる
+  # 販売中の商品を検索
   @search = Item.includes(:category, :label,:artist, discs: [:songs]).where(sales_status: "on_sale").ransack(params[:q])
 end
 
@@ -48,7 +50,7 @@ def set_total
     @total = array.sum + @carriage_rate
 end
 
-# 現在の税レートをせっと
+# 現在の税レートをセット
 def set_tax_rate
   @tax_rate = Tax.find_by(valid_flag: 'on').rate
 end	
@@ -65,6 +67,8 @@ def check_out_of_stock
     # 販売中または在庫が０より小さいとき、削除
     if cart_item.item.sales_status != 'on_sale' || cart_item.item.stock <= 0
       cart_item.destroy
+      # flash[:notice] 画面へとリダイレクトした際に、メッセージを表示
+      # flash.now:その画面でメッセージを表示
       flash[:notice] = nil
       flash.now[:alert] = "カート内の「#{cart_item.item.album}」の販売が終了したため、削除されました。"
     # カートアイテムの数量がアイテムの在庫を上回った時、数量＝在庫数量に変更

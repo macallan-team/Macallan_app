@@ -16,23 +16,25 @@ Rails.application.routes.draw do
 
   #ルートでアイテムインデックス記載
   root "items#index"
-  #アイテムのルーティング
+  #アイテム
   resources :items, only: [:show, :index] do
-  #いいねコントローラ
+  #いいね
     resource :likes, only: [:create, :destroy]
   end
+  # いいねidを
   resources :likes, only: [:index]
   
   resources :end_users, only: [:new, :edit, :create, :update, :show, :destroy] do
     resources :orders, only: [:new, :create, :update, :index]
     resources :addresses, only: [:new, :edit, :create, :update, :destroy]
 
+
   collection do
   get 'change_password'
   patch 'password_update' => 'end_users#password_update', as: 'password_update'
  
   end
-  
+
   end
   get 'end_users/:end_user_id/orders/confirm/' => "orders#confirm", as:"confirm_end_user_order"
   get "/order/complete" => "orders#complete", as:"complete_order"
@@ -79,9 +81,11 @@ resources :admins, only: [:index]
   # レビュー
   resources :reviews
 
+  #　税率
   resources :taxes, only: [:create, :update, :destroy, :index]
   get 'tax/select' => "taxes#select", as: 'select_tax'
-  #　税率
+
+  # 送料
   resources :carriages, only: [:create, :update, :destroy, :index]
   get 'carriage/select' => "carriages#select", as: 'select_carriage'
 

@@ -2,7 +2,7 @@ class TaxesController < ApplicationController
   before_action :authenticate_admin!
   def index
     @tax = Tax.new
-    @taxes = Tax.all
+    @taxes = Tax.all.order(rate: "ASC")
   end
   def create
     tax = Tax.new(tax_params)

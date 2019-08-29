@@ -28,7 +28,8 @@
   has_many :addresses
   has_many :cart_items
   has_many :orders
-
+  
+  # 論理削除の定義追記
   acts_as_paranoid
 
 
