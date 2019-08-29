@@ -34,7 +34,7 @@ class CartItemsController < ApplicationController
 			@cart_item.destroy
 			redirect_to cart_items_path, :alert =>"カートから商品を削除しました。"
 		else
-			在庫があるときカートアイテムをセーブし、
+			#在庫があるときカートアイテムをセーブし、
 			@cart_item.save
 			flash.now[:notice] = "カート内の「#{@cart_item.item.album}」の数量が変更されました。"
 			check_out_of_stock
