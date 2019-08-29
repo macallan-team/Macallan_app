@@ -16,12 +16,12 @@
                     <div class="row">
                         <table class="col-xs-8 col-xs-offset-2">
                             <tbody>
-                                <td class="text-center" style="padding-right:10px;">
+                                <td class="text-center col-xs-9" style="padding-right:10px;">
                                 <h2 style="display:inline;" class="glyphicon glyphicon-cd"><%= @item.album %></h2>
                                 </td>
                                 <%# いいねカウント %>
                                 <%# @itemsをrenderのcollectionでそれぞれを取り出してitemとして渡す %>
-                                <td class="text-left" style="padding-left:10px;">
+                                <td class="text-left col-xs-3" style="padding-left:10px;">
                                     <%= render 'likes/like_links', item: @item %>
                                 </td>
                             </tbody>
