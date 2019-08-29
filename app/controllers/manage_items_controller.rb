@@ -46,7 +46,7 @@ class ManageItemsController < ApplicationController
 	def index
 		# 検索結果・ページネーション
 		@search = Item.ransack(params[:q])
-		@results = @search.result(distinct: true).order(id: "ASK").page(params[:page]).per(20)
+		@results = @search.result(distinct: true).order(id: :ASK).page(params[:page]).per(20)
 	end
 		# acts_as_list使用
 	def move_higher
