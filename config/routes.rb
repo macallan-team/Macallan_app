@@ -29,8 +29,10 @@ Rails.application.routes.draw do
 
   collection do
   get 'change_password'
+  patch 'password_update' => 'end_users#password_update', as: 'password_update'
+ 
   end
-
+  
   end
   get 'end_users/:end_user_id/orders/confirm/' => "orders#confirm", as:"confirm_end_user_order"
   get "/order/complete" => "orders#complete", as:"complete_order"
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
 resources :admins, only: [:index]
 
   # get 'end_users/password/change' => 'end_users#change_password', as:'change_password'
+
 
   #カートあいてむ
   resources :cart_items, only: [:create, :destroy, :index]
