@@ -47,7 +47,6 @@
                                         <p><div class="pull-left">数量：<%= i.count %></div><div class="text-right">×　¥<%= tax_calc(i.item.price) %></div></p>
                                         <p class="text-right">¥<%= tax_calc(i.item.price) * i.count %></p>
                                         <div style="border-bottom:1px solid grey;"></div>
-                                        <p style="color:red;">合計¥<%= tax_calc(i.item.price) * i.count %></p>
 
                                         <% end %>
                                         <p class="text-right">送料 ¥<%= order.carriage_rate %></p>
