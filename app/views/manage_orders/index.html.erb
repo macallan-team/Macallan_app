@@ -45,8 +45,11 @@
                                         <p style="font-weight:bold;"><%= i.item.album %></p>
                                         <p><%= i.item.artist.name %></p>
                                         <p>数量：<%= i.count %></p>
-                                        <p style="color:red;">合計¥<%= i.price %></p>
+                                        <p>¥<%= tax_calc(i.item.price) * i.count %></p>
+                                        <div style="border-bottom:1px solid grey;"></div>
                                         <% end %>
+                                        <p>送料 ¥<%= order.carriage_rate %></p>
+                                        <p style="color:red;">合計 ¥<%= order.total_price %></p>
                                     </td>
                                     <td>
                                         <%= order.shipping_status %>
