@@ -72,7 +72,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
   # ページネーション 
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 # ファイルのアップロード先を柔軟に設定できる
 # 簡単に組み込める
 # 画像のサムネイルを生成できる
